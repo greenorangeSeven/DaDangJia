@@ -7,8 +7,14 @@
 //
 
 #import "LeftView.h"
+#import "LoginView.h"
+#import "AppDelegate.h"
+#import "YRSideViewController.h"
+#import "MainFrameView.h"
 
 @interface LeftView ()
+
+@property (strong, nonatomic) YRSideViewController *sideViewController;
 
 @end
 
@@ -16,7 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+        
+    self.faceIv.layer.masksToBounds=YES;
+    self.faceIv.layer.cornerRadius = self.faceIv.frame.size.width/2;
+//    self.loginBtn.layer.cornerRadius=self.loginBtn.frame.size.height/2;
+    
+    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.sideViewController = [delegate sideViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,4 +46,11 @@
 }
 */
 
+- (IBAction)loginAction:(id)sender {
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    LoginView *inviteView = [[LoginView alloc] init];
+    inviteView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:inviteView animated:YES];
+}
 @end

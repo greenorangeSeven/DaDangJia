@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    CGRect viewFrame = self.view.frame;
+    viewFrame.size.height = self.frameView.frame.size.height;
+    viewFrame.size.width = self.frameView.frame.size.width;
+    self.view.frame = viewFrame;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,4 +10,7 @@
 
 @interface ConvenienceTypeCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageIv;
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
+
 @end

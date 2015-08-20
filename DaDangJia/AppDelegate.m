@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MainFrameView.h"
+#import "LeftView.h"
+#import "CheckNetwork.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +19,35 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //检查网络是否存在 如果不存在 则弹出提示
+    [UserModel Instance].isNetworkRunning = [CheckNetwork isExistenceNetwork];
+    
+    //设置UINavigationController背景
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"top_bg"]  forBarMetrics:UIBarMetricsDefault];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+ 
+    MainFrameView *mainView = [[MainFrameView alloc] initWithNibName:@"MainFrameView" bundle:nil];
+    UINavigationController *mainFrameNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+    
+    LeftView *leftViewController=[[LeftView alloc]initWithNibName:@"LeftView" bundle:nil];
+    
+    _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
+    _sideViewController.rootViewController=mainFrameNav;
+    _sideViewController.leftViewController=leftViewController;
+    
+    _sideViewController.leftViewShowWidth=230;
+    _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
+    
+    self.window.rootViewController = _sideViewController;
+    [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    
+    
     return YES;
 }
 

@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"找回密码";
+    
+    self.securitycodeBtn.layer.cornerRadius=self.securitycodeBtn.frame.size.height/2;
+    self.saveBtn.layer.cornerRadius=self.saveBtn.frame.size.height/2;
 }
 
 - (void)didReceiveMemoryWarning {

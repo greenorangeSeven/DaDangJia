@@ -10,4 +10,6 @@
 
 @interface RegisterStep1View : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *securitycodeBtn;
+
 @end

@@ -10,4 +10,7 @@
 
 @interface LeftView : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *faceIv;
+- (IBAction)loginAction:(id)sender;
+
 @end

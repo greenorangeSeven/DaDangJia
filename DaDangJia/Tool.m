@@ -7,11 +7,6 @@
 //
 
 #import "Tool.h"
-#import "MainPageView.h"
-#import "PropertyPageView.h"
-#import "BuildingPageView.h"
-#import "CircleOfFriendsView.h"
-#import "GrouponClassView.h"
 
 @implementation Tool
 
@@ -578,52 +573,6 @@
     } else {
         return nil;
     }
-}
-
-+ (void)gotoTabbar:(UIWindow *)window
-{
-    MainPageView *mainPage = [[MainPageView alloc] initWithNibName:@"MainPageView" bundle:nil];
-    mainPage.tabBarItem.image = [UIImage imageNamed:@"tab_main"];
-    mainPage.tabBarItem.title = @"首页";
-    UINavigationController *mainPageNav = [[UINavigationController alloc] initWithRootViewController:mainPage];
-    
-    //房产
-    BuildingPageView *buildPage = [[BuildingPageView alloc] initWithNibName:@"BuildingPageView" bundle:nil];
-    buildPage.tabBarItem.image = [UIImage imageNamed:@"tab_fc"];
-    buildPage.tabBarItem.title = @"房产";
-    UINavigationController *buildPageNav = [[UINavigationController alloc] initWithRootViewController:buildPage];
-    
-    //物业
-    PropertyPageView *proPage = [[PropertyPageView alloc] initWithNibName:@"PropertyPageView" bundle:nil];
-    proPage.tabBarItem.image = [UIImage imageNamed:@"tab_wy"];
-    proPage.tabBarItem.title = @"物业";
-    UINavigationController *proPageNav = [[UINavigationController alloc] initWithRootViewController:proPage];
-    
-    //朋友圈
-    CircleOfFriendsView *friendsPage = [[CircleOfFriendsView alloc] initWithNibName:@"CircleOfFriendsView" bundle:nil];
-    friendsPage.tabBarItem.image = [UIImage imageNamed:@"tab_py"];
-    friendsPage.tabBarItem.title = @"朋友圈";
-    UINavigationController *friendsPageNav = [[UINavigationController alloc] initWithRootViewController:friendsPage];
-    
-    //超市
-    GrouponClassView *supermarketPage = [[GrouponClassView alloc] initWithNibName:@"GrouponClassView" bundle:nil];
-    supermarketPage.tabBarItem.image = [UIImage imageNamed:@"tab_cs"];
-    supermarketPage.tabBarItem.title = @"超市";
-    UINavigationController *supermarkePageNav = [[UINavigationController alloc] initWithRootViewController:supermarketPage];
-    
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = [NSArray arrayWithObjects:
-                                        mainPageNav,
-                                        buildPageNav,
-                                        proPageNav,
-                                        supermarkePageNav,
-                                        friendsPageNav,
-                                        nil];
-    [[tabBarController tabBar] setSelectedImageTintColor:[Tool getColorForMain]];
-    [[tabBarController tabBar] setBackgroundImage:[UIImage imageNamed:@"tabbar_bg"]];
-    
-    window.rootViewController = tabBarController;
-    [window makeKeyAndVisible];
 }
 
 //解析登陆JSON

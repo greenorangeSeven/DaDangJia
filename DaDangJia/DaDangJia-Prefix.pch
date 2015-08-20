@@ -1,15 +1,324 @@
 //
-//  DaDangJia-Prefix.pch
-//  DaDangJia
+//  Prefix header
 //
-//  Created by Seven on 15/8/18.
-//  Copyright (c) 2015年 Seven. All rights reserved.
+//  The contents of this file are implicitly included at the beginning of every source file.
 //
 
-#ifndef DaDangJia_DaDangJia_Prefix_pch
-#define DaDangJia_DaDangJia_Prefix_pch
+#import <Availability.h>
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+
+//添加的预编译
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "ASIHTTPRequestDelegate.h"
+#import "ASIHTTPRequestConfig.h"
+#import "Tool.h"
+#import "UserModel.h"
+#import "EGORefreshTableHeaderView.h"
+#import "DataSingleton.h"
+#import "ImgRecord.h"
+#import "IconDownloader.h"
+#import "MBProgressHUD.h"
+#import "GCDiscreetNotificationView.h"
+#import "NdUncaughtExceptionHandler.h"
+//#import "JSNotifier.h"
+#import "AFOSCClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFXMLRequestOperation.h"
+
+#define Appkey @"10000001"
+#define AppSecret @"Hr54hiz7"
+//
+//#define api_base_url @"http://192.168.1.110:8080/guizhou_api/"
+#define api_base_url @"http://120.26.76.203:80/ddj_api/"
+//登录接口
+#define api_login @"regUser/login.htm"
+//找回密码
+#define api_findPassword @"regUser/findPassword.htm"
+//查询城市接口
+#define api_findAllCity @"params/findAllCity.htm"
+//查询城市小区接口
+#define api_findCellListByCity @"params/findCellListByCity.htm"
+//注册验证码
+#define api_createRegCode @"regUser/createRegCode.htm"
+//注册接口
+#define api_regUser @"regUser/regUser.htm"
+//邀请注册接口
+#define api_invitationCodeReg @"regUser/invitationCodeReg.htm"
+//获得小区通知
+#define api_findPushInfo @"push/findPushInfoByPage.htm"
+//获得小区服务
+#define api_callService @"params/findManagerCompanyDepartmentAll.htm"
+//获得快递查询
+#define api_Express @"express/findExpressInfoByPage.htm"
+//领取包裹
+#define api_GetExpress @"express/receiveExpressInfo.htm"
+//获取报修类型
+#define api_FindAllRepairType @"repair/findAllRepairType.htm"
+//新增报修
+#define api_AddRepairWork @"repair/addRepairWork.htm"
+//报修分页查询
+#define api_FindRepairWorkByPage @"repair/findRepairWorkByPage.htm"
+//报修详情
+#define api_findRepairWorkDetaile @"repair/findRepairWorkDetail.htm"
+//报修评价
+#define api_modiRepairWorkOver @"repair/modiRepairWorkOver.htm"
+//获取广告信息
+#define api_findAdInfoList @"ad/findAdInfoList.htm"
+//获取生活查询
+#define api_findLifeTypeAll @"shop/findLifeTypeAll.htm"
+//获取商家分类
+#define api_findShopType @"shop/findShopTypeList.htm"
+//获取商家信息
+#define api_findShopInfoByPage @"shop/findShopInfoByPage.htm"
+//获取商家分类
+#define api_findShopInfoByPage @"shop/findShopInfoByPage.htm"
+//获取悦生活月刊列表
+#define api_findMonthlyByPageInfo @"monthly/findMonthlyByPageInfo.htm"
+//获取投诉类型
+#define api_findAllSuitType @"suit/findAllSuitType.htm"
+//新增投诉
+#define api_addSuitWork @"suit/addSuitWork.htm"
+//获取投诉列表
+#define api_findSuitWorkByPage @"suit/findSuitWorkByPage.htm"
+//获取投诉详情
+#define api_findSuitWorkDetail @"suit/findSuitWorkDetail.htm"
+//投诉评价
+#define api_modiSuitWorkOver @"suit/modiSuitWorkOver.htm"
+//获得物品借用
+#define api_BorrowGoods @"borrow/findBorrowGoodsByPage.htm"
+//物品借用
+#define api_borrowGoods @"borrow/borrowGoods.htm"
+//物品借用记录
+#define api_findBorrowRecordsByUserId @"borrow/findBorrowRecordsByUserId.htm"
+//添加访客通行证
+#define api_createPassCode @"pass/createPassCode.htm"
+//获得业主发布的访客通行证
+#define api_findPassInfoByPage @"pass/findPassInfoByPage.htm"
+//添加预约服务
+#define api_addCelebrationInfo @"pass/addCelebrationInfo.htm"
+//分页查询预约服务
+#define api_findCelebrationInfoByPage @"pass/findCelebrationInfoByPage.htm"
+// 查询当前有效的活动列表
+#define api_findCellActivityOnTime @"activity/findCellActivityOnTime.htm"
+// 活动点赞
+#define api_addActivityHeart @"activity/addActivityHeart.htm"
+// 加入/取消活动点赞
+#define api_addCancelInHeart @"activity/addCancelInHeart.htm"
+// 加入/取消相关活动
+#define api_addCancelInActivity @"activity/addCancelInActivity.htm"
+//获得社区朋友圈（生活页接口）
+#define api_CircleOfFriends @"topic/findTopicInfoByPage.htm"
+//获得社区朋友圈（社区朋友圈页面接口）
+#define api_findTopicInfoByPageForApp @"topic/findTopicInfoByPageForApp.htm"
+//社区朋友圈取消点赞
+#define api_delTopicHeart @"topic/delTopicHeart.htm"
+//社区朋友圈点赞
+#define api_addTopicHeart @"topic/addTopicHeart.htm"
+//新增社区朋友圈回复
+#define api_addTopicReply @"topic/addTopicReply.htm"
+//删除社区朋友圈
+#define api_delTopicInfo @"topic/delTopicInfo.htm"
+//获取所有话题类型
+#define api_findAllTopicType @"topic/findAllTopicType.htm"
+//获取朋友圈话题
+#define api_addTopicInfo @"topic/addTopicInfo.htm"
+//按月分组查询账单数据
+#define api_findPaymentByGroup @"payment/findPaymentByGroup.htm"
+//查询月账单详情
+#define api_findPaymentListByMonth @"payment/findPaymentListByMonth.htm"
+//分页查询交易数据
+#define api_findBusinessInfoByPage @"business/findBusinessInfoByPage.htm"
+//发布交易
+#define api_addBusinessInfoForApp @"business/addBusinessInfoForApp.htm"
+//签到
+#define api_signin @"integral/signin.htm"
+//获取用户信息
+#define api_findRegUserInfoByUserId @"regUser/findRegUserInfoByUserId.htm"
+//更换头像
+#define api_changeUserPhoto @"regUser/changeUserPhoto.htm"
+//修改个人资料
+#define api_modiUserInfo @"regUser/modiUserInfo.htm"
+//发放注册邀请码
+#define api_createInvitationCode @"regUser/createInvitationCode.htm"
+//查询指定房间所绑定的用户信息
+#define api_findUserHouseList @"regUser/findUserHouseList.htm"
+//删除指定房间所绑定的用户信息
+#define api_delUserHouseList @"regUser/delUserHouseList.htm"
+//查询树形结构的全部商品分类
+#define api_findCommodityClass @"commodity/findCommodityClassByList.htm"
+//分页查询商品分类
+#define api_findCommodityClassByPage @"commodity/findCommodityClassByPage.htm"
+//分页查询商品信息
+#define api_findCommodityByPage @"commodity/findCommodityByPage.htm"
+//获取单商品详情
+#define api_findCommodityInfoById @"commodity/findCommodityInfoById.htm"
+//商品收藏
+#define api_addCollection @"commodity/addCollection.htm"
+//取消收藏
+#define api_delCollection @"commodity/delCollection.htm"
+//版本更新
+#define api_findSysUpdate @"sysUpdate/findSysUpdate.htm"
+//分页查询账单明细数据
+#define api_findBillDetailsByPage @"bill/findBillDetailsByPage.htm"
+//生成支付宝订单参数
+#define api_createAlipayParams @"payment/createAlipayParams.htm"
+//下单接口
+#define api_orderSubmit @"order/orderSubmit.htm"
+//更新订单状态为交易关闭
+#define updateOrderClose @"order/updateOrderClose.htm"
+//查询订单数据
+#define api_findOrderByPage @"order/findOrderByPage.htm"
+//获取所有订单状态
+#define api_findAllOrderState @"order/findAllOrderState.htm"
+//新增全民营销
+#define api_addMarketingInfo @"estate/addMarketingInfo.htm"
+
+//分页查询商品信息(全城特价)
+#define api_findSaleCommodityByPage @"commodity/findSaleCommodityByPage.htm"
+
+//查询商家类型列表接口
+#define api_findShopTypeList @"shop/findShopTypeList.htm"
+
+//获取物业资讯列表
+#define api_findNewsInfoByPage @"news/findNewsInfoByPage.htm"
+//获取楼盘活动列表
+#define api_findEstateActivityOnTime @"activity/findEstateActivityOnTime.htm"
+//获取优惠政策列表
+#define api_findPreferentialPolicyOnTime @"estate/findPreferentialPolicyOnTime.htm"
+// 加入/取消楼盘活动点赞
+#define api_addCancelInEstateHeart @"activity/addCancelInEstateHeart.htm"
+// 加入/取消楼盘活动
+#define api_addCancelInEstateActivity @"activity/addCancelInEstateActivity.htm"
+// 获取志愿者新闻
+#define api_findVolunteerNewsInfoByPage @"news/findVolunteerNewsInfoByPage.htm"
+// 分页获取志愿者用户列表
+#define api_findVolunteerByPage @"regUser/findVolunteerByPage.htm"
+// 加入、退出志愿者
+#define api_changeVolunteerState @"regUser/changeVolunteerState.htm"
+// 楼盘信息介绍接口路径
+#define api_findEstateInfoByPage @"estate/findEstateInfoByPage.htm"
+// 分页查询最新资讯信息
+#define api_findRecentInfoByPage @"estate/findRecentInfoByPage.htm"
+// 分页查询用户积分详情列表
+#define api_findIntegralLogByPage @"integral/findIntegralLogByPage.htm"
+// 点赞、取消点赞（优惠政策）
+#define api_addCancelInYhEstateHeart @"estate/addCancelInEstateHeart.htm"
+// 加入/取消相关优惠政策
+#define api_addCancelInPreferentialPolicy @"estate/addCancelInPreferentialPolicy.htm"
+// 获取房屋出售、租赁的置顶top5记录
+#define api_findTopBusinessInfo @"business/findTopBusinessInfo.htm"
+// 为商家点赞
+#define api_addShopHeartCount @"shop/addShopHeartCount.htm"
+//添加商家评论
+#define api_addShopComment @"shop/addShopComment.htm"
+//获取待缴费账单详情列表
+#define api_getBillDetailsForNotPay @"bill/getBillDetailsForNotPay.htm"
+// 获取今日朋友圈发贴数
+#define api_findTodayTopicCount @"topic/findTodayTopicCount.htm"
+
+
+//订单支付成功状态码
+#define ORDER_PAY_OK @"9000"
+
+//订单支付通知
+#define ORDER_PAY_NOTIC @"ORDER_PAY_NOTIC"
+
+
+//#define api_base_urlnotport @"http://115.28.61.205/homesky_api/"
+//小区通知详情页面
+#define htm_pushDetailHtm @"app/pushDetail.htm?pushId="
+//悦月刊详情页
+#define htm_monthlyDetailHtm @"app/monthlyDetail.htm?publicationId="
+//维修收费清单页面
+#define htm_repairItemList @"app/repairItemList.htm?accessId="
+//预约服务收费清单页面
+#define htm_celebrationItemsList @"app/celebrationItemsList.htm?accessId="
+//活动详情页面
+#define htm_activityDetail @"app/activityDetail.htm?activityId="
+//广告详情页面
+#define htm_adDetail @"app/adDetail.htm?adId="
+//交易详情页面
+#define htm_businessDetail @"app/businessDetail.htm"
+//抽奖页面
+#define htm_lottery @"app/lottery.htm?ios=1&"
+//便民服务页面
+#define htm_shopDetail @"app/shopDetail.htm?shopId="
+//关于智慧社区
+#define htm_about @"app/about.htm"
+//行业动态等详情页
+#define htm_propertyNewsDetailHtm @"app/newsDetail.htm?newsId="
+//楼盘活动详情页
+#define htm_estateActivityDetail @"app/estateActivityDetail.htm?activityId="
+//志愿者详情页
+#define htm_volunteerNewsDetail @"app/volunteerNewsDetail.htm?newsId="
+//最新资讯详情页
+#define htm_recentDetail @"app/recentDetail.htm?newsId="
+//楼盘介绍详情页面
+#define htm_estateInfoDetail @"app/estateInfoDetail.htm?estateId="
+//优惠政策详情页
+#define htm_preferentialPolicyDetail @"app/preferentialPolicyDetail.htm?activityId="
+
+
+#define servicephone @"186-3513-9166"
+
+#define ConvenienceTypeCellIdentifier @"ConvenienceTypeCellIdentifier"
+
+#define Notification_RefreshAddVolunteerView @"Notification_RefreshAddVolunteerView"
+#define Notification_RefreshShopDetailView @"Notification_RefreshShopDetailView"
+#define Notification_RefreshTopic @"Notification_RefreshTopic"
+#define Notification_RefreshShopCarTable @"Notification_RefreshShopCarTable"
+#define Notification_CommodityDetailGotoOrder @"Notification_CommodityDetailGotoOrder"
+#define Notification_ShopCarGotoOrder @"Notification_ShopCarGotoOrder"
+#define Notification_RefreshPayFeeTableView @"Notification_RefreshPayFeeTableView"
+#define Notification_LifeServicePush @"Notification_LifeServicePush"
+
+
+#define UserInfoCache @"UserInfoCache"
+
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPHONE_6 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )667 ) < DBL_EPSILON )
+#define IS_IPHONE_6plus ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1104 ) < DBL_EPSILON )
+
+#define IS_IOS7 ([[[UIDevice currentDevice]systemVersion]floatValue]>=7.0)
+#define IS_IOS8 ([[[UIDevice currentDevice]systemVersion]floatValue]>=8.0)
+
+#define loadNext20Tip @"点击加载更多 . . ."
+#define loadingTip @"正在加载 . . ."
+#define networkError @"网络无连接"
+#define noNetworkTip @"网络无连接"
+
+#define createshoppingcar @"create table shoppingcar (id integer primary key autoincrement not null, commodityid text, name text, properyStr text,imagefull text,price text,shopid text,shopname text,number int,user_id text,ischeck text)"
+
+//html头部
+#define HTML_Style @"<meta name='viewport' content='width=decice-width,uer-scalable=no'><style>#web_title {color: #F78022; margin-top: 15px; margin-bottom: 10px; font-weight:bold; text-align:center; font-size:20px;}#web_title img{vertical-align:middle;margin-right:6px;}#web_title a{color:#0D6DA8;}#web_summary {margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_summaryred {color: #c7252b;margin-top: 15px; margin-bottom: 10px; font-size:16px;}#web_column {background-color:#e5e5e5; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; font-size:16px; margin-right: -7px; margin-left: -7px;}#web_date {color: #000000; margin-top: 15px; margin-bottom: 10px; font-size:14px;text-align:center;}#web_outline {color: #707070; font-size: 12px;}#web_outline a{color:#0D6DA8;}#web_software{color:#808080;font-size:12px}#web_body img {max-width: 300px;}#web_body {font-size:14px;max-width:320px;line-height:24px; margin-top: 5px} #web_body table{max-width:320px;}#web_body pre { font-size:9pt;font-family:Courier New,Arial;border:1px solid #ddd;border-left:5px solid #6CE26C;background:#f6f6f6;padding:5px;}</style>"
+#define HTML_Splitline @"<hr style='height:0.5px; background-color:#0D6DA8; margin-bottom:5px'/>"
+#define HTML_Bottom @"<div style='margin-bottom:60px'/>"
+
+#define AppVersion @"1.0"
+#define AppVersionCode @"1"
+
+#define noConnect @"noConnect"
+#define wifi @"wifi"
+#define netConnect @"netConnect"
+
+#ifdef DEBUG
+#define debugLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define debugLog(...)
+#define debugMethod()
+#endif
 
 #endif

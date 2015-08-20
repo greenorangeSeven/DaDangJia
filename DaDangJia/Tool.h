@@ -168,7 +168,6 @@
 //平台接口生成验签Sign中文
 + (NSString *)serializeSign:(NSString *)baseURL params:(NSDictionary *)params;
 
-+ (void)gotoTabbar:(UIWindow *)window;
 
 //解析登陆JSON
 + (UserInfo *)readJsonStrToLoginUserInfo:(NSString *)str;

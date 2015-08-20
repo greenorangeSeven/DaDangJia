@@ -16,7 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"注册";
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"下一步" style:UIBarButtonItemStyleBordered target:self action:@selector(nextAction:)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    self.securitycodeBtn.layer.cornerRadius=self.securitycodeBtn.frame.size.height/2;
+}
+
+- (void)nextAction:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

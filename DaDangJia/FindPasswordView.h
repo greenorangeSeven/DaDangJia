@@ -10,4 +10,7 @@
 
 @interface FindPasswordView : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *securitycodeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+
 @end

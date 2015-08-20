@@ -10,4 +10,6 @@
 
 @interface MainPageView : UIViewController
 
+@property (weak, nonatomic) UIView *frameView;
+
 @end
