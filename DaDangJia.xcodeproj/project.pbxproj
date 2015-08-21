@@ -272,6 +272,10 @@
 		14C57FBB1B84CE2D00C82D5D /* FindPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C57FB91B84CE2D00C82D5D /* FindPasswordView.xib */; };
 		14C57FC01B84D76900C82D5D /* RegisterStep1View.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C57FBE1B84D76900C82D5D /* RegisterStep1View.m */; };
 		14C57FC11B84D76900C82D5D /* RegisterStep1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C57FBF1B84D76900C82D5D /* RegisterStep1View.xib */; };
+		14C6CCA81B85565900AE06F8 /* RegisterStep2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C6CCA61B85565900AE06F8 /* RegisterStep2View.m */; };
+		14C6CCA91B85565900AE06F8 /* RegisterStep2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C6CCA71B85565900AE06F8 /* RegisterStep2View.xib */; };
+		14C6CCB01B85BF1E00AE06F8 /* RegisterStep3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C6CCAE1B85BF1E00AE06F8 /* RegisterStep3View.m */; };
+		14C6CCB11B85BF1E00AE06F8 /* RegisterStep3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C6CCAF1B85BF1E00AE06F8 /* RegisterStep3View.xib */; };
 		14CC6D321B83767B0025AB61 /* MainPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC6D301B83767B0025AB61 /* MainPageView.m */; };
 		14CC6D331B83767B0025AB61 /* MainPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CC6D311B83767B0025AB61 /* MainPageView.xib */; };
 /* End PBXBuildFile section */
@@ -908,6 +912,12 @@
 		14C57FBD1B84D76900C82D5D /* RegisterStep1View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterStep1View.h; sourceTree = "<group>"; };
 		14C57FBE1B84D76900C82D5D /* RegisterStep1View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterStep1View.m; sourceTree = "<group>"; };
 		14C57FBF1B84D76900C82D5D /* RegisterStep1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterStep1View.xib; sourceTree = "<group>"; };
+		14C6CCA51B85565900AE06F8 /* RegisterStep2View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterStep2View.h; sourceTree = "<group>"; };
+		14C6CCA61B85565900AE06F8 /* RegisterStep2View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterStep2View.m; sourceTree = "<group>"; };
+		14C6CCA71B85565900AE06F8 /* RegisterStep2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterStep2View.xib; sourceTree = "<group>"; };
+		14C6CCAD1B85BF1E00AE06F8 /* RegisterStep3View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterStep3View.h; sourceTree = "<group>"; };
+		14C6CCAE1B85BF1E00AE06F8 /* RegisterStep3View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterStep3View.m; sourceTree = "<group>"; };
+		14C6CCAF1B85BF1E00AE06F8 /* RegisterStep3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterStep3View.xib; sourceTree = "<group>"; };
 		14CC6D2F1B83767B0025AB61 /* MainPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageView.h; sourceTree = "<group>"; };
 		14CC6D301B83767B0025AB61 /* MainPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageView.m; sourceTree = "<group>"; };
 		14CC6D311B83767B0025AB61 /* MainPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPageView.xib; sourceTree = "<group>"; };
@@ -2026,6 +2036,12 @@
 				14C57FBD1B84D76900C82D5D /* RegisterStep1View.h */,
 				14C57FBE1B84D76900C82D5D /* RegisterStep1View.m */,
 				14C57FBF1B84D76900C82D5D /* RegisterStep1View.xib */,
+				14C6CCA51B85565900AE06F8 /* RegisterStep2View.h */,
+				14C6CCA61B85565900AE06F8 /* RegisterStep2View.m */,
+				14C6CCA71B85565900AE06F8 /* RegisterStep2View.xib */,
+				14C6CCAD1B85BF1E00AE06F8 /* RegisterStep3View.h */,
+				14C6CCAE1B85BF1E00AE06F8 /* RegisterStep3View.m */,
+				14C6CCAF1B85BF1E00AE06F8 /* RegisterStep3View.xib */,
 			);
 			name = OtherPage;
 			sourceTree = "<group>";
@@ -2138,8 +2154,10 @@
 			files = (
 				147393641B82C66D0074101A /* cb_mono_off@2x.png in Resources */,
 				1473935A1B82C66D0074101A /* cb_dark_on@2x.png in Resources */,
+				14C6CCA91B85565900AE06F8 /* RegisterStep2View.xib in Resources */,
 				147390EE1B82C6410074101A /* Main.storyboard in Resources */,
 				147393651B82C66D0074101A /* cb_mono_on.png in Resources */,
+				14C6CCB11B85BF1E00AE06F8 /* RegisterStep3View.xib in Resources */,
 				14C57FBB1B84CE2D00C82D5D /* FindPasswordView.xib in Resources */,
 				1473935B1B82C66D0074101A /* cb_glossy_off.png in Resources */,
 				147393591B82C66D0074101A /* cb_dark_on.png in Resources */,
@@ -2326,6 +2344,7 @@
 				1473931A1B82C66D0074101A /* UIDevice+Extensions.m in Sources */,
 				1473940C1B82C8560074101A /* HouseNum.m in Sources */,
 				147393341B82C66D0074101A /* PSTCollectionViewItemKey.m in Sources */,
+				14C6CCA81B85565900AE06F8 /* RegisterStep2View.m in Sources */,
 				147393701B82C66D0074101A /* ZJSwitch.m in Sources */,
 				1473940B1B82C8560074101A /* Unit.m in Sources */,
 				1473933D1B82C66D0074101A /* MKAnnotationView+WebCache.m in Sources */,
@@ -2348,6 +2367,7 @@
 				147392FE1B82C66C0074101A /* ASIInputStream.m in Sources */,
 				147393451B82C66D0074101A /* SDWebImagePrefetcher.m in Sources */,
 				14C57FBA1B84CE2D00C82D5D /* FindPasswordView.m in Sources */,
+				14C6CCB01B85BF1E00AE06F8 /* RegisterStep3View.m in Sources */,
 				147393231B82C66D0074101A /* KxMenu.m in Sources */,
 				147394401B82C8560074101A /* Integral.m in Sources */,
 				147392F01B82C66C0074101A /* DataVerifier.m in Sources */,

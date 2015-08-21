@@ -1,35 +1,33 @@
 //
-//  RegisterStep1View.m
+//  RegisterStep2View.m
 //  DaDangJia
 //
-//  Created by Seven on 15/8/19.
+//  Created by Seven on 15/8/20.
 //  Copyright (c) 2015年 Seven. All rights reserved.
 //
 
-#import "RegisterStep1View.h"
 #import "RegisterStep2View.h"
+#import "RegisterStep3View.h"
 
-@interface RegisterStep1View ()
+@interface RegisterStep2View ()
 
 @end
 
-@implementation RegisterStep1View
+@implementation RegisterStep2View
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"注册";
+    self.title = @"住户信息";
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"下一步" style:UIBarButtonItemStyleBordered target:self action:@selector(nextAction:)];
     self.navigationItem.rightBarButtonItem = rightBtn;
-    
-    self.securitycodeBtn.layer.cornerRadius=self.securitycodeBtn.frame.size.height/2;
 }
 
 - (void)nextAction:(id)sender
 {
-    RegisterStep2View *step2View = [[RegisterStep2View alloc] init];
-    [self.navigationController pushViewController:step2View animated:YES];
+    RegisterStep3View *step3View = [[RegisterStep3View alloc] init];
+    [self.navigationController pushViewController:step3View animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
