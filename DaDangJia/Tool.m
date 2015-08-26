@@ -619,7 +619,7 @@
     }
 }
 
-//解析社区JSON（包含社区、楼栋、门牌）
+//解析社区JSON
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str
 {
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
@@ -630,19 +630,47 @@
     }
     NSArray *communityArrayJson = [communityJsonDic objectForKey:@"data"];
     NSMutableArray *communityArray = [RMMapper mutableArrayOfClass:[Community class] fromArrayOfDictionary:communityArrayJson];
-    for (Community *comu in communityArray) {
-        NSArray *comuSubList = comu.subList;
-        comu.buildingList = [RMMapper mutableArrayOfClass:[Building class] fromArrayOfDictionary:comuSubList];
-        for (Building *building in comu.buildingList) {
-            NSArray *buildingSubList = building.subList;
-            building.unitList = [RMMapper mutableArrayOfClass:[Unit class] fromArrayOfDictionary:buildingSubList];
-            for (Unit *unit in building.unitList) {
-                NSArray *unitSubList = unit.subList;
-                unit.houseNumList = [RMMapper mutableArrayOfClass:[HouseNum class] fromArrayOfDictionary:unitSubList];
-            }
-        }
-    }
+//    for (Community *comu in communityArray) {
+//        NSArray *comuSubList = comu.subList;
+//        comu.buildingList = [RMMapper mutableArrayOfClass:[Building class] fromArrayOfDictionary:comuSubList];
+//        for (Building *building in comu.buildingList) {
+//            NSArray *buildingSubList = building.subList;
+//            building.unitList = [RMMapper mutableArrayOfClass:[Unit class] fromArrayOfDictionary:buildingSubList];
+//            for (Unit *unit in building.unitList) {
+//                NSArray *unitSubList = unit.subList;
+//                unit.houseNumList = [RMMapper mutableArrayOfClass:[HouseNum class] fromArrayOfDictionary:unitSubList];
+//            }
+//        }
+//    }
     return communityArray;
+}
+
+//解析楼栋JSON
++ (NSMutableArray *)readJsonStrToBuildingArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *buildingJsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( buildingJsonDic == nil || [buildingJsonDic count] <= 0) {
+        return nil;
+    }
+    NSArray *buildingArrayJson = [buildingJsonDic objectForKey:@"data"];
+    NSMutableArray *buildingArray = [RMMapper mutableArrayOfClass:[Building class] fromArrayOfDictionary:buildingArrayJson];
+    return buildingArray;
+}
+
+//解析楼栋JSON
++ (NSMutableArray *)readJsonStrToHouseArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *houseJsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( houseJsonDic == nil || [houseJsonDic count] <= 0) {
+        return nil;
+    }
+    NSArray *houseArrayJson = [houseJsonDic objectForKey:@"data"];
+    NSMutableArray *houseArray = [RMMapper mutableArrayOfClass:[HouseNum class] fromArrayOfDictionary:houseArrayJson];
+    return houseArray;
 }
 
 //解析小区通知JSON

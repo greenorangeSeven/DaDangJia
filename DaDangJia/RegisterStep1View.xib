@@ -7,6 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterStep1View">
             <connections>
+                <outlet property="agreeBtn" destination="ysE-MP-4C3" id="jnI-fJ-Mzc"/>
+                <outlet property="mobileNoTf" destination="0Yc-KH-qYQ" id="7qP-8G-NX5"/>
+                <outlet property="passwordATf" destination="6kc-kA-p8x" id="DsB-bA-mBj"/>
+                <outlet property="passwordTf" destination="yRC-BJ-Nkb" id="ROh-Eu-yiq"/>
+                <outlet property="securityCodeTf" destination="NYH-fm-f1C" id="DDl-Se-MJX"/>
                 <outlet property="securitycodeBtn" destination="H2r-ot-qhz" id="Mmf-dK-kfs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -66,6 +71,9 @@
                             <state key="normal" title="发送验证码">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="getSecurityCodeAction:" destination="-1" eventType="touchUpInside" id="jpq-CH-Afn"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BJ1-aL-yOb">
                             <rect key="frame" x="39" y="12" width="46" height="21"/>
@@ -141,10 +149,13 @@
                         <color key="titleColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="agreeAction:" destination="-1" eventType="touchUpInside" id="TxK-Qs-3BQ"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="331" y="9"/>
+            <point key="canvasLocation" x="581" y="-80"/>
         </view>
     </objects>
     <resources>

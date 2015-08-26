@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString *companyName;
 @property (nonatomic, retain) NSString *phone;
 
-@property (nonatomic, retain) NSArray *subList;
-@property (nonatomic, retain) NSArray *buildingList;
+//@property (nonatomic, retain) NSArray *subList;
+//@property (nonatomic, retain) NSArray *buildingList;
 
 @end

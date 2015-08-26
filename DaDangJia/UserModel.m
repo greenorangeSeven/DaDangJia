@@ -147,12 +147,12 @@ static UserModel * instance = nil;
 
 -(void)logoutUser
 {
-    if(self.isLogin)
-    {
+//    if(self.isLogin)
+//    {
         EGOCache *cache = [EGOCache globalCache];
         [cache removeCacheForKey:@"userinfo"];
         self.userInfo = nil;
-    }
+//    }
 }
 
 @end

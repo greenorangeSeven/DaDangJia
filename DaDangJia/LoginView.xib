@@ -45,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入您的用户名" textAlignment="right" minimumFontSize="17" id="Lv0-D9-1nX">
-                    <rect key="frame" x="106.00000040781448" y="208" width="197" height="30"/>
+                    <rect key="frame" x="106.00000055928385" y="208" width="197" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>

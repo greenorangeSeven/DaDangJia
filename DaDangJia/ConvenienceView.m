@@ -8,6 +8,7 @@
 
 #import "ConvenienceView.h"
 #import "ConvenienceTypeCell.h"
+#import "ConvenienceShopView.h"
 #import "UIImageView+WebCache.h"
 
 @interface ConvenienceView ()
@@ -132,12 +133,12 @@
 {
     ShopType *shopType = [types objectAtIndex:[indexPath row]];
     if (shopType != nil) {
-//        if ([shopType.shopTypeId isEqualToString:@"-1"]) {
-//            return;
-//        }
-//        ConvenienceTableView *shopTableView = [[ConvenienceTableView alloc] init];
-//        shopTableView.type = shopType;
-//        [self.navigationController pushViewController:shopTableView animated:YES];
+        if ([shopType.shopTypeId isEqualToString:@"-1"]) {
+            return;
+        }
+        ConvenienceShopView *shopView = [[ConvenienceShopView alloc] init];
+        shopView.type = shopType;
+        [self.navigationController pushViewController:shopView animated:YES];
     }
 }
 

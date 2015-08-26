@@ -8,6 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterStep3View">
             <connections>
                 <outlet property="finishBtn" destination="f4V-aA-xna" id="nAE-48-Tx0"/>
+                <outlet property="idCardTf" destination="45h-Rw-cOn" id="hHy-cU-gOU"/>
+                <outlet property="identityTf" destination="Muq-fP-MRi" id="ylb-RF-BUj"/>
+                <outlet property="ownerNameTf" destination="hIN-Jd-FXu" id="iCz-Eg-fja"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -103,7 +106,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="业主" textAlignment="right" minimumFontSize="17" id="Muq-fP-MRi">
-                            <rect key="frame" x="101" y="55" width="197" height="30"/>
+                            <rect key="frame" x="96" y="55" width="197" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -118,6 +121,10 @@
                             <rect key="frame" x="20" y="62" width="15" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrows" id="c72-e4-j0r">
+                            <rect key="frame" x="298" y="60" width="14" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.98823529409999999" green="0.99215686270000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -129,6 +136,9 @@
                     <state key="normal" title="完成注册">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="finishAction:" destination="-1" eventType="touchUpInside" id="C3F-sJ-Vxh"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -136,6 +146,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrows" width="14" height="20"/>
         <image name="reg_name" width="15" height="15"/>
         <image name="reg_nickname" width="15" height="16"/>
         <image name="reg_position" width="15" height="15"/>

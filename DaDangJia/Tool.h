@@ -175,6 +175,10 @@
 + (NSMutableArray *)readJsonStrToCityArray:(NSString *)str;
 //解析社区JSON（包含社区、楼栋、门牌）
 + (NSMutableArray *)readJsonStrToCommunityArray:(NSString *)str;
+//解析楼栋JSON
++ (NSMutableArray *)readJsonStrToBuildingArray:(NSString *)str;
+//解析楼栋JSON
++ (NSMutableArray *)readJsonStrToHouseArray:(NSString *)str;
 //解析小区通知JSON
 + (NSMutableArray *)readJsonStrToNoticeArray:(NSString *)str;
 //解析物业呼叫JSON

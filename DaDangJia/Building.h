@@ -13,7 +13,7 @@
 @property (nonatomic, retain) NSString *buildingId;
 @property (nonatomic, retain) NSString *buildingName;
 
-@property (nonatomic, retain) NSArray *subList;
-@property (nonatomic, retain) NSArray *unitList;
+//@property (nonatomic, retain) NSArray *subList;
+//@property (nonatomic, retain) NSArray *unitList;
 
 @end

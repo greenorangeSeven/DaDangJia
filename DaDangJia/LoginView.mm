@@ -106,10 +106,11 @@
     }
     else
     {
+        NSLog(@"%@", request.responseString);
         UserInfo *userInfo = [Tool readJsonStrToLoginUserInfo:request.responseString];
         //设置登录并保存用户信息
         UserModel *userModel = [UserModel Instance];
-        
+        [userModel saveIsLogin:YES];
         userInfo.defaultUserHouse = nil;
         
         [userModel saveAccount:self.userNameTf.text andPwd:self.passwordTf.text];

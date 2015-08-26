@@ -49,8 +49,22 @@
 #define api_findAllCity @"params/findAllCity.htm"
 //查询城市小区接口
 #define api_findCellListByCity @"params/findCellListByCity.htm"
+//查询小区楼栋接口
+#define api_findBuildingInfoAll @"params/findBuildingInfoAll.htm"
+//查询门牌接口
+#define api_findHouseNumberAll @"params/findHouseNumberAll.htm"
 //注册验证码
 #define api_createRegCode @"regUser/createRegCode.htm"
+//修改密码验证码
+#define api_createChangePwdCode @"regUser/createChangePwdCode.htm"
+//修改密码
+#define api_modiUserPwd @"regUser/modiUserPwd.htm"
+//修改房间
+#define api_changeUserHouse @"regUser/changeUserHouse.htm"
+//找回密码验证码
+#define api_createFindPwdCode @"regUser/createFindPwdCode.htm"
+//找回密码
+#define api_findPassword @"regUser/findPassword.htm"
 //注册接口
 #define api_regUser @"regUser/regUser.htm"
 //邀请注册接口
@@ -147,6 +161,8 @@
 #define api_findRegUserInfoByUserId @"regUser/findRegUserInfoByUserId.htm"
 //更换头像
 #define api_changeUserPhoto @"regUser/changeUserPhoto.htm"
+//修改昵称
+#define api_modiUserNick @"regUser/modiUserNick.htm"
 //修改个人资料
 #define api_modiUserInfo @"regUser/modiUserInfo.htm"
 //发放注册邀请码
@@ -273,6 +289,8 @@
 #define servicephone @"186-3513-9166"
 
 #define ConvenienceTypeCellIdentifier @"ConvenienceTypeCellIdentifier"
+#define ConvenienceShopCellIdentifier @"ConvenienceShopCellIdentifier"
+
 
 #define Notification_RefreshAddVolunteerView @"Notification_RefreshAddVolunteerView"
 #define Notification_RefreshShopDetailView @"Notification_RefreshShopDetailView"

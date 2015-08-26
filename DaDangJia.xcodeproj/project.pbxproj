@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1416C5531B8B58A600C48C48 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1416C5511B8B58A600C48C48 /* UserInfoView.m */; };
+		1416C5541B8B58A600C48C48 /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1416C5521B8B58A600C48C48 /* UserInfoView.xib */; };
+		1416C55A1B8B6ADE00C48C48 /* ModifyHouseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1416C5581B8B6ADE00C48C48 /* ModifyHouseView.m */; };
+		1416C55B1B8B6ADE00C48C48 /* ModifyHouseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1416C5591B8B6ADE00C48C48 /* ModifyHouseView.xib */; };
 		147390E51B82C6410074101A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 147390E41B82C6410074101A /* main.m */; };
 		147390E81B82C6410074101A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 147390E71B82C6410074101A /* AppDelegate.m */; };
 		147390EB1B82C6410074101A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 147390EA1B82C6410074101A /* ViewController.m */; };
@@ -268,6 +272,12 @@
 		148FBB7C1B842803004BEE68 /* ConvenienceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148FBB7A1B842803004BEE68 /* ConvenienceView.xib */; };
 		148FBB811B842CB3004BEE68 /* ConvenienceTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 148FBB7F1B842CB3004BEE68 /* ConvenienceTypeCell.m */; };
 		148FBB821B842CB3004BEE68 /* ConvenienceTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148FBB801B842CB3004BEE68 /* ConvenienceTypeCell.xib */; };
+		149909391B8A13FF009F7A12 /* ConvenienceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 149909371B8A13FF009F7A12 /* ConvenienceDetailView.m */; };
+		1499093A1B8A13FF009F7A12 /* ConvenienceDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149909381B8A13FF009F7A12 /* ConvenienceDetailView.xib */; };
+		14A789BE1B8B0F5500AD5CF5 /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A789BC1B8B0F5500AD5CF5 /* ChangePasswordView.m */; };
+		14A789BF1B8B0F5500AD5CF5 /* ChangePasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14A789BD1B8B0F5500AD5CF5 /* ChangePasswordView.xib */; };
+		14BD4D8D1B8D7124008709F1 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD4D8B1B8D7124008709F1 /* SettingView.m */; };
+		14BD4D8E1B8D7124008709F1 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14BD4D8C1B8D7124008709F1 /* SettingView.xib */; };
 		14C57FBA1B84CE2D00C82D5D /* FindPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C57FB81B84CE2D00C82D5D /* FindPasswordView.m */; };
 		14C57FBB1B84CE2D00C82D5D /* FindPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C57FB91B84CE2D00C82D5D /* FindPasswordView.xib */; };
 		14C57FC01B84D76900C82D5D /* RegisterStep1View.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C57FBE1B84D76900C82D5D /* RegisterStep1View.m */; };
@@ -278,6 +288,10 @@
 		14C6CCB11B85BF1E00AE06F8 /* RegisterStep3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C6CCAF1B85BF1E00AE06F8 /* RegisterStep3View.xib */; };
 		14CC6D321B83767B0025AB61 /* MainPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CC6D301B83767B0025AB61 /* MainPageView.m */; };
 		14CC6D331B83767B0025AB61 /* MainPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CC6D311B83767B0025AB61 /* MainPageView.xib */; };
+		14D689C61B884DF600CF4BB3 /* ConvenienceShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D689C41B884DF600CF4BB3 /* ConvenienceShopView.m */; };
+		14D689C71B884DF600CF4BB3 /* ConvenienceShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D689C51B884DF600CF4BB3 /* ConvenienceShopView.xib */; };
+		14D689CC1B884ED800CF4BB3 /* ConvenienceShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D689CA1B884ED800CF4BB3 /* ConvenienceShopCell.m */; };
+		14D689CD1B884ED800CF4BB3 /* ConvenienceShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D689CB1B884ED800CF4BB3 /* ConvenienceShopCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +312,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1416C5501B8B58A600C48C48 /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
+		1416C5511B8B58A600C48C48 /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		1416C5521B8B58A600C48C48 /* UserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
+		1416C5571B8B6ADE00C48C48 /* ModifyHouseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyHouseView.h; sourceTree = "<group>"; };
+		1416C5581B8B6ADE00C48C48 /* ModifyHouseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyHouseView.m; sourceTree = "<group>"; };
+		1416C5591B8B6ADE00C48C48 /* ModifyHouseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyHouseView.xib; sourceTree = "<group>"; };
 		147390DF1B82C6410074101A /* DaDangJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaDangJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		147390E31B82C6410074101A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		147390E41B82C6410074101A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -906,6 +926,15 @@
 		148FBB7E1B842CB3004BEE68 /* ConvenienceTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceTypeCell.h; sourceTree = "<group>"; };
 		148FBB7F1B842CB3004BEE68 /* ConvenienceTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceTypeCell.m; sourceTree = "<group>"; };
 		148FBB801B842CB3004BEE68 /* ConvenienceTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvenienceTypeCell.xib; sourceTree = "<group>"; };
+		149909361B8A13FF009F7A12 /* ConvenienceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceDetailView.h; sourceTree = "<group>"; };
+		149909371B8A13FF009F7A12 /* ConvenienceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceDetailView.m; sourceTree = "<group>"; };
+		149909381B8A13FF009F7A12 /* ConvenienceDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvenienceDetailView.xib; sourceTree = "<group>"; };
+		14A789BB1B8B0F5500AD5CF5 /* ChangePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordView.h; sourceTree = "<group>"; };
+		14A789BC1B8B0F5500AD5CF5 /* ChangePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordView.m; sourceTree = "<group>"; };
+		14A789BD1B8B0F5500AD5CF5 /* ChangePasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordView.xib; sourceTree = "<group>"; };
+		14BD4D8A1B8D7124008709F1 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		14BD4D8B1B8D7124008709F1 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		14BD4D8C1B8D7124008709F1 /* SettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
 		14C57FB71B84CE2D00C82D5D /* FindPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordView.h; sourceTree = "<group>"; };
 		14C57FB81B84CE2D00C82D5D /* FindPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordView.m; sourceTree = "<group>"; };
 		14C57FB91B84CE2D00C82D5D /* FindPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordView.xib; sourceTree = "<group>"; };
@@ -921,6 +950,12 @@
 		14CC6D2F1B83767B0025AB61 /* MainPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageView.h; sourceTree = "<group>"; };
 		14CC6D301B83767B0025AB61 /* MainPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageView.m; sourceTree = "<group>"; };
 		14CC6D311B83767B0025AB61 /* MainPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPageView.xib; sourceTree = "<group>"; };
+		14D689C31B884DF600CF4BB3 /* ConvenienceShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceShopView.h; sourceTree = "<group>"; };
+		14D689C41B884DF600CF4BB3 /* ConvenienceShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceShopView.m; sourceTree = "<group>"; };
+		14D689C51B884DF600CF4BB3 /* ConvenienceShopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvenienceShopView.xib; sourceTree = "<group>"; };
+		14D689C91B884ED800CF4BB3 /* ConvenienceShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceShopCell.h; sourceTree = "<group>"; };
+		14D689CA1B884ED800CF4BB3 /* ConvenienceShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvenienceShopCell.m; sourceTree = "<group>"; };
+		14D689CB1B884ED800CF4BB3 /* ConvenienceShopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvenienceShopCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2020,6 +2055,15 @@
 				148FBB7E1B842CB3004BEE68 /* ConvenienceTypeCell.h */,
 				148FBB7F1B842CB3004BEE68 /* ConvenienceTypeCell.m */,
 				148FBB801B842CB3004BEE68 /* ConvenienceTypeCell.xib */,
+				14D689C31B884DF600CF4BB3 /* ConvenienceShopView.h */,
+				14D689C41B884DF600CF4BB3 /* ConvenienceShopView.m */,
+				14D689C51B884DF600CF4BB3 /* ConvenienceShopView.xib */,
+				14D689C91B884ED800CF4BB3 /* ConvenienceShopCell.h */,
+				14D689CA1B884ED800CF4BB3 /* ConvenienceShopCell.m */,
+				14D689CB1B884ED800CF4BB3 /* ConvenienceShopCell.xib */,
+				149909361B8A13FF009F7A12 /* ConvenienceDetailView.h */,
+				149909371B8A13FF009F7A12 /* ConvenienceDetailView.m */,
+				149909381B8A13FF009F7A12 /* ConvenienceDetailView.xib */,
 			);
 			name = ConveniencePage;
 			sourceTree = "<group>";
@@ -2033,6 +2077,15 @@
 				14C57FB71B84CE2D00C82D5D /* FindPasswordView.h */,
 				14C57FB81B84CE2D00C82D5D /* FindPasswordView.m */,
 				14C57FB91B84CE2D00C82D5D /* FindPasswordView.xib */,
+				1416C5501B8B58A600C48C48 /* UserInfoView.h */,
+				1416C5511B8B58A600C48C48 /* UserInfoView.m */,
+				1416C5521B8B58A600C48C48 /* UserInfoView.xib */,
+				14A789BB1B8B0F5500AD5CF5 /* ChangePasswordView.h */,
+				14A789BC1B8B0F5500AD5CF5 /* ChangePasswordView.m */,
+				14A789BD1B8B0F5500AD5CF5 /* ChangePasswordView.xib */,
+				1416C5571B8B6ADE00C48C48 /* ModifyHouseView.h */,
+				1416C5581B8B6ADE00C48C48 /* ModifyHouseView.m */,
+				1416C5591B8B6ADE00C48C48 /* ModifyHouseView.xib */,
 				14C57FBD1B84D76900C82D5D /* RegisterStep1View.h */,
 				14C57FBE1B84D76900C82D5D /* RegisterStep1View.m */,
 				14C57FBF1B84D76900C82D5D /* RegisterStep1View.xib */,
@@ -2042,6 +2095,9 @@
 				14C6CCAD1B85BF1E00AE06F8 /* RegisterStep3View.h */,
 				14C6CCAE1B85BF1E00AE06F8 /* RegisterStep3View.m */,
 				14C6CCAF1B85BF1E00AE06F8 /* RegisterStep3View.xib */,
+				14BD4D8A1B8D7124008709F1 /* SettingView.h */,
+				14BD4D8B1B8D7124008709F1 /* SettingView.m */,
+				14BD4D8C1B8D7124008709F1 /* SettingView.xib */,
 			);
 			name = OtherPage;
 			sourceTree = "<group>";
@@ -2158,12 +2214,14 @@
 				147390EE1B82C6410074101A /* Main.storyboard in Resources */,
 				147393651B82C66D0074101A /* cb_mono_on.png in Resources */,
 				14C6CCB11B85BF1E00AE06F8 /* RegisterStep3View.xib in Resources */,
+				14D689C71B884DF600CF4BB3 /* ConvenienceShopView.xib in Resources */,
 				14C57FBB1B84CE2D00C82D5D /* FindPasswordView.xib in Resources */,
 				1473935B1B82C66D0074101A /* cb_glossy_off.png in Resources */,
 				147393591B82C66D0074101A /* cb_dark_on.png in Resources */,
 				147393051B82C66D0074101A /* mapapi.bundle in Resources */,
 				1473935E1B82C66D0074101A /* cb_glossy_on@2x.png in Resources */,
 				147393101B82C66D0074101A /* LoadingCell.xib in Resources */,
+				14BD4D8E1B8D7124008709F1 /* SettingView.xib in Resources */,
 				147393611B82C66D0074101A /* cb_green_on.png in Resources */,
 				147393551B82C66D0074101A /* cb_box_on.png in Resources */,
 				147393571B82C66D0074101A /* cb_dark_off.png in Resources */,
@@ -2182,6 +2240,7 @@
 				14C57FC11B84D76900C82D5D /* RegisterStep1View.xib in Resources */,
 				1473936A1B82C66D0074101A /* cd_my_on@2x.png in Resources */,
 				14CC6D331B83767B0025AB61 /* MainPageView.xib in Resources */,
+				14A789BF1B8B0F5500AD5CF5 /* ChangePasswordView.xib in Resources */,
 				1473935F1B82C66D0074101A /* cb_green_off.png in Resources */,
 				147393621B82C66D0074101A /* cb_green_on@2x.png in Resources */,
 				147393791B82C7B00074101A /* IQKeyboardManager.bundle in Resources */,
@@ -2189,10 +2248,14 @@
 				147393601B82C66D0074101A /* cb_green_off@2x.png in Resources */,
 				1473935D1B82C66D0074101A /* cb_glossy_on.png in Resources */,
 				1473947F1B82FF960074101A /* MainFrameView.xib in Resources */,
+				1416C55B1B8B6ADE00C48C48 /* ModifyHouseView.xib in Resources */,
+				1416C5541B8B58A600C48C48 /* UserInfoView.xib in Resources */,
 				147392E91B82C66C0074101A /* AlipaySDK.bundle in Resources */,
 				147393531B82C66D0074101A /* cb_box_off.png in Resources */,
 				147390F01B82C6410074101A /* Images.xcassets in Resources */,
+				14D689CD1B884ED800CF4BB3 /* ConvenienceShopCell.xib in Resources */,
 				1473934D1B82C66D0074101A /* MWPhotoBrowser.bundle in Resources */,
+				1499093A1B8A13FF009F7A12 /* ConvenienceDetailView.xib in Resources */,
 				147393541B82C66D0074101A /* cb_box_off@2x.png in Resources */,
 				147393661B82C66D0074101A /* cb_mono_on@2x.png in Resources */,
 			);
@@ -2244,12 +2307,15 @@
 				147390EB1B82C6410074101A /* ViewController.m in Sources */,
 				147392EE1B82C66C0074101A /* base64.m in Sources */,
 				1473936E1B82C66D0074101A /* VPImageCropperViewController.m in Sources */,
+				14D689C61B884DF600CF4BB3 /* ConvenienceShopView.m in Sources */,
 				147390E81B82C6410074101A /* AppDelegate.m in Sources */,
 				147393811B82C80F0074101A /* Jastor.m in Sources */,
 				1473933E1B82C66D0074101A /* NSData+ImageContentType.m in Sources */,
 				1473943B1B82C8560074101A /* Groupon.m in Sources */,
+				149909391B8A13FF009F7A12 /* ConvenienceDetailView.m in Sources */,
 				147394261B82C8560074101A /* SuitResultItem.m in Sources */,
 				1473934B1B82C66D0074101A /* UIImageView+WebCache.m in Sources */,
+				14A789BE1B8B0F5500AD5CF5 /* ChangePasswordView.m in Sources */,
 				147392E41B82C66C0074101A /* AFOSCClient.m in Sources */,
 				147393191B82C66D0074101A /* UIButton+TitleImage.m in Sources */,
 				147392F41B82C66C0074101A /* RSADataSigner.m in Sources */,
@@ -2301,6 +2367,7 @@
 				147393291B82C66D0074101A /* MWPhotoBrowser.m in Sources */,
 				147392E01B82C66C0074101A /* AFImageRequestOperation.m in Sources */,
 				1473934E1B82C66D0074101A /* NSString+STRegex.m in Sources */,
+				14D689CC1B884ED800CF4BB3 /* ConvenienceShopCell.m in Sources */,
 				147394151B82C8560074101A /* RepairType.m in Sources */,
 				147394351B82C8560074101A /* MyOrder.m in Sources */,
 				147394361B82C8560074101A /* MyOrderCommodity.m in Sources */,
@@ -2321,6 +2388,7 @@
 				1473933A1B82C66D0074101A /* PSTGridLayoutSection.m in Sources */,
 				147393371B82C66D0074101A /* PSTGridLayoutInfo.m in Sources */,
 				147392E61B82C66C0074101A /* AFURLConnectionOperation.m in Sources */,
+				1416C55A1B8B6ADE00C48C48 /* ModifyHouseView.m in Sources */,
 				147394301B82C8560074101A /* CommodityClass.m in Sources */,
 				147392E71B82C66C0074101A /* AFXMLRequestOperation.m in Sources */,
 				147394041B82C8560074101A /* SettingModel.m in Sources */,
@@ -2392,6 +2460,7 @@
 				148FBB811B842CB3004BEE68 /* ConvenienceTypeCell.m in Sources */,
 				147393281B82C66D0074101A /* MWPhoto.m in Sources */,
 				147394271B82C8560074101A /* BorrowRecord.m in Sources */,
+				14BD4D8D1B8D7124008709F1 /* SettingView.m in Sources */,
 				147393011B82C66C0074101A /* Reachability.m in Sources */,
 				148FBB6E1B8411B8004BEE68 /* LeftView.m in Sources */,
 				14CC6D321B83767B0025AB61 /* MainPageView.m in Sources */,
@@ -2401,6 +2470,7 @@
 				147394111B82C8560074101A /* Topic.m in Sources */,
 				147393211B82C66D0074101A /* FMResultSet.m in Sources */,
 				147393361B82C66D0074101A /* PSTCollectionViewUpdateItem.m in Sources */,
+				1416C5531B8B58A600C48C48 /* UserInfoView.m in Sources */,
 				148FBB761B842300004BEE68 /* YRSideViewController.m in Sources */,
 				147393481B82C66D0074101A /* UIImage+MultiFormat.m in Sources */,
 				147392E31B82C66C0074101A /* AFNetworkActivityIndicatorManager.m in Sources */,

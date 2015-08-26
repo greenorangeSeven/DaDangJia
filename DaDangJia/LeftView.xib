@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftView">
             <connections>
                 <outlet property="faceIv" destination="lWD-QI-sP6" id="oSV-Aa-nC1"/>
+                <outlet property="nickNameLb" destination="VEd-D7-Ikm" id="yMm-nx-iQt"/>
+                <outlet property="userInfoLb" destination="yBY-S9-jYc" id="6xP-ML-Rmw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,6 +31,9 @@
                     <state key="normal" image="l_setting">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="settingAction:" destination="-1" eventType="touchUpInside" id="Ne9-v1-QTy"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_head" id="lWD-QI-sP6">
                     <rect key="frame" x="74" y="70" width="75" height="75"/>
