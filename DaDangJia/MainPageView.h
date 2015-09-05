@@ -12,4 +12,8 @@
 
 @property (weak, nonatomic) UIView *frameView;
 
+- (IBAction)propertyServiceAction:(id)sender;
+- (IBAction)tuanAction:(id)sender;
+- (IBAction)welfreAction:(id)sender;
+
 @end

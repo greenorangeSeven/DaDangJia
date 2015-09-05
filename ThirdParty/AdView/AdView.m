@@ -74,8 +74,8 @@
         _leftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kAdViewWidth, kAdViewHeight)];
         
         [_leftImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
-        _leftImageView.contentMode =  UIViewContentModeScaleAspectFill;
-        _leftImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        _leftImageView.contentMode =  UIViewContentModeScaleAspectFill;
+//        _leftImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _leftImageView.clipsToBounds  = YES;
         
         [_adScrollView addSubview:_leftImageView];
@@ -83,8 +83,8 @@
         _centerImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdViewWidth, 0, kAdViewWidth, kAdViewHeight)];
         
         [_centerImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
-        _centerImageView.contentMode =  UIViewContentModeScaleAspectFill;
-        _centerImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        _centerImageView.contentMode =  UIViewContentModeScaleAspectFill;
+//        _centerImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _centerImageView.clipsToBounds  = YES;
         
         _centerImageView.userInteractionEnabled = YES;
@@ -94,8 +94,8 @@
         _rightImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdViewWidth*2, 0, kAdViewWidth, kAdViewHeight)];
         
         [_rightImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
-        _rightImageView.contentMode =  UIViewContentModeScaleAspectFill;
-        _rightImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        _rightImageView.contentMode =  UIViewContentModeScaleAspectFill;
+//        _rightImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _rightImageView.clipsToBounds  = YES;
         
         [_adScrollView addSubview:_rightImageView];

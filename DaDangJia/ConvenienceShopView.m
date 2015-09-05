@@ -346,10 +346,7 @@
         ShopInfo *s = [shops objectAtIndex:[indexPath row]];
         if (s) {
             ConvenienceDetailView *shopDetail = [[ConvenienceDetailView alloc] init];
-            NSString *shopDetailHtm = [NSString stringWithFormat:@"%@%@%@", api_base_url, htm_shopDetail ,s.shopId];
-//            shopDetail.titleStr = s.shopName;
-//            shopDetail.urlStr = shopDetailHtm;
-//            shopDetail.shopInfo = s;
+            shopDetail.shopInfo = s;
             [self.navigationController pushViewController:shopDetail animated:YES];
         }
     }

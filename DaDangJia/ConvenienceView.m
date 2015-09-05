@@ -47,10 +47,10 @@
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        @try {
                                            types = [Tool readJsonStrToShopTypeArray:operation.responseString];
-                                           int n = [types count] % 4;
+                                           int n = [types count] % 3;
                                            if(n > 0)
                                            {
-                                               for (int i = 0; i < 4 - n; i++) {
+                                               for (int i = 0; i < 3 - n; i++) {
                                                    ShopType *r = [[ShopType alloc] init];
                                                    r.shopTypeId = @"-1";
                                                    [types addObject:r];

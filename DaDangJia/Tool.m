@@ -7,6 +7,7 @@
 //
 
 #import "Tool.h"
+#import "LoginView.h"
 
 @implementation Tool
 
@@ -104,7 +105,7 @@
 
 + (UIColor *)getColorForMain
 {
-    return [UIColor colorWithRed:226.0/255.0 green:111.0/255.0 blue:41.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:165.0/255.0 green:199.0/255.0 blue:81.0/255.0 alpha:1.0];
 }
 
 + (void)clearWebViewBackground:(UIWebView *)webView
@@ -154,21 +155,16 @@
 
 + (void)noticeLogin:(UIView *)view andDelegate:(id)delegate andTitle:(NSString *)title
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"请先登录或注册" delegate:delegate cancelButtonTitle:@"返回" destructiveButtonTitle:nil otherButtonTitles:@"登录", @"注册", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"请先登录" delegate:delegate cancelButtonTitle:@"返回" destructiveButtonTitle:nil otherButtonTitles:@"登录", nil];
     [sheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 + (void)processLoginNotice:(UIActionSheet *)actionSheet andButtonIndex:(NSInteger)buttonIndex andNav:(UINavigationController *)nav andParent:(UIViewController *)parent
 {
-    //    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
-    //    if ([buttonTitle isEqualToString:@"登录"]) {
-    //        LoginView *loginView = [[LoginView alloc] init];
-    //        [nav pushViewController:loginView animated:YES];
-    //    }
-    //    else if([buttonTitle isEqualToString:@"注册"])
-    //    {
-    //        RegisterView *regView = [[RegisterView alloc] init];
-    //        [nav pushViewController:regView animated:YES];
-    //    }
+        NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if ([buttonTitle isEqualToString:@"登录"]) {
+            LoginView *loginView = [[LoginView alloc] init];
+            [nav pushViewController:loginView animated:YES];
+        }
 }
 
 + (NSString *)intervalSinceNow: (NSString *) theDate
@@ -687,7 +683,8 @@
         NSArray *noticeArrayJson = [[noticeJsonDic objectForKey:@"data"] objectForKey:@"resultsList"];
         NSMutableArray *noticeArray = [RMMapper mutableArrayOfClass:[Notice class] fromArrayOfDictionary:noticeArrayJson];
         for (Notice *n in noticeArray) {
-            n.starttime = [self TimestampToDateStr:n.starttimeStamp andFormatterStr:@"yyyy年MM月dd日 HH:mm"];
+//            n.starttime = [self TimestampToDateStr:n.starttimeStamp andFormatterStr:@"yyyy年MM月dd日 HH:mm"];
+            n.starttime = [self TimestampToDateStr:n.starttimeStamp andFormatterStr:@"MM月dd日"];
         }
         return noticeArray;
     }

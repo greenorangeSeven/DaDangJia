@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainPageView.h"
 #import "ConvenienceView.h"
+#import "ReadilyView.h"
 
 @interface MainFrameView : UIViewController
 
@@ -33,5 +34,6 @@
 
 @property (strong, nonatomic) MainPageView *mainPage;
 @property (strong, nonatomic) ConvenienceView *conveniencePage;
+@property (strong, nonatomic) ReadilyView *readilyPage;
 
 @end

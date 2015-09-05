@@ -39,7 +39,7 @@
 #define Appkey @"10000001"
 #define AppSecret @"Hr54hiz7"
 //
-//#define api_base_url @"http://192.168.1.110:8080/guizhou_api/"
+//#define api_base_url @"http://192.168.1.110:8080/ddj_api/"
 #define api_base_url @"http://120.26.76.203:80/ddj_api/"
 //登录接口
 #define api_login @"regUser/login.htm"
@@ -203,6 +203,36 @@
 //分页查询商品信息(全城特价)
 #define api_findSaleCommodityByPage @"commodity/findSaleCommodityByPage.htm"
 
+//获取商家详情
+#define api_findShopInfoById @"shop/findShopInfoById.htm"
+//添加商家评论
+#define api_addShopComment @"shop/addShopComment.htm"
+//添加商家打赏
+#define api_addShopHeartCount @"shop/addShopHeartCount.htm"
+
+//分页获取团购活动信息
+#define api_findGroupBuyingInfoByPage @"groupBuy/findGroupBuyingInfoByPage.htm"
+//获取团购信息详情
+#define api_findGroupBuyingById @"groupBuy/findGroupBuyingById.htm"
+//加入、取消团购
+#define api_joinAndCancelGroupBuying @"groupBuy/joinAndCancelGroupBuying.htm"
+//团购打赏
+#define api_groupBuyAddCancelInHeart @"groupBuy/addCancelInHeart.htm"
+//团购评价
+#define api_addGroupComment @"groupBuy/addGroupComment.htm"
+
+//查询有效的红包活动
+#define api_findRedpackageRuleOnTime @"redPackage/findRedpackageRuleOnTime.htm"
+//抢红包
+#define api_addUserRedpackage @"redPackage/addUserRedpackage.htm"
+
+
+//分页获取优惠券记录
+#define api_findCouponInfoByPage @"coupon/findCouponInfoByPage.htm"
+//领取优惠券
+#define api_receivingCoupon @"coupon/receivingCoupon.htm"
+
+
 //查询商家类型列表接口
 #define api_findShopTypeList @"shop/findShopTypeList.htm"
 
@@ -290,6 +320,16 @@
 
 #define ConvenienceTypeCellIdentifier @"ConvenienceTypeCellIdentifier"
 #define ConvenienceShopCellIdentifier @"ConvenienceShopCellIdentifier"
+#define NoticeCellIdentifier @"NoticeCellIdentifier"
+#define UploadImageCellIdentifier @"UploadImageCellIdentifier"
+#define OldExpressCellIdentifier @"OldExpressCellIdentifier"
+#define NewsExpressCellIdentifier @"NewsExpressCellIdentifier"
+#define FeeItemCellIdentifier @"FeeItemCellIdentifier"
+#define PayedItemCellIdentifier @"PayedItemCellIdentifier"
+#define TuanItemCellIdentifier @"TuanItemCellIdentifier"
+#define GroupBuyCommentCellIdentifier @"GroupBuyCommentCellIdentifier"
+#define CouponCellIdentifier @"CouponCellIdentifier"
+
 
 
 #define Notification_RefreshAddVolunteerView @"Notification_RefreshAddVolunteerView"

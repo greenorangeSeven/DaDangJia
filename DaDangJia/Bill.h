@@ -19,5 +19,6 @@
 @property double totalFee;  //支付宝反馈用户实际支付金额
 @property int stateId;  //0未缴，1已缴
 @property int typeId;  //0物业，1电，2停车
+@property BOOL ischeck;  //0物业，1电，2停车
 
 @end

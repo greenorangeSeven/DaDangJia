@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSString *expressCompanyName;
 @property (nonatomic, retain) NSString *expressOrder;
 @property (nonatomic, retain) NSString *timeDiff;
+@property (nonatomic, retain) NSString *receiveTime;
 
 @end
