@@ -300,10 +300,6 @@
                                            [Tool showCustomHUD:@"打赏成功" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                            return;
                                        }
-//                                       else if ([state isEqualToString:@"0005"]) {
-//                                           heartCount += 1;
-//                                           [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", heartCount] forState:UIControlStateNormal];
-//                                       }
                                        [Tool showCustomHUD:msg andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                    }
                                    @catch (NSException *exception) {

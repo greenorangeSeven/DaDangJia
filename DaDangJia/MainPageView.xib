@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainPageView">
@@ -46,6 +46,9 @@
                             <state key="normal" image="main_zjl">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="zjlAction:" destination="-1" eventType="touchUpInside" id="Bml-qA-Mtq"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="召集令" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D1Q-5K-xOp">
                             <rect key="frame" x="118" y="266" width="84" height="21"/>
@@ -60,6 +63,9 @@
                             <state key="normal" image="main_bbm">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="helpAction:" destination="-1" eventType="touchUpInside" id="Gm4-PD-qT8"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帮帮忙" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cpn-8f-7pv">
                             <rect key="frame" x="208" y="266" width="84" height="21"/>
@@ -91,6 +97,9 @@
                             <state key="normal" image="main_hyh">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="hyhAction:" destination="-1" eventType="touchUpInside" id="poZ-Yn-ESJ"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="换一换" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XQi-wk-PE6">
                             <rect key="frame" x="117" y="394" width="84" height="21"/>
@@ -129,7 +138,7 @@
         <image name="main_flb" width="77" height="77"/>
         <image name="main_hyh" width="77" height="77"/>
         <image name="main_sht" width="77" height="77"/>
-        <image name="main_wygj" width="77" height="77"/>
+        <image name="main_wygj" width="72" height="72"/>
         <image name="main_zjl" width="77" height="77"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

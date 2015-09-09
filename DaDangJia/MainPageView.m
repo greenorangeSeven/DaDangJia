@@ -13,6 +13,7 @@
 #import "PropertyServiceView.h"
 #import "TuanPageView.h"
 #import "WelfreListView.h"
+#import "TopicListView.h"
 
 @interface MainPageView ()
 {
@@ -35,19 +36,15 @@
     viewFrame.size.width = self.frameView.frame.size.width;
     self.view.frame = viewFrame;
     
-    [self getADVData];
+//    NSString *lotteryHtm = [NSString stringWithFormat:@"%@%@accessId=%@&userId=%@", api_base_url, htm_lottery, Appkey, userInfo.regUserId];
     
+    [self getADVData];
 }
 
 - (void)getADVData
 {
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning) {
-//        NSMutableDictionary *param2 = [[NSMutableDictionary alloc] init];
-//        [param2 setValue:@"20" forKey:@"countPerPages"];
-//        [param2 setValue:@"1" forKey:@"pageNumbers"];
-//        [param2 setValue:@"2" forKey:@"typeId"];
-//        NSString *getADDataUrl2 = [Tool serializeURL:@"http://121.41.15.42:80/zhxq_api/business/findSecondBusinessInfoByPage.htm" params:param2];
         //生成获取广告URL
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
         [param setValue:@"1141788149430600" forKey:@"typeId"];
@@ -154,5 +151,29 @@
 - (IBAction)welfreAction:(id)sender {
     WelfreListView *welfreView = [[WelfreListView alloc] init];
     [self.navigationController pushViewController:welfreView animated:YES];
+}
+
+- (IBAction)helpAction:(id)sender {
+    TopicListView *helpView = [[TopicListView alloc] init];
+    helpView.typeName = @"帮帮忙";
+    helpView.typeId = @"1";
+    helpView.adId = @"1141856653531200";
+    [self.navigationController pushViewController:helpView animated:YES];
+}
+
+- (IBAction)zjlAction:(id)sender {
+    TopicListView *helpView = [[TopicListView alloc] init];
+    helpView.typeName = @"召集令";
+    helpView.typeId = @"0";
+    helpView.adId = @"1141857144700000";
+    [self.navigationController pushViewController:helpView animated:YES];
+}
+
+- (IBAction)hyhAction:(id)sender {
+    TopicListView *helpView = [[TopicListView alloc] init];
+    helpView.typeName = @"换一换";
+    helpView.typeId = @"2";
+    helpView.adId = @"1141857157067500";
+    [self.navigationController pushViewController:helpView animated:YES];
 }
 @end

@@ -431,7 +431,13 @@
         [Tool showCustomHUD:@"请填写内容" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    if([topicImageArray count] - 1 == 0)
+    {
+        [Tool showCustomHUD:@"请添加照片" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    
+    self.submitBtn.enabled = NO;
     
     //生成新增报修Sign
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
@@ -484,7 +490,7 @@
                                            cancelButtonTitle:@"确定"
                                            otherButtonTitles:nil];
         [av show];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.submitBtn.enabled = YES;
         return;
     }
     else
@@ -496,6 +502,7 @@
         [topicImageArray addObject:myImage];
         [self.collectionView reloadData];
         [Tool showCustomHUD:@"发布完成" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        self.submitBtn.enabled = YES;
     }
 }
 

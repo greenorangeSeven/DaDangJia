@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) NSString *groupId;
 
+@property BOOL isHistory;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;

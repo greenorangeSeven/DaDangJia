@@ -15,6 +15,7 @@
 #import "TuanHeaderView.h"
 #import "HotGroupBuyDetailView.h"
 #import "EveryDayGroupBuyDetailView.h"
+#import "HistoryGroupBuyView.h"
 
 @interface TuanPageView ()
 {
@@ -33,6 +34,9 @@
     [super viewDidLoad];
     
     self.title = @"实惠团";
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"往期团购" style:UIBarButtonItemStyleBordered target:self action:@selector(historyGroupBuyAction:)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
     
     self.joinBtn.layer.cornerRadius=self.joinBtn.frame.size.height/2;
     
@@ -58,6 +62,12 @@
     tuans = [[NSMutableArray alloc] initWithCapacity:20];
     [self reload:YES];
     [self getHotGroupBuyData];
+}
+
+- (void)historyGroupBuyAction:(id)sender
+{
+    HistoryGroupBuyView *historyView = [[HistoryGroupBuyView alloc] init];
+    [self.navigationController pushViewController:historyView animated:YES];
 }
 
 - (void)getHotGroupBuyData

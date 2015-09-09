@@ -17,9 +17,12 @@
 @property (nonatomic, retain) NSString *regUserId;
 @property (nonatomic, retain) NSString *replyTime;
 @property (nonatomic, retain) NSString *replyContent;
+@property (nonatomic, retain) NSString *photoFull;
 @property (nonatomic, retain) NSMutableAttributedString *replyContentAttr;
 @property int stateId;
 @property (nonatomic, retain) NSString *stateName;
+
+@property (nonatomic, retain) NSString *replyTimeStamp;
 
 @property int contentHeight;
 

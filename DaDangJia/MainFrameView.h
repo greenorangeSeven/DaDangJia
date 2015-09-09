@@ -10,6 +10,8 @@
 #import "MainPageView.h"
 #import "ConvenienceView.h"
 #import "ReadilyView.h"
+#import "TopicPageView.h"
+#import "NearbyView.h"
 
 @interface MainFrameView : UIViewController
 
@@ -35,5 +37,7 @@
 @property (strong, nonatomic) MainPageView *mainPage;
 @property (strong, nonatomic) ConvenienceView *conveniencePage;
 @property (strong, nonatomic) ReadilyView *readilyPage;
+@property (strong, nonatomic) TopicPageView *topicPage;
+@property (strong, nonatomic) NearbyView *nearbyPage;
 
 @end

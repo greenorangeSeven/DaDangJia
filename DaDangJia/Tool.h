@@ -195,6 +195,8 @@
 + (NSMutableArray *)readJsonStrToTopicArray:(NSString *)str;
 //解析社区朋友圈（带评论）
 + (NSMutableArray *)readJsonStrToTopicFullArray:(NSString *)str;
+//解析社区朋友圈评论
++ (NSMutableArray *)readJsonStrToTopicReplyArray:(NSString *)str;
 //解析朋友圈类型JSON
 + (NSMutableArray *)readJsonStrToTopicTypeArray:(NSString *)str;
 //解析报修类型JSON

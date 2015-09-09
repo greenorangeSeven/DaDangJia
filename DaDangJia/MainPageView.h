@@ -15,5 +15,8 @@
 - (IBAction)propertyServiceAction:(id)sender;
 - (IBAction)tuanAction:(id)sender;
 - (IBAction)welfreAction:(id)sender;
+- (IBAction)helpAction:(id)sender;
+- (IBAction)zjlAction:(id)sender;
+- (IBAction)hyhAction:(id)sender;
 
 @end

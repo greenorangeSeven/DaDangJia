@@ -39,7 +39,7 @@
 #define Appkey @"10000001"
 #define AppSecret @"Hr54hiz7"
 //
-//#define api_base_url @"http://192.168.1.110:8080/ddj_api/"
+//#define api_base_url @"http://192.168.1.101:8080/ddj_api/"
 #define api_base_url @"http://120.26.76.203:80/ddj_api/"
 //登录接口
 #define api_login @"regUser/login.htm"
@@ -210,6 +210,11 @@
 //添加商家打赏
 #define api_addShopHeartCount @"shop/addShopHeartCount.htm"
 
+//分页查询邻里帖子的回复数据
+#define api_findTopicReplyPage @"topic/findTopicReplyPage.htm"
+
+//分页获取用户团购活动信息
+#define api_findGroupBuyingInfoByUserId @"groupBuy/findGroupBuyingInfoByUserId.htm"
 //分页获取团购活动信息
 #define api_findGroupBuyingInfoByPage @"groupBuy/findGroupBuyingInfoByPage.htm"
 //获取团购信息详情
@@ -226,6 +231,8 @@
 //抢红包
 #define api_addUserRedpackage @"redPackage/addUserRedpackage.htm"
 
+//我的积分
+#define api_findIntegralLogByPage @"integral/findIntegralLogByPage.htm"
 
 //分页获取优惠券记录
 #define api_findCouponInfoByPage @"coupon/findCouponInfoByPage.htm"
@@ -272,7 +279,12 @@
 #define api_getBillDetailsForNotPay @"bill/getBillDetailsForNotPay.htm"
 // 获取今日朋友圈发贴数
 #define api_findTodayTopicCount @"topic/findTodayTopicCount.htm"
-
+// 打赏帖子
+#define api_addTopicHeart @"topic/addTopicHeart.htm"
+// 取消打赏帖子
+#define api_delTopicHeart @"topic/delTopicHeart.htm"
+//新增回复信息
+#define api_addTopicReply @"topic/addTopicReply.htm"
 
 //订单支付成功状态码
 #define ORDER_PAY_OK @"9000"
@@ -329,7 +341,15 @@
 #define TuanItemCellIdentifier @"TuanItemCellIdentifier"
 #define GroupBuyCommentCellIdentifier @"GroupBuyCommentCellIdentifier"
 #define CouponCellIdentifier @"CouponCellIdentifier"
-
+#define HistoryGroupBuyCellIdentifier @"HistoryGroupBuyCellIdentifier"
+#define MyRepairCellIdentifier @"MyRepairCellIdentifier"
+#define TopicListCellIdentifier @"TopicListCellIdentifier"
+#define NearbyCellIdentifier @"NearbyCellIdentifier"
+#define RepairBasicCellIdentifier @"RepairBasicCellIdentifier"
+#define RepairDispatchCellIdentifier @"RepairDispatchCellIdentifier"
+#define RepairFinishCellIdentifier @"RepairFinishCellIdentifier"
+#define RepairResultCellIdentifier @"RepairResultCellIdentifier"
+#define IntegralCellIdentifier @"IntegralCellIdentifier"
 
 
 #define Notification_RefreshAddVolunteerView @"Notification_RefreshAddVolunteerView"

@@ -22,4 +22,6 @@
 
 @property (nonatomic, retain) NSArray *rhUserHouseList;
 
+@property (nonatomic, retain) NSNumber *integral;
+
 @end

@@ -14,6 +14,8 @@
 #import "UIImageView+WebCache.h"
 #import "UserInfoView.h"
 #import "SettingView.h"
+#import "MyIntegralView.h"
+#import "MyGroupBuyView.h"
 
 @interface LeftView ()
 {
@@ -35,6 +37,25 @@
     
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.sideViewController = [delegate sideViewController];
+    
+    [self addTapAction];
+}
+
+- (void)addTapAction
+{
+    //积分点击
+    UITapGestureRecognizer *integralTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(integralTapClick)];
+    [self.integralLb addGestureRecognizer:integralTap];
+}
+
+- (void)integralTapClick
+{
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    MyIntegralView *integralView = [[MyIntegralView alloc] init];
+    integralView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:integralView animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +80,7 @@
         [self.faceIv sd_setImageWithURL:[NSURL URLWithString:userInfo.photoFull] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
         
         self.nickNameLb.text = userInfo.nickName;
-        self.userInfoLb.text = [NSString stringWithFormat:@"%@    %@", userInfo.mobileNo, userInfo.regUserName];
+        self.userInfoLb.text = [NSString stringWithFormat:@"%@    %d积分", userInfo.mobileNo, [userInfo.integral intValue]];
     }
     else
     {
@@ -107,4 +128,13 @@
     [mainTab pushViewController:settingView animated:YES];
 }
 
+- (IBAction)myGroupByAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    MyGroupBuyView *groupBuyView = [[MyGroupBuyView alloc] init];
+    groupBuyView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:groupBuyView animated:YES];
+    
+}
 @end

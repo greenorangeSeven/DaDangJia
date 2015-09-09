@@ -884,12 +884,13 @@
             topic.replyHeight = 0;
             for(TopicReply *reply in topic.replyList)
             {
-                reply.replyContent = [NSString stringWithFormat:@"%@：%@",reply.nickName, reply.replyContent];
-                reply.contentHeight = [self heightForString:reply.replyContent fontSize:14.0 andWidth:232.0] + 3;
-                topic.replyHeight += reply.contentHeight;
-                
-                reply.replyContentAttr = [[NSMutableAttributedString alloc] initWithString:reply.replyContent];
-                [reply.replyContentAttr addAttribute:NSForegroundColorAttributeName value:[Tool getColorForMain] range:NSMakeRange(0, [reply.nickName length] + 1)];
+//                reply.replyContent = [NSString stringWithFormat:@"%@：%@",reply.nickName, reply.replyContent];
+//                reply.contentHeight = [self heightForString:reply.replyContent fontSize:14.0 andWidth:232.0] + 3;
+//                topic.replyHeight += reply.contentHeight;
+//                
+//                reply.replyContentAttr = [[NSMutableAttributedString alloc] initWithString:reply.replyContent];
+//                [reply.replyContentAttr addAttribute:NSForegroundColorAttributeName value:[Tool getColorForMain] range:NSMakeRange(0, [reply.nickName length] + 1)];
+                reply.replyTime = [Tool intervalSinceNow:[Tool TimestampToDateStr:reply.replyTimeStamp   andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
             }
             
             topic.starttime = [Tool intervalSinceNow:[Tool TimestampToDateStr:topic.starttimeStamp  andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
@@ -928,6 +929,31 @@
             topic.viewAddHeight += topic.replyHeight;
         }
         return topicArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+//解析社区朋友圈评论
++ (NSMutableArray *)readJsonStrToTopicReplyArray:(NSString *)str
+{
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *topicJsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if ( topicJsonDic == nil || [topicJsonDic count] <= 0) {
+        return nil;
+    }
+    NSString *state = [[topicJsonDic objectForKey:@"header"] objectForKey:@"state"];
+    if ([state isEqualToString:@"0000"] == YES) {
+        NSArray *replyArrayJson = [[topicJsonDic objectForKey:@"data"] objectForKey:@"resultsList"];
+        NSMutableArray *replyList = [RMMapper mutableArrayOfClass:[TopicReply class] fromArrayOfDictionary:replyArrayJson];
+        for(TopicReply *reply in replyList)
+        {
+            reply.replyTime = [Tool intervalSinceNow:[Tool TimestampToDateStr:reply.replyTimeStamp   andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+        }
+        return replyList;
     }
     else
     {

@@ -40,6 +40,10 @@
     
     self.tableView.tableHeaderView = self.headerView;
     
+    if (self.isHistory) {
+        self.tuanBtn.enabled = NO;
+    }
+    
     self.tuanBtn.layer.cornerRadius=self.tuanBtn.frame.size.height/2;
     
     [self findGroupBuyDetail];

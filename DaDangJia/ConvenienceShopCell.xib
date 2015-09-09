@@ -65,7 +65,7 @@
                 <outlet property="nameLb" destination="2Ry-8w-DHS" id="JC4-P5-cqb"/>
                 <outlet property="phoneLb" destination="LZj-TX-Fms" id="ch3-pc-bAY"/>
             </connections>
-            <point key="canvasLocation" x="493" y="301"/>
+            <point key="canvasLocation" x="473" y="289"/>
         </tableViewCell>
     </objects>
     <resources>

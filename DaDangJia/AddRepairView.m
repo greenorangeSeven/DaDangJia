@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "UploadImageCell.h"
 #import "CommDetailView.h"
+#import "MyRepairView.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -44,6 +45,12 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[UploadImageCell class] forCellWithReuseIdentifier:UploadImageCellIdentifier];
+}
+
+- (void)myRepairAction:(id)send
+{
+    MyRepairView *myRepairView = [[MyRepairView alloc] init];
+    [self.navigationController pushViewController:myRepairView animated:YES];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -404,16 +411,14 @@
     else
     {
         [repairImageArray removeAllObjects];
-        UIImage *myImage = [UIImage imageNamed:@"cameralogo"];
+        repairImageArray = nil;
+        repairImageArray = [[NSMutableArray alloc] initWithCapacity:4];
+        UIImage *myImage = [UIImage imageNamed:@"addrepairimg"];
         [repairImageArray addObject:myImage];
         [self.collectionView reloadData];
         
         self.contentTf.text = @"";
-        
-//        
-//        RepairTableView *repairTableView = [[RepairTableView alloc] init];
-//        repairTableView.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:repairTableView animated:YES];
+        [Tool showCustomHUD:@"报修成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
     }
     self.repairBtn.enabled = YES;
 }

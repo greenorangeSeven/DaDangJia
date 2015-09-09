@@ -81,6 +81,28 @@
     self.navigationItem.rightBarButtonItem = nil;
 }
 
+- (void)initNavigationItem4
+{
+    self.navigationItem.titleView = nil;
+    
+    self.title = @"邻里";
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+- (void)initNavigationItem5
+{
+    self.navigationItem.titleView = nil;
+    
+    self.title = @"周边";
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
 - (void)leftBtnAction:(id)sender
 {
     [self.sideViewController showLeftViewController:YES];
@@ -134,10 +156,19 @@
     [self.item2Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
     
     [self.item3Btn setImage:[UIImage imageNamed:@"zhaoxiang_nor"] forState:UIControlStateNormal];
+    
+    [self.item4Btn setImage:[UIImage imageNamed:@"linli_nor"] forState:UIControlStateNormal];
+    [self.item4Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item5Btn setImage:[UIImage imageNamed:@"zhoubian_nor"] forState:UIControlStateNormal];
+    [self.item5Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+
 
     self.mainPage.view.hidden = NO;
     self.conveniencePage.view.hidden = YES;
     self.readilyPage.view.hidden = YES;
+    self.topicPage.view.hidden = YES;
+    self.nearbyPage.view.hidden = YES;
 }
 
 - (IBAction)item2Action:(id)sender {
@@ -151,6 +182,13 @@
     
     [self.item3Btn setImage:[UIImage imageNamed:@"zhaoxiang_nor"] forState:UIControlStateNormal];
     
+    [self.item4Btn setImage:[UIImage imageNamed:@"linli_nor"] forState:UIControlStateNormal];
+    [self.item4Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item5Btn setImage:[UIImage imageNamed:@"zhoubian_nor"] forState:UIControlStateNormal];
+    [self.item5Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+
+    
     if (self.conveniencePage == nil) {
         self.conveniencePage = [[ConvenienceView alloc] init];
         self.conveniencePage.frameView = self.mainView;
@@ -160,6 +198,8 @@
     self.mainPage.view.hidden = YES;
     self.conveniencePage.view.hidden = NO;
     self.readilyPage.view.hidden = YES;
+    self.topicPage.view.hidden = YES;
+    self.nearbyPage.view.hidden = YES;
 }
 
 - (IBAction)item3Action:(id)sender {
@@ -174,6 +214,13 @@
     
     [self.item3Btn setImage:[UIImage imageNamed:@"zhaoxiang_pro"] forState:UIControlStateNormal];
     
+    [self.item4Btn setImage:[UIImage imageNamed:@"linli_nor"] forState:UIControlStateNormal];
+    [self.item4Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item5Btn setImage:[UIImage imageNamed:@"zhoubian_nor"] forState:UIControlStateNormal];
+    [self.item5Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+
+    
     if (self.readilyPage == nil) {
         self.readilyPage = [[ReadilyView alloc] init];
         self.readilyPage.frameView = self.mainView;
@@ -183,11 +230,67 @@
     self.mainPage.view.hidden = YES;
     self.conveniencePage.view.hidden = YES;
     self.readilyPage.view.hidden = NO;
+    self.topicPage.view.hidden = YES;
+    self.nearbyPage.view.hidden = YES;
 }
 
 - (IBAction)item4Action:(id)sender {
+    [self initNavigationItem4];
+    
+    [self.item1Btn setImage:[UIImage imageNamed:@"main_nor"] forState:UIControlStateNormal];
+    [self.item1Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item2Btn setImage:[UIImage imageNamed:@"bianmin_nor"] forState:UIControlStateNormal];
+    [self.item2Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item3Btn setImage:[UIImage imageNamed:@"zhaoxiang_nor"] forState:UIControlStateNormal];
+    
+    [self.item4Btn setImage:[UIImage imageNamed:@"linli_pro"] forState:UIControlStateNormal];
+    [self.item4Lb setTextColor:[UIColor colorWithRed:188.0/255 green:204.0/255 blue:131.0/255 alpha:1.0]];
+    
+    [self.item5Btn setImage:[UIImage imageNamed:@"zhoubian_nor"] forState:UIControlStateNormal];
+    [self.item5Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    if (self.topicPage == nil) {
+        self.topicPage = [[TopicPageView alloc] init];
+        self.topicPage.frameView = self.mainView;
+        [self addChildViewController:self.topicPage];
+        [self.mainView addSubview:self.topicPage.view];
+    }
+    self.mainPage.view.hidden = YES;
+    self.conveniencePage.view.hidden = YES;
+    self.readilyPage.view.hidden = YES;
+    self.topicPage.view.hidden = NO;
+    self.nearbyPage.view.hidden = YES;
 }
 
 - (IBAction)item5Action:(id)sender {
+    [self initNavigationItem5];
+    
+    [self.item1Btn setImage:[UIImage imageNamed:@"main_nor"] forState:UIControlStateNormal];
+    [self.item1Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item2Btn setImage:[UIImage imageNamed:@"bianmin_nor"] forState:UIControlStateNormal];
+    [self.item2Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item3Btn setImage:[UIImage imageNamed:@"zhaoxiang_nor"] forState:UIControlStateNormal];
+    
+    [self.item4Btn setImage:[UIImage imageNamed:@"linli_nor"] forState:UIControlStateNormal];
+    [self.item4Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
+    
+    [self.item5Btn setImage:[UIImage imageNamed:@"zhoubian_pro"] forState:UIControlStateNormal];
+    [self.item5Lb setTextColor:[UIColor colorWithRed:188.0/255 green:204.0/255 blue:131.0/255 alpha:1.0]];
+    
+    if (self.nearbyPage == nil) {
+        self.nearbyPage = [[NearbyView alloc] init];
+        self.nearbyPage.frameView = self.mainView;
+        [self addChildViewController:self.nearbyPage];
+        [self.mainView addSubview:self.nearbyPage.view];
+    }
+    self.mainPage.view.hidden = YES;
+    self.conveniencePage.view.hidden = YES;
+    self.readilyPage.view.hidden = YES;
+    self.topicPage.view.hidden = YES;
+    self.nearbyPage.view.hidden = NO;
 }
 @end

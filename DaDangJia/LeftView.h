@@ -18,4 +18,7 @@
 - (IBAction)loginAction:(id)sender;
 - (IBAction)settingAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *integralLb;
+- (IBAction)myGroupByAction:(id)sender;
+
 @end

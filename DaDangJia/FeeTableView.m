@@ -11,6 +11,7 @@
 #import "SSCheckBoxView.h"
 #import "PayedFeeView.h"
 #import "IQKeyboardManager/KeyboardManager.framework/Headers/IQKeyboardManager.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface FeeTableView ()
 {
@@ -308,13 +309,28 @@
         }
     }
     
+    if ([selectBill count] == 0) {
+        [Tool showCustomHUD:@"请选择支付账单" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    
+    NSString *billDetailsId = [selectBill componentsJoinedByString:@"-"];
+    
+    //生成获取广告URL
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+//    [param setValue:(NSString *)selectBill[0] forKey:@"billDetailsId"];
+    [param setValue:billDetailsId forKey:@"billDetailsId"];
+
+//    NSString *getADDataUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_createAlipayParams] params:param];
+    
     //生成支付宝订单URL
     NSString *createOrderUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_createAlipayParams];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:createOrderUrl]];
     [request setUseCookiePersistence:NO];
     [request setTimeOutSeconds:30];
-    [request setPostValue:(NSString *)selectBill[0] forKey:@"billDetailsId"];
+//    [request setPostValue:(NSString *)selectBill[0] forKey:@"billDetailsId"];
+    [request setPostValue:billDetailsId forKey:@"billDetailsId"];
     [request setDelegate:self];
     [request setDidFailSelector:@selector(requestFailed:)];
     [request setDidFinishSelector:@selector(requestCreate:)];
@@ -356,15 +372,21 @@
     else
     {
         NSString *orderStr = [json objectForKey:@"msg"];
-//        [[AlipaySDK defaultService] payOrder:orderStr fromScheme:@"WHDLifeAlipay" callback:^(NSDictionary *resultDic)
-//         {
-//             NSString *resultState = resultDic[@"resultStatus"];
-//             if([resultState isEqualToString:ORDER_PAY_OK])
-//             {
-//                 [self updatePayedTable];
-//             }
-//         }];
+        [[AlipaySDK defaultService] payOrder:orderStr fromScheme:@"DaDangJiaAlipay" callback:^(NSDictionary *resultDic)
+         {
+             NSString *resultState = resultDic[@"resultStatus"];
+             if([resultState isEqualToString:ORDER_PAY_OK])
+             {
+                 [self updatePayedTable];
+             }
+         }];
     }
+}
+
+- (void)updatePayedTable
+{
+    [Tool showCustomHUD:@"支付成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
+    [self findMyBill];
 }
 
 @end
