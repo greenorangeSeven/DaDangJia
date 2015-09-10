@@ -16,6 +16,9 @@
 #import "SettingView.h"
 #import "MyIntegralView.h"
 #import "MyGroupBuyView.h"
+#import "MyRedPacketView.h"
+#import "MyCouponView.h"
+#import "MyCouponClassView.h"
 
 @interface LeftView ()
 {
@@ -135,6 +138,33 @@
     MyGroupBuyView *groupBuyView = [[MyGroupBuyView alloc] init];
     groupBuyView.hidesBottomBarWhenPushed = YES;
     [mainTab pushViewController:groupBuyView animated:YES];
+}
+
+- (IBAction)myRedPacketAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    MyRedPacketView *redPacketView = [[MyRedPacketView alloc] init];
+    redPacketView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:redPacketView animated:YES];
+}
+
+- (IBAction)myCouponAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    MyCouponView *couponView = [[MyCouponView alloc] init];
+    couponView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:couponView animated:YES];
+}
+
+- (IBAction)myPublicAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    MyCouponClassView *myPublicView = [[MyCouponClassView alloc] init];
+    myPublicView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:myPublicView animated:YES];
     
 }
 @end

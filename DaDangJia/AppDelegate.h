@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property BOOL isForeground;
+
 @property (strong,nonatomic) YRSideViewController *sideViewController;
 
 @end

@@ -21,11 +21,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLb;
 @property (weak, nonatomic) IBOutlet UILabel *addressLb;
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
+@property (weak, nonatomic) IBOutlet UITextView *remarkTv;
 
 @property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 - (IBAction)praiseAction:(id)sender;
 - (IBAction)commentAction:(id)sender;
 - (IBAction)callAction:(id)sender;
+- (IBAction)mapPointAction:(id)sender;
 
 @end

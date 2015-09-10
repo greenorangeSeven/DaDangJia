@@ -105,7 +105,7 @@
                                            NSInteger count = [topicNews count];
                                            if(count == 0)
                                            {
-                                               [Tool showCustomHUD:@"暂无团购" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+                                               [Tool showCustomHUD:@"暂无发布" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
                                            }
                                            allCount += count;
                                            if (count < 20)

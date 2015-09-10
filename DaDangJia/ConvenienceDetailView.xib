@@ -13,6 +13,7 @@
                 <outlet property="headerView" destination="p6d-2L-bHy" id="Ked-Xc-x9S"/>
                 <outlet property="phoneLb" destination="3uK-Cb-fuu" id="m3S-Ot-rCm"/>
                 <outlet property="praiseBtn" destination="feu-sD-7SE" id="dNl-Gz-IB5"/>
+                <outlet property="remarkTv" destination="RBy-AT-6Tj" id="2vf-9X-5sU"/>
                 <outlet property="shopImageIv" destination="tpI-GD-GIe" id="LH6-D6-BZk"/>
                 <outlet property="shopNameLb" destination="tbu-8e-Voq" id="bc0-xZ-4fl"/>
                 <outlet property="tableView" destination="C0R-Ok-M2g" id="zPb-6e-3Qq"/>
@@ -73,10 +74,9 @@
                             <color key="textColor" red="0.24705882352941178" green="0.25098039215686274" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" id="RBy-AT-6Tj">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="RBy-AT-6Tj">
                             <rect key="frame" x="8" y="271" width="304" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </string>
                             <color key="textColor" red="0.2470588235" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -144,6 +144,9 @@
                             <state key="normal" image="navi">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="mapPointAction:" destination="-1" eventType="touchUpInside" id="guq-2v-wcc"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -169,7 +172,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="-6" y="119"/>
+            <point key="canvasLocation" x="-220" y="-34"/>
         </view>
     </objects>
     <resources>

@@ -25,6 +25,8 @@
 @property (copy, nonatomic) NSString *imgFull;
 @property long starttimeStamp;
 @property long endtimeStamp;
+@property (copy, nonatomic) NSString *content;
+@property int isJoin;
 
 @property (strong, nonatomic) NSArray *heartList;
 @property (strong, nonatomic) NSArray *commentList;

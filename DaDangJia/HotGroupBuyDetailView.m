@@ -39,8 +39,6 @@
     //    设置无分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.tableView.tableHeaderView = self.headerView;
-    
     self.tuanBtn.layer.cornerRadius=self.tuanBtn.frame.size.height/2;
     
     [self findGroupBuyDetail];
@@ -156,9 +154,12 @@
 {
     //如果有网络连接
     if ([UserModel Instance].isNetworkRunning) {
-        //查询指定房间所绑定的用户信息
+        //获取团购详情
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
         [param setValue:self.groupId forKey:@"groupId"];
+        if (userInfo.regUserId != nil || [userInfo.regUserId length] > 0) {
+            [param setValue:userInfo.regUserId forKey:@"regUserId"];
+        }
         
         NSString *findGroupBuyDetailUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findGroupBuyingById] params:param];
         [[AFOSCClient sharedClient]getPath:findGroupBuyDetailUrl parameters:Nil
@@ -202,12 +203,22 @@
 - (void)initHeaderView
 {
     [self.imageIv sd_setImageWithURL:[NSURL URLWithString:detail.imgFull] placeholderImage:[UIImage imageNamed:@"default_head"]];
-    self.phoneLb.text = [NSString stringWithFormat:@"商家电话:%@", detail.phone];
-    self.addressLb.text = [NSString stringWithFormat:@"商家地址:%@", detail.address];
+    self.phoneLb.text = [NSString stringWithFormat:@"电话:%@", detail.phone];
+    self.addressLb.text = [NSString stringWithFormat:@"地址:%@", detail.address];
     self.personCountLb.text = [NSString stringWithFormat:@"成团人数:%d", detail.personCount];
     heartCount = [detail.heartList count];
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", [detail.heartList count]] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [detail.commentList count]] forState:UIControlStateNormal];
+    
+    if(detail.isJoin == 0)
+    {
+        [self.tuanBtn setTitle:@"我要团" forState:UIControlStateNormal];
+    }
+    else if (detail.isJoin == 1)
+    {
+        [self.tuanBtn setTitle:@"已参团" forState:UIControlStateNormal];
+    }
+    
     if (detail.personCount >= detail.joinCount) {
         self.stateLb.hidden = NO;
         self.badCountLb.hidden = NO;
@@ -221,7 +232,41 @@
         self.badLb.hidden = YES;
     }
     self.joinCountLb.text = [NSString stringWithFormat:@"已有%d人参团", detail.joinCount];
+    [self initContentDetail];
+}
+
+- (void)initContentDetail
+{
+    if(detail.content == nil)
+    {
+        detail.content = @"";
+    }
+    NSString *html = [NSString stringWithFormat:@"<body>%@<div id='web_body'>%@</div></body>", HTML_Style, detail.content];
+    NSString *result = [Tool getHTMLString:html];
+    //WebView的背景颜色去除
+    [Tool clearWebViewBackground:self.contentWebView];
+    [self.contentWebView sizeToFit];
+    [self.contentWebView loadHTMLString:result baseURL:nil];
+    self.contentWebView.delegate = self;
     
+    self.contentWebView.opaque = YES;
+    for (UIView *subView in [self.contentWebView subviews])
+    {
+        if ([subView isKindOfClass:[UIScrollView class]])
+        {
+            //            ((UIScrollView *)subView).bounces = YES;
+            ((UIScrollView *)subView).scrollEnabled = NO;
+        }
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webViewP
+{
+    NSArray *arr = [webViewP subviews];
+    UIScrollView *webViewScroll = [arr objectAtIndex:0];
+    [webViewP setFrame:CGRectMake(self.contentWebView.frame.origin.x, self.contentWebView.frame.origin.y, self.contentWebView.frame.size.width, [webViewScroll contentSize].height)];
+    [self.headerView setFrame:CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.bounds.size.width, self.headerView.bounds.size.height + self.contentWebView.frame.size.height)];
+    self.tableView.tableHeaderView = self.headerView;
 }
 
 #pragma TableView的处理
@@ -341,6 +386,11 @@
         [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
         return;
     }
+    if(detail.isJoin == 1)
+    {
+        [Tool showCustomHUD:@"请联系物业取消" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+        return;
+    }
     //团购，取消团购
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:detail.groupId forKey:@"groupId"];
@@ -370,12 +420,12 @@
                                            if([msg isEqualToString:@"参与团购成功!"])
                                            {
                                                [self.tuanBtn setTitle:@"已参团" forState:UIControlStateNormal];
+                                               detail.isJoin = 1;
                                            }
                                            else
                                            {
                                                [self.tuanBtn setTitle:@"我要团" forState:UIControlStateNormal];
                                            }
-                                           
                                        }
                                    }
                                    @catch (NSException *exception) {

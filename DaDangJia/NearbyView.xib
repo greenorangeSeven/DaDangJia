@@ -116,7 +116,7 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="-9" y="-85"/>
+            <point key="canvasLocation" x="153" y="-127"/>
         </view>
     </objects>
     <resources>

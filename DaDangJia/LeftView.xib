@@ -26,7 +26,7 @@
                     <color key="textColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jNs-te-G8C">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jNs-te-G8C">
                     <rect key="frame" x="187" y="24" width="43" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="l_setting">
@@ -73,6 +73,9 @@
                             <state key="normal" title="   红包" image="l_hb">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="myRedPacketAction:" destination="-1" eventType="touchUpInside" id="mAA-i1-uLm"/>
+                            </connections>
                         </button>
                     </subviews>
                 </view>
@@ -87,6 +90,9 @@
                             <state key="normal" title="   优惠券" image="l_yhq">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="myCouponAction:" destination="-1" eventType="touchUpInside" id="U0M-Uh-wUq"/>
+                            </connections>
                         </button>
                     </subviews>
                 </view>
@@ -132,6 +138,9 @@
                             <state key="normal" title="   我的发布" image="l_wdfb">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="myPublicAction:" destination="-1" eventType="touchUpInside" id="kzz-LX-YeL"/>
+                            </connections>
                         </button>
                     </subviews>
                 </view>
@@ -161,7 +170,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.11372549019607843" green="0.13725490196078433" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="106" y="202"/>
+            <point key="canvasLocation" x="113" y="-5"/>
         </view>
     </objects>
     <resources>

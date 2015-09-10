@@ -14,6 +14,23 @@
 		1416C5541B8B58A600C48C48 /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1416C5521B8B58A600C48C48 /* UserInfoView.xib */; };
 		1416C55A1B8B6ADE00C48C48 /* ModifyHouseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1416C5581B8B6ADE00C48C48 /* ModifyHouseView.m */; };
 		1416C55B1B8B6ADE00C48C48 /* ModifyHouseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1416C5591B8B6ADE00C48C48 /* ModifyHouseView.xib */; };
+		14359A4D1B9FB85F00E286F3 /* MyRedPacketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A4B1B9FB85F00E286F3 /* MyRedPacketView.m */; };
+		14359A4E1B9FB85F00E286F3 /* MyRedPacketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A4C1B9FB85F00E286F3 /* MyRedPacketView.xib */; };
+		14359A531B9FB8C000E286F3 /* MyRedPactetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A511B9FB8C000E286F3 /* MyRedPactetCell.m */; };
+		14359A541B9FB8C000E286F3 /* MyRedPactetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A521B9FB8C000E286F3 /* MyRedPactetCell.xib */; };
+		14359A571B9FCAB900E286F3 /* MyRedPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A561B9FCAB900E286F3 /* MyRedPacket.m */; };
+		14359A5B1B9FD20C00E286F3 /* MyCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A591B9FD20C00E286F3 /* MyCouponView.m */; };
+		14359A5C1B9FD20C00E286F3 /* MyCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A5A1B9FD20C00E286F3 /* MyCouponView.xib */; };
+		14359A601B9FD76E00E286F3 /* CouponDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A5E1B9FD76E00E286F3 /* CouponDetailView.m */; };
+		14359A611B9FD76E00E286F3 /* CouponDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A5F1B9FD76E00E286F3 /* CouponDetailView.xib */; };
+		14359A671BA0057D00E286F3 /* StoreMapPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A651BA0057D00E286F3 /* StoreMapPointView.m */; };
+		14359A681BA0057D00E286F3 /* StoreMapPointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A661BA0057D00E286F3 /* StoreMapPointView.xib */; };
+		14359A6C1BA00A2D00E286F3 /* MyPublicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A6A1BA00A2D00E286F3 /* MyPublicView.m */; };
+		14359A6D1BA00A2D00E286F3 /* MyPublicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A6B1BA00A2D00E286F3 /* MyPublicView.xib */; };
+		14359A711BA014D600E286F3 /* MyCouponClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14359A6F1BA014D600E286F3 /* MyCouponClassView.m */; };
+		14359A721BA014D600E286F3 /* MyCouponClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14359A701BA014D600E286F3 /* MyCouponClassView.xib */; };
+		143DAA7E1BA15F1F00184FC4 /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143DAA7C1BA15F1F00184FC4 /* StartView.m */; };
+		143DAA7F1BA15F1F00184FC4 /* StartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143DAA7D1BA15F1F00184FC4 /* StartView.xib */; };
 		147390E51B82C6410074101A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 147390E41B82C6410074101A /* main.m */; };
 		147390E81B82C6410074101A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 147390E71B82C6410074101A /* AppDelegate.m */; };
 		147390EB1B82C6410074101A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 147390EA1B82C6410074101A /* ViewController.m */; };
@@ -422,6 +439,32 @@
 		1416C5571B8B6ADE00C48C48 /* ModifyHouseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyHouseView.h; sourceTree = "<group>"; };
 		1416C5581B8B6ADE00C48C48 /* ModifyHouseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyHouseView.m; sourceTree = "<group>"; };
 		1416C5591B8B6ADE00C48C48 /* ModifyHouseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyHouseView.xib; sourceTree = "<group>"; };
+		14359A4A1B9FB85F00E286F3 /* MyRedPacketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRedPacketView.h; sourceTree = "<group>"; };
+		14359A4B1B9FB85F00E286F3 /* MyRedPacketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketView.m; sourceTree = "<group>"; };
+		14359A4C1B9FB85F00E286F3 /* MyRedPacketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRedPacketView.xib; sourceTree = "<group>"; };
+		14359A501B9FB8C000E286F3 /* MyRedPactetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRedPactetCell.h; sourceTree = "<group>"; };
+		14359A511B9FB8C000E286F3 /* MyRedPactetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRedPactetCell.m; sourceTree = "<group>"; };
+		14359A521B9FB8C000E286F3 /* MyRedPactetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRedPactetCell.xib; sourceTree = "<group>"; };
+		14359A551B9FCAB900E286F3 /* MyRedPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRedPacket.h; sourceTree = "<group>"; };
+		14359A561B9FCAB900E286F3 /* MyRedPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRedPacket.m; sourceTree = "<group>"; };
+		14359A581B9FD20C00E286F3 /* MyCouponView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponView.h; sourceTree = "<group>"; };
+		14359A591B9FD20C00E286F3 /* MyCouponView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponView.m; sourceTree = "<group>"; };
+		14359A5A1B9FD20C00E286F3 /* MyCouponView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCouponView.xib; sourceTree = "<group>"; };
+		14359A5D1B9FD76E00E286F3 /* CouponDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailView.h; sourceTree = "<group>"; };
+		14359A5E1B9FD76E00E286F3 /* CouponDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailView.m; sourceTree = "<group>"; };
+		14359A5F1B9FD76E00E286F3 /* CouponDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailView.xib; sourceTree = "<group>"; };
+		14359A641BA0057D00E286F3 /* StoreMapPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMapPointView.h; sourceTree = "<group>"; };
+		14359A651BA0057D00E286F3 /* StoreMapPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMapPointView.m; sourceTree = "<group>"; };
+		14359A661BA0057D00E286F3 /* StoreMapPointView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreMapPointView.xib; sourceTree = "<group>"; };
+		14359A691BA00A2D00E286F3 /* MyPublicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublicView.h; sourceTree = "<group>"; };
+		14359A6A1BA00A2D00E286F3 /* MyPublicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublicView.m; sourceTree = "<group>"; };
+		14359A6B1BA00A2D00E286F3 /* MyPublicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPublicView.xib; sourceTree = "<group>"; };
+		14359A6E1BA014D600E286F3 /* MyCouponClassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponClassView.h; sourceTree = "<group>"; };
+		14359A6F1BA014D600E286F3 /* MyCouponClassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponClassView.m; sourceTree = "<group>"; };
+		14359A701BA014D600E286F3 /* MyCouponClassView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCouponClassView.xib; sourceTree = "<group>"; };
+		143DAA7B1BA15F1F00184FC4 /* StartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartView.h; sourceTree = "<group>"; };
+		143DAA7C1BA15F1F00184FC4 /* StartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartView.m; sourceTree = "<group>"; };
+		143DAA7D1BA15F1F00184FC4 /* StartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartView.xib; sourceTree = "<group>"; };
 		147390DF1B82C6410074101A /* DaDangJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaDangJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		147390E31B82C6410074101A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		147390E41B82C6410074101A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1294,11 +1337,13 @@
 		147390E11B82C6410074101A /* DaDangJia */ = {
 			isa = PBXGroup;
 			children = (
-				14A0F20C1B9F3310002567B0 /* MyPage */,
 				147390E61B82C6410074101A /* AppDelegate.h */,
 				147390E71B82C6410074101A /* AppDelegate.m */,
 				147390E91B82C6410074101A /* ViewController.h */,
 				147390EA1B82C6410074101A /* ViewController.m */,
+				143DAA7B1BA15F1F00184FC4 /* StartView.h */,
+				143DAA7C1BA15F1F00184FC4 /* StartView.m */,
+				143DAA7D1BA15F1F00184FC4 /* StartView.xib */,
 				147390EC1B82C6410074101A /* Main.storyboard */,
 				147390EF1B82C6410074101A /* Images.xcassets */,
 				147390F11B82C6410074101A /* LaunchScreen.xib */,
@@ -1317,6 +1362,7 @@
 				14EF79AB1B9C1BE3002DD848 /* TopicPage */,
 				14163F931B9DD56800FF8DCF /* Nearby */,
 				148FBB831B8467E1004BEE68 /* OtherPage */,
+				14A0F20C1B9F3310002567B0 /* MyPage */,
 				1473937B1B82C7C50074101A /* Helper */,
 				147393891B82C8420074101A /* Model */,
 				147393761B82C7B00074101A /* IQKeyboardManager */,
@@ -2281,6 +2327,8 @@
 				14E300401B997A12002375E0 /* Coupon.m */,
 				1409BFF61B9B253F005EA376 /* ShopDetail.h */,
 				1409BFF71B9B253F005EA376 /* ShopDetail.m */,
+				14359A551B9FCAB900E286F3 /* MyRedPacket.h */,
+				14359A561B9FCAB900E286F3 /* MyRedPacket.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2365,6 +2413,9 @@
 				149909361B8A13FF009F7A12 /* ConvenienceDetailView.h */,
 				149909371B8A13FF009F7A12 /* ConvenienceDetailView.m */,
 				149909381B8A13FF009F7A12 /* ConvenienceDetailView.xib */,
+				14359A641BA0057D00E286F3 /* StoreMapPointView.h */,
+				14359A651BA0057D00E286F3 /* StoreMapPointView.m */,
+				14359A661BA0057D00E286F3 /* StoreMapPointView.xib */,
 			);
 			name = ConveniencePage;
 			sourceTree = "<group>";
@@ -2412,6 +2463,21 @@
 				14A0F2121B9F379D002567B0 /* IntegralCell.h */,
 				14A0F2131B9F379D002567B0 /* IntegralCell.m */,
 				14A0F2141B9F379D002567B0 /* IntegralCell.xib */,
+				14359A4A1B9FB85F00E286F3 /* MyRedPacketView.h */,
+				14359A4B1B9FB85F00E286F3 /* MyRedPacketView.m */,
+				14359A4C1B9FB85F00E286F3 /* MyRedPacketView.xib */,
+				14359A501B9FB8C000E286F3 /* MyRedPactetCell.h */,
+				14359A511B9FB8C000E286F3 /* MyRedPactetCell.m */,
+				14359A521B9FB8C000E286F3 /* MyRedPactetCell.xib */,
+				14359A581B9FD20C00E286F3 /* MyCouponView.h */,
+				14359A591B9FD20C00E286F3 /* MyCouponView.m */,
+				14359A5A1B9FD20C00E286F3 /* MyCouponView.xib */,
+				14359A6E1BA014D600E286F3 /* MyCouponClassView.h */,
+				14359A6F1BA014D600E286F3 /* MyCouponClassView.m */,
+				14359A701BA014D600E286F3 /* MyCouponClassView.xib */,
+				14359A691BA00A2D00E286F3 /* MyPublicView.h */,
+				14359A6A1BA00A2D00E286F3 /* MyPublicView.m */,
+				14359A6B1BA00A2D00E286F3 /* MyPublicView.xib */,
 			);
 			name = MyPage;
 			sourceTree = "<group>";
@@ -2576,6 +2642,9 @@
 				14C401281B99DED000A25649 /* LootRedPacketView.h */,
 				14C401291B99DED000A25649 /* LootRedPacketView.m */,
 				14C4012A1B99DED000A25649 /* LootRedPacketView.xib */,
+				14359A5D1B9FD76E00E286F3 /* CouponDetailView.h */,
+				14359A5E1B9FD76E00E286F3 /* CouponDetailView.m */,
+				14359A5F1B9FD76E00E286F3 /* CouponDetailView.xib */,
 			);
 			name = Welfare;
 			sourceTree = "<group>";
@@ -2712,6 +2781,7 @@
 				14D689C71B884DF600CF4BB3 /* ConvenienceShopView.xib in Resources */,
 				14C57FBB1B84CE2D00C82D5D /* FindPasswordView.xib in Resources */,
 				14DC327B1B8FE6F200AA490E /* FeeTypeView.xib in Resources */,
+				14359A721BA014D600E286F3 /* MyCouponClassView.xib in Resources */,
 				14E3002D1B9934AE002375E0 /* EveryDayGroupBuyDetailView.xib in Resources */,
 				14DC328B1B90018A00AA490E /* FeeItemCell.xib in Resources */,
 				1473935B1B82C66D0074101A /* cb_glossy_off.png in Resources */,
@@ -2725,10 +2795,13 @@
 				14D14BE21B9D78E800FE057B /* PublishSucceedView.xib in Resources */,
 				147393551B82C66D0074101A /* cb_box_on.png in Resources */,
 				14E300361B996DF2002375E0 /* WelfreListView.xib in Resources */,
+				14359A4E1B9FB85F00E286F3 /* MyRedPacketView.xib in Resources */,
 				14A0F2111B9F3340002567B0 /* MyIntegralView.xib in Resources */,
+				14359A541B9FB8C000E286F3 /* MyRedPactetCell.xib in Resources */,
 				14DC32811B8FEFD600AA490E /* FeeTableView.xib in Resources */,
 				14C4012C1B99DED000A25649 /* LootRedPacketView.xib in Resources */,
 				147393571B82C66D0074101A /* cb_dark_off.png in Resources */,
+				14359A681BA0057D00E286F3 /* StoreMapPointView.xib in Resources */,
 				14C190321B92FD5C009050F8 /* TuanItemCell.xib in Resources */,
 				1473933B1B82C66D0074101A /* LICENSE in Resources */,
 				14EF799F1B9BDA1F002DD848 /* HistoryGroupBuyCell.xib in Resources */,
@@ -2747,9 +2820,12 @@
 				147390F31B82C6410074101A /* LaunchScreen.xib in Resources */,
 				147393631B82C66D0074101A /* cb_mono_off.png in Resources */,
 				14163F991B9DD59C00FF8DCF /* NearbyView.xib in Resources */,
+				14359A5C1B9FD20C00E286F3 /* MyCouponView.xib in Resources */,
 				14EF799A1B9BD95C002DD848 /* HistoryGroupBuyView.xib in Resources */,
 				14C190381B93026D009050F8 /* CommodityFooterView.xib in Resources */,
+				14359A611B9FD76E00E286F3 /* CouponDetailView.xib in Resources */,
 				148FBB821B842CB3004BEE68 /* ConvenienceTypeCell.xib in Resources */,
+				14359A6D1BA00A2D00E286F3 /* MyPublicView.xib in Resources */,
 				147393581B82C66D0074101A /* cb_dark_off@2x.png in Resources */,
 				14876BF11B9EB54100019A9B /* RepairBasicCell.xib in Resources */,
 				14D7D2531B954BCD00E5C3F5 /* GroupBuyCommentCell.xib in Resources */,
@@ -2786,6 +2862,7 @@
 				14D689CD1B884ED800CF4BB3 /* ConvenienceShopCell.xib in Resources */,
 				14EF79A91B9BEFE8002DD848 /* MyRepairCell.xib in Resources */,
 				14EF79A41B9BEDB5002DD848 /* MyRepairView.xib in Resources */,
+				143DAA7F1BA15F1F00184FC4 /* StartView.xib in Resources */,
 				1473934D1B82C66D0074101A /* MWPhotoBrowser.bundle in Resources */,
 				14EF79B01B9C23DE002DD848 /* TopicListView.xib in Resources */,
 				14C5592B1B8F0C2B00B65426 /* ExpressView.xib in Resources */,
@@ -2831,6 +2908,7 @@
 				14C559241B8EC09000B65426 /* UploadImageCell.m in Sources */,
 				14E300351B996DF2002375E0 /* WelfreListView.m in Sources */,
 				14C57FC01B84D76900C82D5D /* RegisterStep1View.m in Sources */,
+				14359A531B9FB8C000E286F3 /* MyRedPactetCell.m in Sources */,
 				147393081B82C66D0074101A /* EGOImageButton.m in Sources */,
 				147393061B82C66D0074101A /* UIViewController+CWPopup.m in Sources */,
 				147393461B82C66D0074101A /* UIButton+WebCache.m in Sources */,
@@ -2925,6 +3003,7 @@
 				147394311B82C8560074101A /* Commodity.m in Sources */,
 				147393351B82C66D0074101A /* PSTCollectionViewLayout.m in Sources */,
 				1473932C1B82C66D0074101A /* MWZoomingScrollView.m in Sources */,
+				14359A4D1B9FB85F00E286F3 /* MyRedPacketView.m in Sources */,
 				1473931E1B82C66D0074101A /* FMDatabaseAdditions.m in Sources */,
 				147393331B82C66D0074101A /* PSTCollectionViewFlowLayout.m in Sources */,
 				14C559191B8E9FCF00B65426 /* NoticeCell.m in Sources */,
@@ -2945,12 +3024,14 @@
 				147392F11B82C66C0074101A /* MD5DataSigner.m in Sources */,
 				14C559341B8F0D9500B65426 /* OldExpressCell.m in Sources */,
 				147392F21B82C66C0074101A /* NSDataEx.m in Sources */,
+				14359A671BA0057D00E286F3 /* StoreMapPointView.m in Sources */,
 				147392F61B82C66C0074101A /* AMRatingControl.m in Sources */,
 				147393181B82C66D0074101A /* NSString+URLEncoding.m in Sources */,
 				147394221B82C8560074101A /* Suit.m in Sources */,
 				147392F81B82C66C0074101A /* ASIAuthenticationDialog.m in Sources */,
 				147392DA1B82C66C0074101A /* AESCrypt.m in Sources */,
 				147393491B82C66D0074101A /* UIImage+WebP.m in Sources */,
+				14359A571B9FCAB900E286F3 /* MyRedPacket.m in Sources */,
 				147392E81B82C66C0074101A /* UIImageView+AFNetworking.m in Sources */,
 				147392F91B82C66C0074101A /* ASIDataCompressor.m in Sources */,
 				1473933A1B82C66D0074101A /* PSTGridLayoutSection.m in Sources */,
@@ -2964,6 +3045,7 @@
 				14D14BD61B9D1C3700FE057B /* PublicHelpView.m in Sources */,
 				147394041B82C8560074101A /* SettingModel.m in Sources */,
 				1473930F1B82C66D0074101A /* LoadingCell.m in Sources */,
+				14359A711BA014D600E286F3 /* MyCouponClassView.m in Sources */,
 				14C5592F1B8F0D7400B65426 /* NewsExpressCell.m in Sources */,
 				147390E51B82C6410074101A /* main.m in Sources */,
 				147393021B82C66C0074101A /* IconDownloader.m in Sources */,
@@ -2993,6 +3075,7 @@
 				1473933D1B82C66D0074101A /* MKAnnotationView+WebCache.m in Sources */,
 				14E300411B997A12002375E0 /* Coupon.m in Sources */,
 				14E300391B99718C002375E0 /* RedPacket.m in Sources */,
+				14359A6C1BA00A2D00E286F3 /* MyPublicView.m in Sources */,
 				1473936B1B82C66D0074101A /* UIHelpers.m in Sources */,
 				1473942D1B82C8560074101A /* Releasepermit.m in Sources */,
 				147394291B82C8560074101A /* Activity.m in Sources */,
@@ -3052,6 +3135,7 @@
 				147393011B82C66C0074101A /* Reachability.m in Sources */,
 				148FBB6E1B8411B8004BEE68 /* LeftView.m in Sources */,
 				14CC6D321B83767B0025AB61 /* MainPageView.m in Sources */,
+				14359A5B1B9FD20C00E286F3 /* MyCouponView.m in Sources */,
 				147394091B82C8560074101A /* Community.m in Sources */,
 				147392DB1B82C66C0074101A /* NSData+Base64.m in Sources */,
 				147392F51B82C66C0074101A /* RSADataVerifier.m in Sources */,
@@ -3068,8 +3152,10 @@
 				147393201B82C66D0074101A /* FMDatabaseQueue.m in Sources */,
 				147394051B82C8560074101A /* UserModel.m in Sources */,
 				14EF79AF1B9C23DE002DD848 /* TopicListView.m in Sources */,
+				143DAA7E1BA15F1F00184FC4 /* StartView.m in Sources */,
 				147392F31B82C66C0074101A /* openssl_wrapper.m in Sources */,
 				14D7D2521B954BCD00E5C3F5 /* GroupBuyCommentCell.m in Sources */,
+				14359A601B9FD76E00E286F3 /* CouponDetailView.m in Sources */,
 				147392DC1B82C66C0074101A /* NSData+CommonCrypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

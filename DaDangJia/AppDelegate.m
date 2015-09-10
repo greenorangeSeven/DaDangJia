@@ -10,10 +10,13 @@
 #import "MainFrameView.h"
 #import "LeftView.h"
 #import "CheckNetwork.h"
+#import "StartView.h"
 
 BMKMapManager* _mapManager;
 
 @interface AppDelegate ()
+
+@property (nonatomic, assign) BOOL isFirst;
 
 @end
 
@@ -27,23 +30,37 @@ BMKMapManager* _mapManager;
     //设置UINavigationController背景
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"top_bg"]  forBarMetrics:UIBarMetricsDefault];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
- 
-    MainFrameView *mainView = [[MainFrameView alloc] initWithNibName:@"MainFrameView" bundle:nil];
-    UINavigationController *mainFrameNav = [[UINavigationController alloc] initWithRootViewController:mainView];
     
-    LeftView *leftViewController=[[LeftView alloc]initWithNibName:@"LeftView" bundle:nil];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    self.isFirst = [prefs boolForKey:@"kAppLaunched"];
     
-    _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
-    _sideViewController.rootViewController=mainFrameNav;
-    _sideViewController.leftViewController=leftViewController;
-    
-    _sideViewController.leftViewShowWidth=230;
-    _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
-    
-    self.window.rootViewController = _sideViewController;
-    [self.window makeKeyAndVisible];
+    if (!self.isFirst) {
+        [prefs setBool:YES forKey:@"kAppLaunched"];
+        [prefs synchronize];
+        //启动页
+        StartView *startPage = [[StartView alloc] initWithNibName:@"StartView" bundle:nil];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = startPage ;
+        [self.window makeKeyAndVisible];
+    }
+    else
+    {
+        MainFrameView *mainView = [[MainFrameView alloc] initWithNibName:@"MainFrameView" bundle:nil];
+        UINavigationController *mainFrameNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+        
+        LeftView *leftViewController=[[LeftView alloc]initWithNibName:@"LeftView" bundle:nil];
+        
+        _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
+        _sideViewController.rootViewController=mainFrameNav;
+        _sideViewController.leftViewController=leftViewController;
+        
+        _sideViewController.leftViewShowWidth=230;
+        _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
+        
+        self.window.rootViewController = _sideViewController;
+        [self.window makeKeyAndVisible];
+    }
         
     // 要使用百度地图，请先启动BaiduMapManager
     _mapManager = [[BMKMapManager alloc]init];

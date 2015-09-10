@@ -147,6 +147,7 @@
 */
 
 - (IBAction)item1Action:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:YES];
     [self initNavigationItem1];
     
     [self.item1Btn setImage:[UIImage imageNamed:@"main_pro"] forState:UIControlStateNormal];
@@ -172,6 +173,7 @@
 }
 
 - (IBAction)item2Action:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     [self initNavigationItem2];
     
     [self.item1Btn setImage:[UIImage imageNamed:@"main_nor"] forState:UIControlStateNormal];
@@ -203,7 +205,7 @@
 }
 
 - (IBAction)item3Action:(id)sender {
-    
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     [self initNavigationItem3];
     
     [self.item1Btn setImage:[UIImage imageNamed:@"main_nor"] forState:UIControlStateNormal];
@@ -235,6 +237,7 @@
 }
 
 - (IBAction)item4Action:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     [self initNavigationItem4];
     
     [self.item1Btn setImage:[UIImage imageNamed:@"main_nor"] forState:UIControlStateNormal];
@@ -265,6 +268,7 @@
 }
 
 - (IBAction)item5Action:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     [self initNavigationItem5];
     
     [self.item1Btn setImage:[UIImage imageNamed:@"main_nor"] forState:UIControlStateNormal];
@@ -293,4 +297,5 @@
     self.topicPage.view.hidden = YES;
     self.nearbyPage.view.hidden = NO;
 }
+
 @end

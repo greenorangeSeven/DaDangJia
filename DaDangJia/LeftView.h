@@ -20,5 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *integralLb;
 - (IBAction)myGroupByAction:(id)sender;
+- (IBAction)myRedPacketAction:(id)sender;
+- (IBAction)myCouponAction:(id)sender;
+- (IBAction)myPublicAction:(id)sender;
 
 @end

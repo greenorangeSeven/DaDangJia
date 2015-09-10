@@ -7,7 +7,19 @@
 //
 
 #import "Coupon.h"
+#import "GroupBuyHeart.h"
+#import "GroupBuyComment.h"
 
 @implementation Coupon
+
++(Class)heartList_class
+{
+    return [GroupBuyHeart class];
+}
+
++(Class)commentList_class
+{
+    return [GroupBuyComment class];
+}
 
 @end

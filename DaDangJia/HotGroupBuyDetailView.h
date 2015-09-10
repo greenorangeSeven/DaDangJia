@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HotGroupBuyDetailView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UITextFieldDelegate>
+@interface HotGroupBuyDetailView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UITextFieldDelegate,UIWebViewDelegate>
 
 @property (weak, nonatomic) NSString *groupId;
 
@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *badCountLb;
 @property (weak, nonatomic) IBOutlet UIButton *tuanBtn;
 @property (weak, nonatomic) IBOutlet UILabel *badLb;
+@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 
 @property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;

@@ -12,6 +12,8 @@
 #import "ShopDetail.h"
 #import "GroupBuyComment.h"
 #import "GroupBuyCommentCell.h"
+#import "BMapKit.h"
+#import "StoreMapPointView.h"
 
 @interface ConvenienceDetailView ()
 {
@@ -159,6 +161,7 @@
     self.shopNameLb.text = self.shopInfo.shopName;
     self.phoneLb.text = [NSString stringWithFormat:@"电       话:%@", self.shopInfo.phone];
     self.addressLb.text = [NSString stringWithFormat:@"地       址:%@", self.shopInfo.shopAddress];
+    self.remarkTv.text = self.shopInfo.remark;
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartCount] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [detail.commentList count]] forState:UIControlStateNormal];
 }
@@ -334,6 +337,16 @@
         phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     }
     [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+}
+
+- (IBAction)mapPointAction:(id)sender {
+    CLLocationCoordinate2D coor;
+    coor.longitude = self.shopInfo.longitude ;
+    coor.latitude = self.shopInfo.latitude;
+    StoreMapPointView *pointView = [[StoreMapPointView alloc] init];
+    pointView.storeCoor = coor;
+    pointView.storeTitle = self.shopInfo.shopName;
+    [self.navigationController pushViewController:pointView animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -230,6 +230,9 @@
 #define api_findRedpackageRuleOnTime @"redPackage/findRedpackageRuleOnTime.htm"
 //抢红包
 #define api_addUserRedpackage @"redPackage/addUserRedpackage.htm"
+// 分页查询用户红包
+#define api_findRhUserRedpackageByUserId @"redPackage/findRhUserRedpackageByUserId.htm"
+
 
 //我的积分
 #define api_findIntegralLogByPage @"integral/findIntegralLogByPage.htm"
@@ -238,6 +241,17 @@
 #define api_findCouponInfoByPage @"coupon/findCouponInfoByPage.htm"
 //领取优惠券
 #define api_receivingCoupon @"coupon/receivingCoupon.htm"
+//我的优惠券
+#define api_findCouponInfoByUserId @"coupon/findCouponInfoByUserId.htm"
+//优惠券详情
+#define api_findCouponInfoById @"coupon/findCouponInfoById.htm"
+//优惠券打赏
+#define api_addCouponCancelInHeart @"coupon/addCancelInHeart.htm"
+//领取优惠券
+#define api_receivingCoupon @"coupon/receivingCoupon.htm"
+//优惠券评价
+#define api_addCouponComment @"coupon/addCouponComment.htm"
+
 
 
 //查询商家类型列表接口
@@ -350,6 +364,8 @@
 #define RepairFinishCellIdentifier @"RepairFinishCellIdentifier"
 #define RepairResultCellIdentifier @"RepairResultCellIdentifier"
 #define IntegralCellIdentifier @"IntegralCellIdentifier"
+#define MyRedPactetCellIdentifier @"MyRedPactetCellIdentifier"
+
 
 
 #define Notification_RefreshAddVolunteerView @"Notification_RefreshAddVolunteerView"

@@ -48,7 +48,9 @@
         //生成获取广告URL
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
         [param setValue:@"1141788149430600" forKey:@"typeId"];
-        [param setValue:userInfo.defaultUserHouse.cellId forKey:@"cellId"];
+        if (userInfo.defaultUserHouse.cellId != nil || [userInfo.defaultUserHouse.cellId length] > 0) {
+            [param setValue:userInfo.defaultUserHouse.cellId forKey:@"cellId"];
+        }
         [param setValue:@"1" forKey:@"timeCon"];
         NSString *getADDataUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findAdInfoList] params:param];
         

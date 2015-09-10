@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EveryDayGroupBuyDetailView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UITextFieldDelegate>
+@interface EveryDayGroupBuyDetailView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UITextFieldDelegate,UIWebViewDelegate>
 
 @property (weak, nonatomic) NSString *groupId;
 
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLb;
 @property (weak, nonatomic) IBOutlet UILabel *addressLb;
 @property (weak, nonatomic) IBOutlet UIButton *tuanBtn;
+@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 
 @property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;

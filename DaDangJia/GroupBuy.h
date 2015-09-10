@@ -25,5 +25,6 @@
 @property (copy, nonatomic) NSString *imgFull;
 @property long starttimeStamp;
 @property long endtimeStamp;
+@property (copy, nonatomic) NSString *content;
 
 @end

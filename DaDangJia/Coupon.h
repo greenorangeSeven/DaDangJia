@@ -19,4 +19,13 @@
 @property int isClose;
 @property (copy, nonatomic) NSString *imgFull;
 
+@property (copy, nonatomic) NSString *couponCode;
+@property (copy, nonatomic) NSString *starttime;
+@property long starttimeStamp;
+@property long usetimeStamp;
+
+@property (strong, nonatomic) NSArray *heartList;
+@property (strong, nonatomic) NSArray *commentList;
+@property (copy, nonatomic) NSString *content;
+
 @end

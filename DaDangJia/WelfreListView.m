@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "LootRedPacketView.h"
 #import "UIViewController+CWPopup.h"
+#import "CouponDetailView.h"
 
 @interface WelfreListView ()
 {
@@ -306,12 +307,10 @@
     }
     else
     {
-//        Notice *n = [notices objectAtIndex:[indexPath row]];
-//        NSString *pushDetailHtm = [NSString stringWithFormat:@"%@%@%@", api_base_url, htm_pushDetailHtm ,n.pushId];
-//        CommDetailView *detailView = [[CommDetailView alloc] init];
-//        detailView.titleStr = @"详情";
-//        detailView.urlStr = pushDetailHtm;
-//        [self.navigationController pushViewController:detailView animated:YES];
+        Coupon *coupon = [coupons objectAtIndex:[indexPath row]];
+        CouponDetailView *couponDetail = [[CouponDetailView alloc] init];
+        couponDetail.coupon = coupon;
+        [self.navigationController pushViewController:couponDetail animated:YES];
     }
 }
 
