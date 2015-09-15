@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "YRSideViewController.h"
 #import "SettingView.h"
+#import "SignInView.h"
 
 @interface MainFrameView ()
 
@@ -36,7 +37,7 @@
 
 - (void)initNavigationItem1
 {
-    UIImageView *titleImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 98, 24)];
+    UIImageView *titleImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 108, 24)];
     [titleImage setImage:[UIImage imageNamed:@"maintitlelogo"]];
     self.navigationItem.titleView = titleImage;
     
@@ -110,12 +111,19 @@
 
 - (void)rightBtnAction:(id)sender
 {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     [self.sideViewController setNeedSwipeShowMenu:NO];
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
-    SettingView *settingView = [[SettingView alloc] init];
-    settingView.hidesBottomBarWhenPushed = YES;
-    [mainTab pushViewController:settingView animated:YES];
+//    SettingView *settingView = [[SettingView alloc] init];
+//    settingView.hidesBottomBarWhenPushed = YES;
+//    [mainTab pushViewController:settingView animated:YES];
+    SignInView *signInView = [[SignInView alloc] init];
+    signInView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:signInView animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -296,6 +304,14 @@
     self.readilyPage.view.hidden = YES;
     self.topicPage.view.hidden = YES;
     self.nearbyPage.view.hidden = NO;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:mainTab andParent:nil];
 }
 
 @end

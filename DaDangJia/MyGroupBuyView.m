@@ -11,6 +11,7 @@
 #import "GroupBuy.h"
 #import "UIImageView+WebCache.h"
 #import "EveryDayGroupBuyDetailView.h"
+#import "HotGroupBuyDetailView.h"
 
 @interface MyGroupBuyView ()
 {
@@ -219,10 +220,18 @@
     {
         GroupBuy *tuan = (GroupBuy *)[tuans objectAtIndex:row];
         if (tuan) {
-            EveryDayGroupBuyDetailView *everyDetailView = [[EveryDayGroupBuyDetailView alloc] init];
-            everyDetailView.groupId = tuan.groupId;
-            everyDetailView.isHistory = YES;
-            [self.navigationController pushViewController:everyDetailView animated:YES];
+            if (tuan.isHot == 1) {
+                HotGroupBuyDetailView *hotDetailView = [[HotGroupBuyDetailView alloc] init];
+                hotDetailView.groupId = tuan.groupId;
+                [self.navigationController pushViewController:hotDetailView animated:YES];
+            }
+            else
+            {
+                EveryDayGroupBuyDetailView *everyDetailView = [[EveryDayGroupBuyDetailView alloc] init];
+                everyDetailView.groupId = tuan.groupId;
+                everyDetailView.isHistory = YES;
+                [self.navigationController pushViewController:everyDetailView animated:YES];
+            }
         }
     }
 }

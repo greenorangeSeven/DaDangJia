@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainPageView : UIViewController
+@interface MainPageView : UIViewController<UIActionSheetDelegate>
 
 @property (weak, nonatomic) UIView *frameView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)propertyServiceAction:(id)sender;
 - (IBAction)tuanAction:(id)sender;

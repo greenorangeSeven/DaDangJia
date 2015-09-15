@@ -30,4 +30,11 @@
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;
 
+- (IBAction)helpAction:(id)sender;
+- (IBAction)zjlAction:(id)sender;
+- (IBAction)hyhAction:(id)sender;
+- (IBAction)jjzzAction:(id)sender;
+- (IBAction)tsjyAction:(id)sender;
+
+
 @end

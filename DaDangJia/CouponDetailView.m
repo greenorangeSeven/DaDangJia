@@ -18,6 +18,7 @@
     NSArray *comments;
     UserInfo *userInfo;
     int heartCount;
+    UIWebView *phoneWebView;
 }
 
 @property(nonatomic, strong) IBOutlet UIToolbar *toolbar;
@@ -33,10 +34,15 @@
     
     self.title = @"优惠券";
     
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"咨询" style:UIBarButtonItemStyleBordered target:self action:@selector(telAction:)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     //    设置无分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    userInfo = [[UserModel Instance] getUserInfo];
     
     self.convertBtn.layer.cornerRadius=self.convertBtn.frame.size.height/2;
     
@@ -48,6 +54,15 @@
     self.textField.delegate = self;
     self.textFieldOnToolbar.delegate = self;
     self.textField.inputAccessoryView = [self keyboardToolBar];
+}
+
+- (void)telAction:(id)sender
+{
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", detail.phone]];
+    if (!phoneWebView) {
+        phoneWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    }
+    [phoneWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
 }
 
 - (void)textFieldBecomeFirstResponder
@@ -155,6 +170,10 @@
     if ([UserModel Instance].isNetworkRunning) {
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
         [param setValue:self.coupon.couponId forKey:@"couponId"];
+        if (userInfo.regUserId != nil || [userInfo.regUserId length] > 0) {
+            [param setValue:userInfo.regUserId forKey:@"regUserId"];
+        }
+        
         NSString *getCouponDetailUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findCouponInfoById] params:param];
         [[AFOSCClient sharedClient]getPath:getCouponDetailUrl parameters:Nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -201,7 +220,17 @@
     self.desLb.text = detail.des;
     self.phoneLb.text = [NSString stringWithFormat:@"咨询电话:%@", detail.phone];
     self.addressLb.text = [NSString stringWithFormat:@"使用期限:%@", detail.useLimit];
-    self.convertCodeLb.text = [NSString stringWithFormat:@"优惠券兑换码:%@", detail.couponCode];
+    if (detail.isGet == 1) {
+        self.convertCodeLb.hidden = NO;
+        self.convertCodeLb.text = [NSString stringWithFormat:@"优惠券兑换码:%@", detail.couponCode];
+        [self.convertBtn setTitle:@"已领券" forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.convertCodeLb.hidden = YES;
+        [self.convertBtn setTitle:@"立即领券" forState:UIControlStateNormal];
+    }
+    
     heartCount = [detail.heartList count];
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", [detail.heartList count]] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [detail.commentList count]] forState:UIControlStateNormal];
@@ -350,6 +379,10 @@
 }
 
 - (IBAction)commentAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     [self.textField becomeFirstResponder];
     [self.textFieldOnToolbar becomeFirstResponder];
 }
@@ -374,7 +407,7 @@
                                        
                                        NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
                                        if ([state isEqualToString:@"0000"] == NO) {
-                                           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
+                                           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                                                         message:[[json objectForKey:@"header"] objectForKey:@"msg"]
                                                                                        delegate:nil
                                                                               cancelButtonTitle:@"确定"
@@ -387,12 +420,15 @@
                                            [Tool showCustomHUD:msg andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                            if([msg isEqualToString:@"参与团购成功!"])
                                            {
-                                               [self.convertBtn setTitle:@"已领取" forState:UIControlStateNormal];
+                                               detail.isGet = 1;
+//                                               [self.convertBtn setTitle:@"已领券" forState:UIControlStateNormal];
                                            }
                                            else
                                            {
-                                               [self.convertBtn setTitle:@"立即领券" forState:UIControlStateNormal];
+                                               detail.isGet = 0;
+//                                               [self.convertBtn setTitle:@"立即领券" forState:UIControlStateNormal];
                                            }
+                                           [self initHeaderView];
                                            
                                        }
                                    }

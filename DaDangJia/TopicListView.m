@@ -16,6 +16,10 @@
 #import "CommDetailView.h"
 #import "PublicHelpView.h"
 #import "TopicDetailView.h"
+#import "PublicConveneView.h"
+#import "PublicExchangeView.h"
+#import "ConveneDetailView.h"
+#import "ExChangeDetailView.h"
 
 @interface TopicListView ()
 {
@@ -62,10 +66,27 @@
 
 - (void)publicAction:(id)sender
 {
-    PublicHelpView *publicHelp = [[PublicHelpView alloc] init];
-    publicHelp.typeId = self.typeId;
-    publicHelp.typeName = self.typeName;
-    [self.navigationController pushViewController:publicHelp animated:YES];
+    if([self.typeId isEqualToString:@"0"])
+    {
+        PublicConveneView *publicCon = [[PublicConveneView alloc] init];
+        publicCon.typeId = self.typeId;
+        publicCon.typeName = self.typeName;
+        [self.navigationController pushViewController:publicCon animated:YES];
+    }
+    else if ([self.typeId isEqualToString:@"2"])
+    {
+        PublicExchangeView *publicExc = [[PublicExchangeView alloc] init];
+        publicExc.typeId = self.typeId;
+        publicExc.typeName = self.typeName;
+        [self.navigationController pushViewController:publicExc animated:YES];
+    }
+    else
+    {
+        PublicHelpView *publicHelp = [[PublicHelpView alloc] init];
+        publicHelp.typeId = self.typeId;
+        publicHelp.typeName = self.typeName;
+        [self.navigationController pushViewController:publicHelp animated:YES];
+    }
 }
 
 - (void)getADVData
@@ -204,7 +225,7 @@
                                            NSInteger count = [topicNews count];
                                            if(count == 0)
                                            {
-                                               [Tool showCustomHUD:@"暂无团购" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+                                               [Tool showCustomHUD:@"暂无帖子" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
                                            }
                                            allCount += count;
                                            if (count < 20)
@@ -297,10 +318,25 @@
     NSInteger indexRow = [indexPath row];
     TopicFull *topic = (TopicFull *)[topics objectAtIndex:indexRow];
     if (topic) {
-        TopicDetailView *detailView = [[TopicDetailView alloc] init];
-        detailView.topic = topic;
-        detailView.typeName = self.typeName;
-        [self.navigationController pushViewController:detailView animated:YES];
+        if ([self.typeId isEqualToString:@"0"]) {
+            ConveneDetailView *detailView = [[ConveneDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = self.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+        else if ([self.typeId isEqualToString:@"2"]) {
+            ExChangeDetailView *detailView = [[ExChangeDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = self.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+        else
+        {
+            TopicDetailView *detailView = [[TopicDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = self.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
     }
 }
 

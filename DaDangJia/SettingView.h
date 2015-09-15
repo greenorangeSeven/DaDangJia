@@ -11,5 +11,14 @@
 @interface SettingView : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *logoutView;
+- (IBAction)yhxyAction:(id)sender;
+- (IBAction)ystkAction:(id)sender;
+- (IBAction)yjfkAction:(id)sender;
+- (IBAction)tjxzAction:(id)sender;
+- (IBAction)kfrxAction:(id)sender;
+- (IBAction)gywmAction:(id)sender;
+- (IBAction)bbsmAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

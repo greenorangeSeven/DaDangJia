@@ -34,39 +34,39 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)helpAction:(id)sender {
-    MyPublicView *myPublic = [[MyPublicView alloc] init];
-    myPublic.typeId = @"1";
-    myPublic.typeName = @"帮帮忙";
-    [self.navigationController pushViewController:myPublic animated:YES];
-}
-
-- (IBAction)zjlAction:(id)sender {
-    MyPublicView *myPublic = [[MyPublicView alloc] init];
-    myPublic.typeId = @"0";
-    myPublic.typeName = @"召集令";
-    [self.navigationController pushViewController:myPublic animated:YES];
-}
-
-- (IBAction)hyhAction:(id)sender {
-    MyPublicView *myPublic = [[MyPublicView alloc] init];
-    myPublic.typeId = @"2";
-    myPublic.typeName = @"换一换";
-    [self.navigationController pushViewController:myPublic animated:YES];
-}
-
-- (IBAction)jjzzAction:(id)sender {
-    MyPublicView *myPublic = [[MyPublicView alloc] init];
-    myPublic.typeId = @"3";
-    myPublic.typeName = @"叽叽喳喳";
-    [self.navigationController pushViewController:myPublic animated:YES];
-}
-
-- (IBAction)tsjyAction:(id)sender {
-    MyPublicView *myPublic = [[MyPublicView alloc] init];
-    myPublic.typeId = @"4";
-    myPublic.typeName = @"投诉建议";
-    [self.navigationController pushViewController:myPublic animated:YES];
-}
+//
+//- (IBAction)helpAction:(id)sender {
+//    MyPublicView *myPublic = [[MyPublicView alloc] init];
+//    myPublic.typeId = @"1";
+//    myPublic.typeName = @"帮帮忙";
+//    [self.navigationController pushViewController:myPublic animated:YES];
+//}
+//
+//- (IBAction)zjlAction:(id)sender {
+//    MyPublicView *myPublic = [[MyPublicView alloc] init];
+//    myPublic.typeId = @"0";
+//    myPublic.typeName = @"召集令";
+//    [self.navigationController pushViewController:myPublic animated:YES];
+//}
+//
+//- (IBAction)hyhAction:(id)sender {
+//    MyPublicView *myPublic = [[MyPublicView alloc] init];
+//    myPublic.typeId = @"2";
+//    myPublic.typeName = @"换一换";
+//    [self.navigationController pushViewController:myPublic animated:YES];
+//}
+//
+//- (IBAction)jjzzAction:(id)sender {
+//    MyPublicView *myPublic = [[MyPublicView alloc] init];
+//    myPublic.typeId = @"3";
+//    myPublic.typeName = @"叽叽喳喳";
+//    [self.navigationController pushViewController:myPublic animated:YES];
+//}
+//
+//- (IBAction)tsjyAction:(id)sender {
+//    MyPublicView *myPublic = [[MyPublicView alloc] init];
+//    myPublic.typeId = @"4";
+//    myPublic.typeName = @"投诉建议";
+//    [self.navigationController pushViewController:myPublic animated:YES];
+//}
 @end

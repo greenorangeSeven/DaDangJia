@@ -17,6 +17,7 @@
 {
     UserInfo *userInfo;
     NSMutableArray *replyData;
+    NSString *isCollect;
 }
 
 @property(nonatomic, strong) IBOutlet UIToolbar *toolbar;
@@ -31,6 +32,10 @@
     [super viewDidLoad];
     
     self.title = self.typeName;
+    
+    userInfo = [[UserModel Instance] getUserInfo];
+    
+    isCollect = @"0";
     
     self.photoIv.layer.masksToBounds=YES;
     self.photoIv.layer.cornerRadius = self.photoIv.frame.size.width/2;
@@ -56,8 +61,51 @@
     self.textField.delegate = self;
     self.textFieldOnToolbar.delegate = self;
     self.textField.inputAccessoryView = [self keyboardToolBar];
-    
-//    [self getReplyData];
+}
+
+- (void)isCollect
+{
+    //生成获取广告URL
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    [param setValue:self.topic.topicId forKey:@"topicId"];
+    NSString *findTopicCollectionUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findTopicCollection] params:param];
+    [[AFOSCClient sharedClient]getPath:findTopicCollectionUrl parameters:Nil
+                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   @try {
+                                       NSLog(@"%@", operation.responseString);
+                                       NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                       NSError *error;
+                                       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                       
+                                       NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                       
+                                       if ([state isEqualToString:@"0000"]) {
+                                           [self.collectBtn setTitle:@"已收藏" forState:UIControlStateNormal];
+                                           [self.collectBtn setImage:[UIImage imageNamed:@"collect_pro"] forState:UIControlStateNormal];
+                                           isCollect = @"1";
+                                       }
+                                       else
+                                       {
+                                           [self.collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
+                                           [self.collectBtn setImage:[UIImage imageNamed:@"collect_nor"] forState:UIControlStateNormal];
+                                           isCollect = @"0";
+                                       }
+                                   }
+                                   @catch (NSException *exception) {
+                                       [NdUncaughtExceptionHandler TakeException:exception];
+                                   }
+                                   @finally {
+                                       
+                                   }
+                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   if ([UserModel Instance].isNetworkRunning == NO) {
+                                       return;
+                                   }
+                                   if ([UserModel Instance].isNetworkRunning) {
+                                       [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                   }
+                               }];
 }
 
 - (void)initHeaderView
@@ -362,6 +410,104 @@
     [self.textFieldOnToolbar becomeFirstResponder];
 }
 
+- (IBAction)collectAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
+    if ([isCollect isEqualToString:@"0"]) {
+        [self addTopicCollection];
+    }
+    else if ([isCollect isEqualToString:@"1"])
+    {
+        [self delTopicCollection];
+    }
+}
+
+- (void)addTopicCollection
+{
+    //生成获取广告URL
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    [param setValue:self.topic.topicId forKey:@"topicId"];
+    NSString *addTopicCollectionUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_addTopicCollection] params:param];
+    [[AFOSCClient sharedClient]getPath:addTopicCollectionUrl parameters:Nil
+                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   @try {
+                                       NSLog(@"%@", operation.responseString);
+                                       NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                       NSError *error;
+                                       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                       
+                                       NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                       NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
+                                       
+                                       if ([state isEqualToString:@"0000"]) {
+                                           [self.collectBtn setTitle:@"已收藏" forState:UIControlStateNormal];
+                                           [self.collectBtn setImage:[UIImage imageNamed:@"collect_pro"] forState:UIControlStateNormal];
+                                           isCollect = @"1";
+                                           return;
+                                       }
+                                       [Tool showCustomHUD:msg andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                                   }
+                                   @catch (NSException *exception) {
+                                       [NdUncaughtExceptionHandler TakeException:exception];
+                                   }
+                                   @finally {
+                                       
+                                   }
+                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   if ([UserModel Instance].isNetworkRunning == NO) {
+                                       return;
+                                   }
+                                   if ([UserModel Instance].isNetworkRunning) {
+                                       [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                   }
+                               }];
+}
+
+- (void)delTopicCollection
+{
+    //生成获取广告URL
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    [param setValue:self.topic.topicId forKey:@"topicId"];
+    NSString *delTopicCollectionUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_delTopicCollection] params:param];
+    [[AFOSCClient sharedClient]getPath:delTopicCollectionUrl parameters:Nil
+                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   @try {
+                                       NSLog(@"%@", operation.responseString);
+                                       NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                       NSError *error;
+                                       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                       
+                                       NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                       NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
+                                       
+                                       if ([state isEqualToString:@"0000"]) {
+                                           [self.collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
+                                           [self.collectBtn setImage:[UIImage imageNamed:@"collect_nor"] forState:UIControlStateNormal];
+                                           isCollect = @"0";
+                                           return;
+                                       }
+                                       [Tool showCustomHUD:msg andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                                   }
+                                   @catch (NSException *exception) {
+                                       [NdUncaughtExceptionHandler TakeException:exception];
+                                   }
+                                   @finally {
+                                       
+                                   }
+                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   if ([UserModel Instance].isNetworkRunning == NO) {
+                                       return;
+                                   }
+                                   if ([UserModel Instance].isNetworkRunning) {
+                                       [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                   }
+                               }];
+}
+
 - (void)textFieldBecomeFirstResponder
 {
     [self.textFieldOnToolbar becomeFirstResponder];
@@ -467,6 +613,10 @@
     
     userInfo = [[UserModel Instance] getUserInfo];
     
+    if (userInfo.regUserId != nil || [userInfo.regUserId length] > 0) {
+        [self isCollect];
+    }
+    
     self.navigationController.navigationBar.hidden = NO;
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"返回";
@@ -480,6 +630,11 @@
     [super viewDidDisappear:animated];
     [[IQKeyboardManager sharedManager] setEnable:YES];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];
 }
 
 @end

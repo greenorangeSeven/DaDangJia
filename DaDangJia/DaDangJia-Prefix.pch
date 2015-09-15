@@ -147,6 +147,8 @@
 #define api_findAllTopicType @"topic/findAllTopicType.htm"
 //获取朋友圈话题
 #define api_addTopicInfo @"topic/addTopicInfo.htm"
+//分页查询用户已收藏的帖子
+#define api_findUserCollectionTopic @"topic/findUserCollectionTopic.htm"
 //按月分组查询账单数据
 #define api_findPaymentByGroup @"payment/findPaymentByGroup.htm"
 //查询月账单详情
@@ -199,6 +201,8 @@
 #define api_findAllOrderState @"order/findAllOrderState.htm"
 //新增全民营销
 #define api_addMarketingInfo @"estate/addMarketingInfo.htm"
+//用后感
+#define api_addAfterFell @"suit/addAfterFell.htm"
 
 //分页查询商品信息(全城特价)
 #define api_findSaleCommodityByPage @"commodity/findSaleCommodityByPage.htm"
@@ -212,6 +216,16 @@
 
 //分页查询邻里帖子的回复数据
 #define api_findTopicReplyPage @"topic/findTopicReplyPage.htm"
+//帖子收藏
+#define api_addTopicCollection @"topic/addTopicCollection.htm"
+//取消收藏
+#define api_delTopicCollection @"topic/delTopicCollection.htm"
+//查询用户是否已收藏相应帖子
+#define api_findTopicCollection @"topic/findTopicCollection.htm"
+//分页查询参与邻里帖子(如召集令)的用户列表
+#define api_findRhTopicUserPageByTopicId @"topic/findRhTopicUserPageByTopicId.htm"
+
+
 
 //分页获取用户团购活动信息
 #define api_findGroupBuyingInfoByUserId @"groupBuy/findGroupBuyingInfoByUserId.htm"
@@ -299,6 +313,9 @@
 #define api_delTopicHeart @"topic/delTopicHeart.htm"
 //新增回复信息
 #define api_addTopicReply @"topic/addTopicReply.htm"
+//参加与取消相关邻里活动
+#define api_joinAndCancelTopic @"topic/joinAndCancelTopic.htm"
+
 
 //订单支付成功状态码
 #define ORDER_PAY_OK @"9000"
@@ -326,8 +343,6 @@
 #define htm_lottery @"app/lottery.htm?ios=1&"
 //便民服务页面
 #define htm_shopDetail @"app/shopDetail.htm?shopId="
-//关于智慧社区
-#define htm_about @"app/about.htm"
 //行业动态等详情页
 #define htm_propertyNewsDetailHtm @"app/newsDetail.htm?newsId="
 //楼盘活动详情页
@@ -340,9 +355,15 @@
 #define htm_estateInfoDetail @"app/estateInfoDetail.htm?estateId="
 //优惠政策详情页
 #define htm_preferentialPolicyDetail @"app/preferentialPolicyDetail.htm?activityId="
+//关于智慧社区
+#define htm_about @"app/about.htm"
+//隐私条款
+#define htm_privacyClause @"app/privacyClause.htm"
+//用户协议
+#define htm_userAgreement @"app/userAgreement.htm"
 
 
-#define servicephone @"186-3513-9166"
+#define servicephone @"0731-88186991"
 
 #define ConvenienceTypeCellIdentifier @"ConvenienceTypeCellIdentifier"
 #define ConvenienceShopCellIdentifier @"ConvenienceShopCellIdentifier"

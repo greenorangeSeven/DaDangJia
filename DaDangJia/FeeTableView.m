@@ -178,7 +178,7 @@
     if ([UserModel Instance].isNetworkRunning) {
         //查询指定房间所绑定的用户信息
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
-//        [param setValue:userInfo.defaultUserHouse.numberId forKey:@"numberId"];
+        [param setValue:userInfo.defaultUserHouse.numberId forKey:@"numberId"];
         [param setValue:self.typeId forKey:@"typeId"];
         [param setValue:@"1000" forKey:@"countPerPages"];
         [param setValue:@"1" forKey:@"pageNumbers"];

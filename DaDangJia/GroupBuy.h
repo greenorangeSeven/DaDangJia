@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSString *endtime;
 @property int isHot;
 @property (copy, nonatomic) NSString *imgFull;
+@property (copy, nonatomic) NSString *titlePageFull;
 @property long starttimeStamp;
 @property long endtimeStamp;
 @property (copy, nonatomic) NSString *content;

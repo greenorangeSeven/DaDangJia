@@ -446,8 +446,8 @@
             }
             ShopInfo *shop = [shops objectAtIndex:row];
             cell.nameLb.text = shop.shopName;
-            cell.addressLb.text = [NSString stringWithFormat:@"地址:%@", shop.shopAddress];
-            cell.phoneLb.text = [NSString stringWithFormat:@"电话:%@", shop.phone];
+            cell.addressLb.text = shop.shopAddress;
+            cell.phoneLb.text = shop.phone;
             [cell.imgIv sd_setImageWithURL:[NSURL URLWithString:shop.imgUrlFull] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
             
             return cell;

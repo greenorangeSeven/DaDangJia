@@ -36,6 +36,9 @@
     
     self.title = self.shopInfo.shopName;
     
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"地图" style:UIBarButtonItemStyleBordered target:self action:@selector(mapPointAction:)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     //    设置无分割线
@@ -159,8 +162,8 @@
 {
     [self.shopImageIv sd_setImageWithURL:[NSURL URLWithString:self.shopInfo.imgUrlFull] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     self.shopNameLb.text = self.shopInfo.shopName;
-    self.phoneLb.text = [NSString stringWithFormat:@"电       话:%@", self.shopInfo.phone];
-    self.addressLb.text = [NSString stringWithFormat:@"地       址:%@", self.shopInfo.shopAddress];
+    self.phoneLb.text = self.shopInfo.phone;
+    self.addressLb.text = self.shopInfo.shopAddress;
     self.remarkTv.text = self.shopInfo.remark;
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartCount] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [detail.commentList count]] forState:UIControlStateNormal];
@@ -339,7 +342,7 @@
     [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
 }
 
-- (IBAction)mapPointAction:(id)sender {
+- (void)mapPointAction:(id)sender {
     CLLocationCoordinate2D coor;
     coor.longitude = self.shopInfo.longitude ;
     coor.latitude = self.shopInfo.latitude;
@@ -368,6 +371,11 @@
     [super viewDidDisappear:animated];
     [[IQKeyboardManager sharedManager] setEnable:YES];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WelfreListView : UIViewController
-<UITableViewDelegate,UITableViewDataSource,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate>
+<UITableViewDelegate,UITableViewDataSource,EGORefreshTableHeaderDelegate,MBProgressHUDDelegate,UIActionSheetDelegate>
 {
     NSMutableArray *coupons;
     BOOL isLoading;

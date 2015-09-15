@@ -19,6 +19,8 @@
 #import "MyRedPacketView.h"
 #import "MyCouponView.h"
 #import "MyCouponClassView.h"
+#import "MyCollectView.h"
+#import "MyPublicView.h"
 
 @interface LeftView ()
 {
@@ -33,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.view.frame.size.height - 54);
         
     self.faceIv.layer.masksToBounds=YES;
     self.faceIv.layer.cornerRadius = self.faceIv.frame.size.width/2;
@@ -88,7 +92,7 @@
     else
     {
         [self.faceIv setImage:[UIImage imageNamed:@"default_head.png"]];
-        self.nickNameLb.text = @"";
+        self.nickNameLb.text = @"点击登录";
         self.userInfoLb.text = @"";
     }
 }
@@ -132,6 +136,10 @@
 }
 
 - (IBAction)myGroupByAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     [self.sideViewController setNeedSwipeShowMenu:NO];
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
@@ -141,6 +149,10 @@
 }
 
 - (IBAction)myRedPacketAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     [self.sideViewController setNeedSwipeShowMenu:NO];
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
@@ -150,6 +162,10 @@
 }
 
 - (IBAction)myCouponAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     [self.sideViewController setNeedSwipeShowMenu:NO];
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
@@ -159,12 +175,41 @@
 }
 
 - (IBAction)myPublicAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     [self.sideViewController setNeedSwipeShowMenu:NO];
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
-    MyCouponClassView *myPublicView = [[MyCouponClassView alloc] init];
+//    MyCouponClassView *myPublicView = [[MyCouponClassView alloc] init];
+    //    myPublicView.hidesBottomBarWhenPushed = YES;
+    //    [mainTab pushViewController:myPublicView animated:YES];
+    MyPublicView *myPublicView = [[MyPublicView alloc] init];
     myPublicView.hidesBottomBarWhenPushed = YES;
     [mainTab pushViewController:myPublicView animated:YES];
     
 }
+
+- (IBAction)myCollectAction:(id)sender {
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    MyCollectView *myCollectView = [[MyCollectView alloc] init];
+    myCollectView.hidesBottomBarWhenPushed = YES;
+    [mainTab pushViewController:myCollectView animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    [self.sideViewController hideSideViewController:YES];
+    UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:mainTab andParent:nil];
+}
+
 @end

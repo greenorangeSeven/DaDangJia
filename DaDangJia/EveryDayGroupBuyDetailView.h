@@ -13,6 +13,7 @@
 @property (weak, nonatomic) NSString *groupId;
 
 @property BOOL isHistory;
+@property int isHot;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLb;
 @property (weak, nonatomic) IBOutlet UIButton *tuanBtn;
 @property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
+@property (weak, nonatomic) IBOutlet UILabel *joinCountLb;
 
 @property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;

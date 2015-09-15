@@ -13,7 +13,7 @@
 #import "TopicPageView.h"
 #import "NearbyView.h"
 
-@interface MainFrameView : UIViewController
+@interface MainFrameView : UIViewController<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

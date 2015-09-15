@@ -19,6 +19,7 @@
     NSArray *comments;
     UserInfo *userInfo;
     int heartCount;
+    UIWebView *phoneWebView;
 }
 
 @property(nonatomic, strong) IBOutlet UIToolbar *toolbar;
@@ -34,10 +35,15 @@
     
     self.title = @"人气团";
     
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"咨询" style:UIBarButtonItemStyleBordered target:self action:@selector(telAction:)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     //    设置无分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    userInfo = [[UserModel Instance] getUserInfo];
     
     self.tuanBtn.layer.cornerRadius=self.tuanBtn.frame.size.height/2;
     
@@ -49,6 +55,15 @@
     self.textField.delegate = self;
     self.textFieldOnToolbar.delegate = self;
     self.textField.inputAccessoryView = [self keyboardToolBar];
+}
+
+- (void)telAction:(id)sender
+{
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", detail.phone]];
+    if (!phoneWebView) {
+        phoneWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    }
+    [phoneWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
 }
 
 - (void)textFieldBecomeFirstResponder
@@ -203,7 +218,7 @@
 - (void)initHeaderView
 {
     [self.imageIv sd_setImageWithURL:[NSURL URLWithString:detail.imgFull] placeholderImage:[UIImage imageNamed:@"default_head"]];
-    self.phoneLb.text = [NSString stringWithFormat:@"电话:%@", detail.phone];
+    self.phoneLb.text = detail.phone;
     self.addressLb.text = [NSString stringWithFormat:@"地址:%@", detail.address];
     self.personCountLb.text = [NSString stringWithFormat:@"成团人数:%d", detail.personCount];
     heartCount = [detail.heartList count];

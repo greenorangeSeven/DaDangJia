@@ -7,8 +7,13 @@
 //
 
 #import "SettingView.h"
+#import "CommDetailView.h"
+#import "OpinionView.h"
 
 @interface SettingView ()
+{
+    UIWebView *phoneWebView;
+}
 
 @end
 
@@ -18,6 +23,8 @@
     [super viewDidLoad];
     
     self.title = @"设置";
+    
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.view.frame.size.height);
     
     //退出登录
     UITapGestureRecognizer *logoutTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logoutTapClick)];
@@ -58,4 +65,50 @@
 }
 */
 
+- (IBAction)yhxyAction:(id)sender {
+    NSString *userAgreementHtm = [NSString stringWithFormat:@"%@%@", api_base_url, htm_userAgreement];
+    CommDetailView *detailView = [[CommDetailView alloc] init];
+    detailView.titleStr = @"用户协议";
+    detailView.urlStr = userAgreementHtm;
+    detailView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailView animated:YES];
+}
+
+- (IBAction)ystkAction:(id)sender {
+    NSString *privacyClauseHtm = [NSString stringWithFormat:@"%@%@", api_base_url, htm_privacyClause];
+    CommDetailView *detailView = [[CommDetailView alloc] init];
+    detailView.titleStr = @"隐私条款";
+    detailView.urlStr = privacyClauseHtm;
+    detailView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailView animated:YES];
+}
+
+- (IBAction)yjfkAction:(id)sender {
+    OpinionView *opinionView = [[OpinionView alloc] init];
+    opinionView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:opinionView animated:YES];
+}
+
+- (IBAction)tjxzAction:(id)sender {
+}
+
+- (IBAction)kfrxAction:(id)sender {
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", servicephone]];
+    if (!phoneWebView) {
+        phoneWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    }
+    [phoneWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+}
+
+- (IBAction)gywmAction:(id)sender {
+    NSString *aboutHtm = [NSString stringWithFormat:@"%@%@", api_base_url, htm_about];
+    CommDetailView *detailView = [[CommDetailView alloc] init];
+    detailView.titleStr = @"关于我们";
+    detailView.urlStr = aboutHtm;
+    detailView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailView animated:YES];
+}
+
+- (IBAction)bbsmAction:(id)sender {
+}
 @end

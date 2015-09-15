@@ -14,6 +14,8 @@
 #import "TuanPageView.h"
 #import "WelfreListView.h"
 #import "TopicListView.h"
+#import "AppDelegate.h"
+#import "YRSideViewController.h"
 
 @interface MainPageView ()
 {
@@ -21,6 +23,8 @@
     UserInfo *userInfo;
     NSMutableArray *advDatas;
 }
+
+@property (strong, nonatomic) YRSideViewController *sideViewController;
 
 @end
 
@@ -31,6 +35,8 @@
     
     userInfo = [[UserModel Instance] getUserInfo];
     
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.view.frame.size.height);
+    
     CGRect viewFrame = self.view.frame;
     viewFrame.size.height = self.frameView.frame.size.height;
     viewFrame.size.width = self.frameView.frame.size.width;
@@ -39,6 +45,9 @@
 //    NSString *lotteryHtm = [NSString stringWithFormat:@"%@%@accessId=%@&userId=%@", api_base_url, htm_lottery, Appkey, userInfo.regUserId];
     
     [self getADVData];
+    
+    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.sideViewController = [delegate sideViewController];
 }
 
 - (void)getADVData
@@ -141,21 +150,29 @@
 */
 
 - (IBAction)propertyServiceAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
     PropertyServiceView *serviceView = [[PropertyServiceView alloc] init];
     [self.navigationController pushViewController:serviceView animated:YES];
 }
 
 - (IBAction)tuanAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     TuanPageView *tuanView = [[TuanPageView alloc] init];
     [self.navigationController pushViewController:tuanView animated:YES];
 }
 
 - (IBAction)welfreAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     WelfreListView *welfreView = [[WelfreListView alloc] init];
     [self.navigationController pushViewController:welfreView animated:YES];
 }
 
 - (IBAction)helpAction:(id)sender {
+    [self.sideViewController setNeedSwipeShowMenu:NO];
     TopicListView *helpView = [[TopicListView alloc] init];
     helpView.typeName = @"帮帮忙";
     helpView.typeId = @"1";
@@ -164,18 +181,32 @@
 }
 
 - (IBAction)zjlAction:(id)sender {
-    TopicListView *helpView = [[TopicListView alloc] init];
-    helpView.typeName = @"召集令";
-    helpView.typeId = @"0";
-    helpView.adId = @"1141857144700000";
-    [self.navigationController pushViewController:helpView animated:YES];
+    [self.sideViewController setNeedSwipeShowMenu:NO];
+    TopicListView *zjlView = [[TopicListView alloc] init];
+    zjlView.typeName = @"召集令";
+    zjlView.typeId = @"0";
+    zjlView.adId = @"1141857144700000";
+    [self.navigationController pushViewController:zjlView animated:YES];
 }
 
 - (IBAction)hyhAction:(id)sender {
+//    [self.sideViewController setNeedSwipeShowMenu:NO];
     TopicListView *helpView = [[TopicListView alloc] init];
     helpView.typeName = @"换一换";
     helpView.typeId = @"2";
     helpView.adId = @"1141857157067500";
     [self.navigationController pushViewController:helpView animated:YES];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.sideViewController setNeedSwipeShowMenu:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];
+}
+
 @end

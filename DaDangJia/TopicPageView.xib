@@ -34,6 +34,9 @@
                             <state key="normal" image="top_bbm">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="helpAction:" destination="-1" eventType="touchUpInside" id="get-AA-pu4"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帮帮忙" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2K7-xW-rDI">
                             <rect key="frame" x="28" y="52" width="62" height="21"/>
@@ -48,6 +51,9 @@
                             <state key="normal" image="top_zjl">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="zjlAction:" destination="-1" eventType="touchUpInside" id="wQi-Yj-8rh"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="召集令" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g9g-Tv-PUp">
                             <rect key="frame" x="129" y="52" width="62" height="21"/>
@@ -62,6 +68,9 @@
                             <state key="normal" image="top_hyh">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="hyhAction:" destination="-1" eventType="touchUpInside" id="lqW-nc-MrO"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="换一换" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="epB-1N-kP7">
                             <rect key="frame" x="230" y="52" width="62" height="21"/>
@@ -76,6 +85,9 @@
                             <state key="normal" image="top_jjzz">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="jjzzAction:" destination="-1" eventType="touchUpInside" id="INT-wO-odg"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="叽叽喳喳" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9HW-Zt-TVe">
                             <rect key="frame" x="28" y="124" width="62" height="21"/>
@@ -90,6 +102,9 @@
                             <state key="normal" image="top_tsjy">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="tsjyAction:" destination="-1" eventType="touchUpInside" id="Fq4-iG-9Ev"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投诉建议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YSh-vd-RmG">
                             <rect key="frame" x="129" y="124" width="62" height="21"/>
@@ -128,7 +143,7 @@
                 </collectionView>
             </subviews>
             <color key="backgroundColor" red="0.93725490199999995" green="0.94509803920000002" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="211" y="97"/>
+            <point key="canvasLocation" x="88" y="84"/>
         </view>
     </objects>
     <resources>

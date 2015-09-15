@@ -46,7 +46,7 @@
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    self.collectionView.backgroundColor = [UIColor clearColor];
+//    self.collectionView.backgroundColor = [UIColor clearColor];
     [self.collectionView registerClass:[TuanItemCell class] forCellWithReuseIdentifier:TuanItemCellIdentifier];
     
     allCount = 0;
@@ -124,7 +124,7 @@
                                        
                                        GroupBuy *tuan = (GroupBuy *)[hotDatas objectAtIndex:0];
                                        self.titleLb.text = tuan.title;
-                                       self.priceLb.text = [NSString stringWithFormat:@"市场价:%0.2f  团购价:%0.2f", tuan.marketPrice, tuan.price];
+                                       self.priceLb.text = [NSString stringWithFormat:@"市场价:%0.2f  已报名:%d人", tuan.marketPrice, tuan.joinCount];
                                        self.personLb.text = [NSString stringWithFormat:@"已报名:%d", tuan.joinCount];
                                        
                                    }
@@ -161,7 +161,7 @@
     advIndex = index;
     GroupBuy *tuan = (GroupBuy *)[hotDatas objectAtIndex:index];
     self.titleLb.text = tuan.title;
-    self.priceLb.text = [NSString stringWithFormat:@"市场价:%0.2f  团购价:%0.2f", tuan.marketPrice, tuan.price];
+    self.priceLb.text = [NSString stringWithFormat:@"市场价:%0.2f  已报名:%d人", tuan.marketPrice, tuan.joinCount];
     self.personLb.text = [NSString stringWithFormat:@"已报名:%d", tuan.joinCount];
 }
 //
@@ -324,7 +324,7 @@
     }
     NSInteger indexRow = [indexPath row];
     GroupBuy *g = [tuans objectAtIndex:indexRow];
-    [cell.imageIv sd_setImageWithURL:[NSURL URLWithString:g.imgFull] placeholderImage:[UIImage imageNamed:@"loadpic.png"]];
+    [cell.imageIv sd_setImageWithURL:[NSURL URLWithString:g.titlePageFull] placeholderImage:[UIImage imageNamed:@"loadpic.png"]];
     cell.titleLb.text = g.title;
     cell.desLb.text = [NSString stringWithFormat:@"团购价:%0.2f", g.price];;
     

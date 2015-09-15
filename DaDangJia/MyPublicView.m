@@ -12,6 +12,8 @@
 #import "TopicListCell.h"
 #import "TopicFull.h"
 #import "TopicDetailView.h"
+#import "ConveneDetailView.h"
+#import "ExChangeDetailView.h"
 
 @interface MyPublicView ()
 {
@@ -26,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = self.typeName;
+    self.title = @"我的发布";
     
     userInfo = [[UserModel Instance] getUserInfo];
     
@@ -84,7 +86,7 @@
         [param setValue:userInfo.defaultUserHouse.cellId forKey:@"cellId"];
         [param setValue:userInfo.regUserId forKey:@"userId"];
         [param setValue:userInfo.regUserId forKey:@"regUserId"];
-        [param setValue:self.typeId forKey:@"typeId"];
+//        [param setValue:self.typeId forKey:@"typeId"];
         [param setValue:@"starttime-desc" forKey:@"sort"];
         [param setValue:[NSString stringWithFormat:@"%d", pageIndex] forKey:@"pageNumbers"];
         [param setValue:@"20" forKey:@"countPerPages"];
@@ -169,7 +171,7 @@
     {
         [cell.imgIv sd_setImageWithURL:[NSURL URLWithString:topic.imgUrlList[0]] placeholderImage:[UIImage imageNamed:@"loadpic.png"]];
     }
-    cell.typeNameLb.hidden = YES;
+//    cell.typeNameLb.hidden = YES;
     cell.titleLb.text = topic.content;
     
     return cell;
@@ -197,10 +199,25 @@
     NSInteger indexRow = [indexPath row];
     TopicFull *topic = (TopicFull *)[topics objectAtIndex:indexRow];
     if (topic) {
-        TopicDetailView *detailView = [[TopicDetailView alloc] init];
-        detailView.topic = topic;
-        detailView.typeName = topic.typeName;
-        [self.navigationController pushViewController:detailView animated:YES];
+        if (topic.typeId == 0) {
+            ConveneDetailView *detailView = [[ConveneDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = topic.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+        else if (topic.typeId == 2) {
+            ExChangeDetailView *detailView = [[ExChangeDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = topic.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+        else
+        {
+            TopicDetailView *detailView = [[TopicDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = topic.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
     }
 }
 

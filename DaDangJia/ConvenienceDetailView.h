@@ -28,6 +28,6 @@
 - (IBAction)praiseAction:(id)sender;
 - (IBAction)commentAction:(id)sender;
 - (IBAction)callAction:(id)sender;
-- (IBAction)mapPointAction:(id)sender;
+//- (IBAction)mapPointAction:(id)sender;
 
 @end

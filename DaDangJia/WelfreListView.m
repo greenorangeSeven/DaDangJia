@@ -130,6 +130,10 @@
     adView.callBack = ^(NSInteger index,NSString * imageURL)
     {
         NSLog(@"被点中图片的索引:%ld---地址:%@",index,imageURL);
+        if ([UserModel Instance].isLogin == NO) {
+            [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+            return;
+        }
         RedPacket *rp = [redPacketDatas objectAtIndex:index];
         LootRedPacketView *samplePopupViewController = [[LootRedPacketView alloc] initWithNibName:@"LootRedPacketView" bundle:nil];
         samplePopupViewController.parentView = self;
@@ -437,6 +441,11 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];
 }
 
 @end

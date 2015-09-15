@@ -26,11 +26,13 @@
 @property (weak, nonatomic) IBOutlet UITextView *topicContentTv;
 @property (weak, nonatomic) IBOutlet UILabel *timeLb;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *collectBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 - (IBAction)praiseAction:(id)sender;
 - (IBAction)commentAction:(id)sender;
+- (IBAction)collectAction:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

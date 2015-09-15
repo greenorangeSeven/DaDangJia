@@ -28,6 +28,10 @@
 @property int stateId;
 @property (nonatomic, retain) NSString *stateName;
 
+@property (nonatomic, retain) NSString *jsonRemark;
+
+@property int isJoin;
+
 @property int contentHeight;
 @property int imageViewHeight;
 @property int replyHeight;

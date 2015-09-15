@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *useLimit;
 @property (copy, nonatomic) NSString *img;
 @property int isClose;
+@property int isGet;
 @property (copy, nonatomic) NSString *imgFull;
 
 @property (copy, nonatomic) NSString *couponCode;

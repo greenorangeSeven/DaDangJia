@@ -12,6 +12,9 @@
 #import "TopicListCell.h"
 #import "TopicFull.h"
 #import "TopicDetailView.h"
+#import "ConveneDetailView.h"
+#import "ExChangeDetailView.h"
+#import "TopicListView.h"
 
 @interface TopicPageView ()
 
@@ -198,10 +201,25 @@
     NSInteger indexRow = [indexPath row];
     TopicFull *topic = (TopicFull *)[topics objectAtIndex:indexRow];
     if (topic) {
-        TopicDetailView *detailView = [[TopicDetailView alloc] init];
-        detailView.topic = topic;
-        detailView.typeName = topic.typeName;
-        [self.navigationController pushViewController:detailView animated:YES];
+        if (topic.typeId == 0) {
+            ConveneDetailView *detailView = [[ConveneDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = topic.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+        else if (topic.typeId == 2) {
+            ExChangeDetailView *detailView = [[ExChangeDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = topic.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+        else
+        {
+            TopicDetailView *detailView = [[TopicDetailView alloc] init];
+            detailView.topic = topic;
+            detailView.typeName = topic.typeName;
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
     }
 }
 
@@ -221,6 +239,46 @@
 {
     _reloading = NO;
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.collectionView];
+}
+
+- (IBAction)helpAction:(id)sender {
+    TopicListView *helpView = [[TopicListView alloc] init];
+    helpView.typeName = @"帮帮忙";
+    helpView.typeId = @"1";
+    helpView.adId = @"1141856653531200";
+    [self.navigationController pushViewController:helpView animated:YES];
+}
+
+- (IBAction)zjlAction:(id)sender {
+    TopicListView *zjlView = [[TopicListView alloc] init];
+    zjlView.typeName = @"召集令";
+    zjlView.typeId = @"0";
+    zjlView.adId = @"1141857144700000";
+    [self.navigationController pushViewController:zjlView animated:YES];
+}
+
+- (IBAction)hyhAction:(id)sender {
+    TopicListView *exChangeView = [[TopicListView alloc] init];
+    exChangeView.typeName = @"换一换";
+    exChangeView.typeId = @"2";
+    exChangeView.adId = @"1141857157067500";
+    [self.navigationController pushViewController:exChangeView animated:YES];
+}
+
+- (IBAction)jjzzAction:(id)sender {
+    TopicListView *exChangeView = [[TopicListView alloc] init];
+    exChangeView.typeName = @"叽叽喳喳";
+    exChangeView.typeId = @"3";
+    exChangeView.adId = @"1141895702711700";
+    [self.navigationController pushViewController:exChangeView animated:YES];
+}
+
+- (IBAction)tsjyAction:(id)sender {
+    TopicListView *exChangeView = [[TopicListView alloc] init];
+    exChangeView.typeName = @"投诉建议";
+    exChangeView.typeId = @"4";
+    exChangeView.adId = @"1142357056821000";
+    [self.navigationController pushViewController:exChangeView animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
