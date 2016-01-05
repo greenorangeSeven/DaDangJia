@@ -19,7 +19,8 @@
 @property double distance;
 @property (nonatomic, retain) NSString *remark;
 @property (nonatomic, retain) NSString *imgUrlFull;
-@property int heartCount;
+//@property int heartCount;
+@property int heartNum;
 
 @property (strong, nonatomic) NSArray *commentList;
 

@@ -45,16 +45,16 @@
 //    if (!IS_IPHONE_5) {
 //        _pageControl.frame = CGRectMake(_pageControl.frame.origin.x, _pageControl.frame.origin.y-88, _pageControl.frame.size.width, _pageControl.frame.size.height);
 //    }
-    _pageControl.numberOfPages = 4;
+    _pageControl.numberOfPages = 5;
     _pageControl.currentPage = 0;
     _pageControl.enabled = NO;
 }
 #pragma mark createScrollView
 -(void)createScrollView
 {
-    self.scrollView.contentSize=CGSizeMake(KSCROLLVIEW_WIDTH*4, KSCROLLVIEW_HEIGHT);
+    self.scrollView.contentSize=CGSizeMake(KSCROLLVIEW_WIDTH*5, KSCROLLVIEW_HEIGHT);
     self.scrollView.delegate=self;
-    for (int i=0; i<4; i++)
+    for (int i=0; i<5; i++)
     {
         UIImageView *photoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(i*KSCROLLVIEW_WIDTH, 0, KSCROLLVIEW_WIDTH, KSCROLLVIEW_HEIGHT+20)];
         NSLog(@"the x:%f, y:%f  the width:%f, height:%f",i*KSCROLLVIEW_WIDTH,60.0f,KSCROLLVIEW_WIDTH,KSCROLLVIEW_HEIGHT);
@@ -81,15 +81,15 @@
     if (scrollView.contentOffset.x <= 0) {
         scrollView.contentOffset = CGPointMake(0, 0);
     }
-    if (scrollView.contentOffset.x >= KSCROLLVIEW_WIDTH*5) {
-        scrollView.contentOffset = CGPointMake(KSCROLLVIEW_WIDTH*5, 0);
+    if (scrollView.contentOffset.x >= KSCROLLVIEW_WIDTH*6) {
+        scrollView.contentOffset = CGPointMake(KSCROLLVIEW_WIDTH*6, 0);
     }
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     GlobalPageControlNumber = scrollView.contentOffset.x/KSCROLLVIEW_WIDTH;
     _pageControl.currentPage=GlobalPageControlNumber;
-    if (GlobalPageControlNumber == 3)
+    if (GlobalPageControlNumber == 4)
     {
         self.intoButton.hidden = NO;
     }
@@ -101,19 +101,20 @@
 
 - (IBAction)enterAction:(id)sender
 {
-    MainFrameView *mainView = [[MainFrameView alloc] initWithNibName:@"MainFrameView" bundle:nil];
-    UINavigationController *mainFrameNav = [[UINavigationController alloc] initWithRootViewController:mainView];
-    
-    LeftView *leftViewController=[[LeftView alloc]initWithNibName:@"LeftView" bundle:nil];
-    
-    _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
-    _sideViewController.rootViewController=mainFrameNav;
-    _sideViewController.leftViewController=leftViewController;
-    
-    _sideViewController.leftViewShowWidth=230;
-    _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
-    
+//    MainFrameView *mainView = [[MainFrameView alloc] initWithNibName:@"MainFrameView" bundle:nil];
+//    UINavigationController *mainFrameNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+//    
+//    LeftView *leftViewController=[[LeftView alloc]initWithNibName:@"LeftView" bundle:nil];
+//    
+//    _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
+//    _sideViewController.rootViewController=mainFrameNav;
+//    _sideViewController.leftViewController=leftViewController;
+//    
+//    _sideViewController.leftViewShowWidth=230;
+//    _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
+//    
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    _sideViewController = [delegate sideViewController];
     delegate.window.rootViewController = _sideViewController;
 }
 

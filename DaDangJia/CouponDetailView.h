@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Coupon.h"
 
-@interface CouponDetailView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UITextFieldDelegate,UIWebViewDelegate>
+@interface CouponDetailView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UITextFieldDelegate,UIWebViewDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) Coupon *coupon;
 

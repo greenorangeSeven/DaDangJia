@@ -54,13 +54,14 @@
                                     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                     
                                     NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                    NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
                                     if ([state isEqualToString:@"0000"] == NO) {
                                         [Tool showCustomHUD:[[json objectForKey:@"header"] objectForKey:@"msg"] andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                         
                                     }
                                     else
                                     {
-                                        [Tool showCustomHUD:@"签到成功" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                                        [Tool showCustomHUD:[NSString stringWithFormat:@"签到成功,积分+%@", msg]  andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                     }
                                     self.signInBtn.enabled = YES;
                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -80,6 +81,7 @@
     CommDetailView *detailView = [[CommDetailView alloc] init];
     detailView.titleStr = @"抽奖";
     detailView.urlStr = lotteryHtm;
+    detailView.showTel = @"1";
     detailView.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailView animated:YES];
 }

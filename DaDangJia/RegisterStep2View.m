@@ -71,6 +71,11 @@
         [Tool showCustomHUD:@"请输入昵称" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
         return;
     }
+    if([nickNameStr isEqualToString:@"大当家"] || [nickNameStr isEqualToString:@"大当家来了"])
+    {
+        [Tool showCustomHUD:@"大当家为APP保留昵称" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
+        return;
+    }
     if (houseNumId == nil || [houseNumId length] == 0) {
         [Tool showCustomHUD:@"请选择房间" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:2];
         return;
@@ -507,14 +512,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (void)viewWillAppear:(BOOL)animated
 {

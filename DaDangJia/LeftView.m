@@ -18,13 +18,14 @@
 #import "MyGroupBuyView.h"
 #import "MyRedPacketView.h"
 #import "MyCouponView.h"
-#import "MyCouponClassView.h"
+#import "MyPublicClassView.h"
 #import "MyCollectView.h"
 #import "MyPublicView.h"
 
 @interface LeftView ()
 {
     UserInfo *userInfo;
+    int integral;
 }
 
 @property (strong, nonatomic) YRSideViewController *sideViewController;
@@ -61,6 +62,7 @@
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
     MyIntegralView *integralView = [[MyIntegralView alloc] init];
+    integralView.integral = integral;
     integralView.hidesBottomBarWhenPushed = YES;
     [mainTab pushViewController:integralView animated:YES];
 }
@@ -84,17 +86,56 @@
     userInfo = [[UserModel Instance] getUserInfo];
     if(userInfo != nil)
     {
-        [self.faceIv sd_setImageWithURL:[NSURL URLWithString:userInfo.photoFull] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
+        [self findRegUserInfoByUserId];
+        [self.faceIv sd_setImageWithURL:[NSURL URLWithString:userInfo.photoFull] placeholderImage:[UIImage imageNamed:@"main_wygj"]];
         
         self.nickNameLb.text = userInfo.nickName;
-        self.userInfoLb.text = [NSString stringWithFormat:@"%@    %d积分", userInfo.mobileNo, [userInfo.integral intValue]];
+        
     }
     else
     {
-        [self.faceIv setImage:[UIImage imageNamed:@"default_head.png"]];
+        [self.faceIv setImage:[UIImage imageNamed:@"main_wygj"]];
         self.nickNameLb.text = @"点击登录";
         self.userInfoLb.text = @"";
     }
+}
+
+- (void)findRegUserInfoByUserId
+{
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:userInfo.regUserId forKey:@"userId"];
+    
+    NSString *findRegUserInfoUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findRegUserInfoByUserId] params:param];
+    [[AFOSCClient sharedClient] getPath:findRegUserInfoUrl parameters:nil
+                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                    NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                    NSError *error;
+                                    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                    
+                                    NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                    if ([state isEqualToString:@"0000"] == NO) {
+                                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
+                                                                                     message:[[json objectForKey:@"header"] objectForKey:@"msg"]
+                                                                                    delegate:nil
+                                                                           cancelButtonTitle:@"确定"
+                                                                           otherButtonTitles:nil];
+                                        [av show];
+                                        
+                                    }
+                                    else
+                                    {
+                                        integral = [[[json objectForKey:@"data"] objectForKey:@"integral"] intValue];
+                                        self.userInfoLb.text = [NSString stringWithFormat:@"%@    %d积分", userInfo.mobileNo, integral];
+                                    }
+                                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    NSLog(@"列表获取出错");
+                                    if ([UserModel Instance].isNetworkRunning == NO) {
+                                        return;
+                                    }
+                                    if ([UserModel Instance].isNetworkRunning) {
+                                        [Tool showCustomHUD:@"网络不给力" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+                                    }
+                                }];
 }
 
 /*
@@ -182,12 +223,12 @@
     [self.sideViewController setNeedSwipeShowMenu:NO];
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
-//    MyCouponClassView *myPublicView = [[MyCouponClassView alloc] init];
-    //    myPublicView.hidesBottomBarWhenPushed = YES;
-    //    [mainTab pushViewController:myPublicView animated:YES];
-    MyPublicView *myPublicView = [[MyPublicView alloc] init];
+    MyPublicClassView *myPublicView = [[MyPublicClassView alloc] init];
     myPublicView.hidesBottomBarWhenPushed = YES;
     [mainTab pushViewController:myPublicView animated:YES];
+//    MyPublicView *myPublicView = [[MyPublicView alloc] init];
+//    myPublicView.hidesBottomBarWhenPushed = YES;
+//    [mainTab pushViewController:myPublicView animated:YES];
     
 }
 

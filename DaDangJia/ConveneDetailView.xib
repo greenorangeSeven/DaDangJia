@@ -10,7 +10,6 @@
                 <outlet property="collectBtn" destination="9SR-rB-BZf" id="pBy-gv-22s"/>
                 <outlet property="collectionView" destination="8eT-c2-9gY" id="ATp-w5-20t"/>
                 <outlet property="commentBtn" destination="YaN-5d-gnq" id="Vhd-mT-4YK"/>
-                <outlet property="feeLb" destination="27P-bJ-obj" id="mCb-F4-W1F"/>
                 <outlet property="headerView" destination="ePK-6R-eRy" id="uii-pZ-nRi"/>
                 <outlet property="joinBtn" destination="gWK-pf-r83" id="PwL-6N-KdD"/>
                 <outlet property="joinLb" destination="kQr-fq-Hzk" id="JF4-Db-6V0"/>
@@ -37,15 +36,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view contentMode="scaleToFill" id="ePK-6R-eRy">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="OvM-71-uGn">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_head" id="RMm-dA-Mth">
-                                    <rect key="frame" x="10" y="10" width="65" height="65"/>
+                                    <rect key="frame" x="15" y="10" width="55" height="55"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z0S-Sy-8Sx">
@@ -56,14 +55,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2ut-Bn-ogf">
-                                    <rect key="frame" x="89" y="111" width="223" height="21"/>
+                                    <rect key="frame" x="89" y="100" width="223" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.80392156859999997" green="0.81176470590000005" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bmr-Yd-qNH">
-                                    <rect key="frame" x="0.0" y="138" width="320" height="1"/>
+                                    <rect key="frame" x="0.0" y="125" width="320" height="1"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -71,28 +70,21 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="78l-cn-ZBI">
-                                    <rect key="frame" x="83" y="6" width="229" height="38"/>
+                                    <rect key="frame" x="89" y="6" width="223" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tta-gr-npd">
-                                    <rect key="frame" x="83" y="43" width="229" height="21"/>
+                                    <rect key="frame" x="89" y="43" width="229" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="费用" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="27P-bJ-obj">
-                                    <rect key="frame" x="83" y="66" width="229" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V7y-cq-HqD">
-                                    <rect key="frame" x="83" y="88" width="229" height="21"/>
+                                    <rect key="frame" x="89" y="71" width="229" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,7 +94,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="8eT-c2-9gY">
-                            <rect key="frame" x="8" y="214" width="304" height="75"/>
+                            <rect key="frame" x="8" y="201" width="304" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="0.0" id="PTs-R1-LCg">
@@ -113,7 +105,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <view contentMode="scaleToFill" id="CzT-I6-ewB">
-                            <rect key="frame" x="0.0" y="297" width="320" height="46"/>
+                            <rect key="frame" x="0.0" y="282" width="320" height="46"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PtC-B9-HLv">
@@ -172,21 +164,21 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="Xw7-00-kcj">
-                            <rect key="frame" x="8" y="134" width="304" height="77"/>
+                            <rect key="frame" x="8" y="122" width="304" height="77"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="textColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有46人报名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kQr-fq-Hzk">
-                            <rect key="frame" x="13" y="356" width="139" height="21"/>
+                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有46人报名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kQr-fq-Hzk">
+                            <rect key="frame" x="13" y="338" width="139" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.64313725489999995" green="0.63137254899999995" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gWK-pf-r83">
-                            <rect key="frame" x="218" y="354" width="91" height="25"/>
+                            <rect key="frame" x="218" y="336" width="91" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.92549019607843142" green="0.34509803921568627" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

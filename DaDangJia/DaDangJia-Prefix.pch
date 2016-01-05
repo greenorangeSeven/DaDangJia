@@ -39,7 +39,7 @@
 #define Appkey @"10000001"
 #define AppSecret @"Hr54hiz7"
 //
-//#define api_base_url @"http://192.168.1.101:8080/ddj_api/"
+//#define api_base_url @"http://192.168.1.103:8080/ddj_api/"
 #define api_base_url @"http://120.26.76.203:80/ddj_api/"
 //登录接口
 #define api_login @"regUser/login.htm"
@@ -137,6 +137,8 @@
 #define api_findTopicInfoByPageForApp @"topic/findTopicInfoByPageForApp.htm"
 //社区朋友圈取消点赞
 #define api_delTopicHeart @"topic/delTopicHeart.htm"
+//我的发布第二级界面接口
+#define api_findRegUserTopicType @"topic/findRegUserTopicType.htm"
 //社区朋友圈点赞
 #define api_addTopicHeart @"topic/addTopicHeart.htm"
 //新增社区朋友圈回复
@@ -213,6 +215,8 @@
 #define api_addShopComment @"shop/addShopComment.htm"
 //添加商家打赏
 #define api_addShopHeartCount @"shop/addShopHeartCount.htm"
+// 加入/取消商家点赞
+#define api_shopAddCancelInHeart @"shop/addCancelInHeart.htm"
 
 //分页查询邻里帖子的回复数据
 #define api_findTopicReplyPage @"topic/findTopicReplyPage.htm"
@@ -263,6 +267,9 @@
 #define api_addCouponCancelInHeart @"coupon/addCancelInHeart.htm"
 //领取优惠券
 #define api_receivingCoupon @"coupon/receivingCoupon.htm"
+//使用优惠券
+#define api_useCoupon @"coupon/useCoupon.htm"
+
 //优惠券评价
 #define api_addCouponComment @"coupon/addCouponComment.htm"
 
@@ -386,6 +393,8 @@
 #define RepairResultCellIdentifier @"RepairResultCellIdentifier"
 #define IntegralCellIdentifier @"IntegralCellIdentifier"
 #define MyRedPactetCellIdentifier @"MyRedPactetCellIdentifier"
+#define MyPublicClassCellIdentifier @"MyPublicClassCellIdentifier"
+#define ConveneUserCellIdentifier @"ConveneUserCellIdentifier"
 
 
 
@@ -397,6 +406,13 @@
 #define Notification_ShopCarGotoOrder @"Notification_ShopCarGotoOrder"
 #define Notification_RefreshPayFeeTableView @"Notification_RefreshPayFeeTableView"
 #define Notification_LifeServicePush @"Notification_LifeServicePush"
+
+#define Notification_CloseLoadMain @"Notification_CloseLoadMain"
+#define Notification_CloseLoadPage @"Notification_CloseLoadPage"
+#define Notification_TopicPageReLoad @"Notification_TopicPageReLoad"
+#define Notification_TopicPageRefresh @"Notification_TopicPageRefresh"
+#define Notification_GotoTopicListView @"Notification_GotoTopicListView"
+
 
 
 #define UserInfoCache @"UserInfoCache"

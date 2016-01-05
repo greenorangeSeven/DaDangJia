@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyLb;
 @property (weak, nonatomic) IBOutlet UILabel *stateLb;
+@property (weak, nonatomic) IBOutlet UILabel *getTimeLb;
+@property (weak, nonatomic) IBOutlet UILabel *useTimeLb;
 
 @end

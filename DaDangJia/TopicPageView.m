@@ -54,6 +54,14 @@
     
     topics = [[NSMutableArray alloc] initWithCapacity:20];
     [self reload:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:Notification_TopicPageRefresh object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableReload) name:Notification_TopicPageReLoad object:nil];
+}
+
+- (void)tableReload
+{
+    [self.collectionView reloadData];
 }
 
 - (void)viewDidUnload
@@ -83,6 +91,7 @@
             allCount = 0;
         }
         int pageIndex = allCount/20 + 1;
+        userInfo = [[UserModel Instance] getUserInfo];
         
         //生成获取朋友圈列表URL
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
@@ -111,7 +120,12 @@
                                                [Tool showCustomHUD:@"暂无发布" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
                                            }
                                            allCount += count;
-                                           if (count < 20)
+                                           if (count == 0)
+                                           {
+                                               isLoadOver = YES;
+                                               footerView.moreLb.text = @"暂无发布";
+                                           }
+                                           else if (count < 20)
                                            {
                                                isLoadOver = YES;
                                                footerView.moreLb.text = @"已加载全部";
@@ -176,6 +190,9 @@
     cell.typeNameLb.text = topic.typeName;
     cell.titleLb.text = topic.content;
     
+    [cell.headerCountBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", topic.heartCount] forState:UIControlStateNormal];
+    [cell.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [topic.replyList count]] forState:UIControlStateNormal];
+    
     return cell;
 }
 
@@ -201,7 +218,7 @@
     NSInteger indexRow = [indexPath row];
     TopicFull *topic = (TopicFull *)[topics objectAtIndex:indexRow];
     if (topic) {
-        if (topic.typeId == 0) {
+        if (topic.typeId == 1) {
             ConveneDetailView *detailView = [[ConveneDetailView alloc] init];
             detailView.topic = topic;
             detailView.typeName = topic.typeName;
@@ -244,7 +261,7 @@
 - (IBAction)helpAction:(id)sender {
     TopicListView *helpView = [[TopicListView alloc] init];
     helpView.typeName = @"帮帮忙";
-    helpView.typeId = @"1";
+    helpView.typeId = @"0";
     helpView.adId = @"1141856653531200";
     [self.navigationController pushViewController:helpView animated:YES];
 }
@@ -252,7 +269,7 @@
 - (IBAction)zjlAction:(id)sender {
     TopicListView *zjlView = [[TopicListView alloc] init];
     zjlView.typeName = @"召集令";
-    zjlView.typeId = @"0";
+    zjlView.typeId = @"1";
     zjlView.adId = @"1141857144700000";
     [self.navigationController pushViewController:zjlView animated:YES];
 }

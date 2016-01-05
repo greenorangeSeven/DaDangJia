@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgIv;
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet UILabel *typeNameLb;
+@property (weak, nonatomic) IBOutlet UIButton *headerCountBtn;
+@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 
 @end

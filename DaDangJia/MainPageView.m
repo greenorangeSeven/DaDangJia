@@ -175,7 +175,7 @@
     [self.sideViewController setNeedSwipeShowMenu:NO];
     TopicListView *helpView = [[TopicListView alloc] init];
     helpView.typeName = @"帮帮忙";
-    helpView.typeId = @"1";
+    helpView.typeId = @"0";
     helpView.adId = @"1141856653531200";
     [self.navigationController pushViewController:helpView animated:YES];
 }
@@ -184,7 +184,7 @@
     [self.sideViewController setNeedSwipeShowMenu:NO];
     TopicListView *zjlView = [[TopicListView alloc] init];
     zjlView.typeName = @"召集令";
-    zjlView.typeId = @"0";
+    zjlView.typeId = @"1";
     zjlView.adId = @"1141857144700000";
     [self.navigationController pushViewController:zjlView animated:YES];
 }

@@ -11,8 +11,14 @@
 #import "YRSideViewController.h"
 #import "SettingView.h"
 #import "SignInView.h"
+#import "LoadMainView.h"
+#import "LoadPageView.h"
+#import "UIViewController+CWPopup.h"
 
 @interface MainFrameView ()
+{
+    BOOL mainPageClickSelf;
+}
 
 @property (strong, nonatomic) YRSideViewController *sideViewController;
 
@@ -27,6 +33,8 @@
     self.sideViewController = [delegate sideViewController];
     
     [self initNavigationItem1];
+    
+    mainPageClickSelf = YES;
     
     //下属控件初始化
     self.mainPage = [[MainPageView alloc] init];
@@ -172,12 +180,28 @@
     [self.item5Btn setImage:[UIImage imageNamed:@"zhoubian_nor"] forState:UIControlStateNormal];
     [self.item5Lb setTextColor:[UIColor colorWithRed:174.0/255 green:158.0/255 blue:146.0/255 alpha:1.0]];
 
+    UIButton *lBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [lBtn addTarget:self action:@selector(leftBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [lBtn setImage:[UIImage imageNamed:@"maintop_l"] forState:UIControlStateNormal];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:lBtn];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
+    UIButton *rBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [rBtn addTarget:self action:@selector(rightBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [rBtn setImage:[UIImage imageNamed:@"maintop_r"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:rBtn];
+    self.navigationItem.rightBarButtonItem = rightBtn;
 
     self.mainPage.view.hidden = NO;
     self.conveniencePage.view.hidden = YES;
     self.readilyPage.view.hidden = YES;
     self.topicPage.view.hidden = YES;
     self.nearbyPage.view.hidden = YES;
+    
+//    if (mainPageClickSelf == NO) {
+//        [self showPopView];
+//    }
+    mainPageClickSelf= YES;
 }
 
 - (IBAction)item2Action:(id)sender {
@@ -210,6 +234,9 @@
     self.readilyPage.view.hidden = YES;
     self.topicPage.view.hidden = YES;
     self.nearbyPage.view.hidden = YES;
+    
+    mainPageClickSelf= NO;
+//    [self showPopView];
 }
 
 - (IBAction)item3Action:(id)sender {
@@ -242,6 +269,8 @@
     self.readilyPage.view.hidden = NO;
     self.topicPage.view.hidden = YES;
     self.nearbyPage.view.hidden = YES;
+    
+    mainPageClickSelf= NO;
 }
 
 - (IBAction)item4Action:(id)sender {
@@ -267,12 +296,15 @@
         self.topicPage.frameView = self.mainView;
         [self addChildViewController:self.topicPage];
         [self.mainView addSubview:self.topicPage.view];
+        [self showPopView1];
     }
     self.mainPage.view.hidden = YES;
     self.conveniencePage.view.hidden = YES;
     self.readilyPage.view.hidden = YES;
     self.topicPage.view.hidden = NO;
     self.nearbyPage.view.hidden = YES;
+    
+    mainPageClickSelf= NO;
 }
 
 - (IBAction)item5Action:(id)sender {
@@ -304,6 +336,8 @@
     self.readilyPage.view.hidden = YES;
     self.topicPage.view.hidden = YES;
     self.nearbyPage.view.hidden = NO;
+    
+    mainPageClickSelf= NO;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -312,6 +346,36 @@
     [self.sideViewController hideSideViewController:YES];
     UINavigationController *mainTab = (UINavigationController *)self.sideViewController.rootViewController;
     [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:mainTab andParent:nil];
+}
+
+- (void)showPopView
+{
+    LoadMainView *sampleLoadMainView = [[LoadMainView alloc] initWithNibName:@"LoadMainView" bundle:nil];
+    sampleLoadMainView.parentView = self;
+    [self presentPopupViewController:sampleLoadMainView animated:YES completion:^(void) {
+        NSLog(@"popup view presented");
+    }];
+    [self performSelector:@selector(closePop) withObject:self afterDelay:1.2f];
+}
+
+- (void)showPopView1
+{
+    LoadPageView *sampleLoadPageView = [[LoadPageView alloc] initWithNibName:@"LoadPageView" bundle:nil];
+    sampleLoadPageView.parentView = self;
+    [self presentPopupViewController:sampleLoadPageView animated:YES completion:^(void) {
+        NSLog(@"popup view presented");
+    }];
+    [self performSelector:@selector(closePop1) withObject:self afterDelay:1.2f];
+}
+
+- (void)closePop
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CloseLoadMain object:nil];
+}
+
+- (void)closePop1
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CloseLoadPage object:nil];
 }
 
 @end

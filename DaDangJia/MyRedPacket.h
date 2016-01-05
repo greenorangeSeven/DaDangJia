@@ -17,4 +17,10 @@
 @property (copy, nonatomic) NSString *regUserId;
 @property int stateId;
 
+@property (copy, nonatomic) NSNumber *getTimeStamp;
+@property (copy, nonatomic) NSNumber *useTimeStamp;
+
+@property (copy, nonatomic) NSString *getTimeStr;
+@property (copy, nonatomic) NSString *useTimeStr;
+
 @end

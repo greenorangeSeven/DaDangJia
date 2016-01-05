@@ -8,6 +8,8 @@
 
 #import "RegisterStep3View.h"
 #import "IQKeyboardManager/KeyboardManager.framework/Headers/IQKeyboardManager.h"
+#import "LoginView.h"
+#import "AppDelegate.h"
 
 @interface RegisterStep3View ()
 {
@@ -277,9 +279,15 @@
 - (void)back
 {
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-    [arr removeObjectAtIndex:arr.count - 3];
+    [arr removeLastObject];
+    [arr removeLastObject];
+    [arr removeLastObject];
     self.navigationController.viewControllers = arr;
     [self.navigationController popViewControllerAnimated:YES];
+//    LoginView *loginView = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
+//    UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:loginView];
+//    AppDelegate *appdele = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//    appdele.window.rootViewController = loginNav;
 }
 
 @end

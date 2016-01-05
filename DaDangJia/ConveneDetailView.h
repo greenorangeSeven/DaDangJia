@@ -38,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLb;
-@property (weak, nonatomic) IBOutlet UILabel *feeLb;
+//@property (weak, nonatomic) IBOutlet UILabel *feeLb;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLb;
 @property (weak, nonatomic) IBOutlet UILabel *joinLb;
 @property (weak, nonatomic) IBOutlet UIButton *joinBtn;

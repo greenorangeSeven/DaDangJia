@@ -12,6 +12,8 @@
 #import "GroupBuyCommentCell.h"
 #import "TopicReply.h"
 #import "IQKeyboardManager/KeyboardManager.framework/Headers/IQKeyboardManager.h"
+#import "PublishSucceedView.h"
+#import "UIViewController+CWPopup.h"
 
 @interface ExChangeDetailView ()
 {
@@ -155,6 +157,8 @@
                                            if (length > 0)
                                            {
                                                [self.tableView reloadData];
+                                               self.topic.replyList = replyData;
+                                               [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [replyData count]] forState:UIControlStateNormal];
                                            }
                                        }
                                        @catch (NSException *exception) {
@@ -559,6 +563,7 @@
 {
     [self.textFieldOnToolbar resignFirstResponder];
     [self.textField resignFirstResponder];
+    [self publicComment];
     return YES;
 }
 
@@ -566,6 +571,11 @@
 {
     [self.textField resignFirstResponder];
     [self.textFieldOnToolbar resignFirstResponder];
+    [self publicComment];
+}
+
+- (void)publicComment
+{
     NSString *commentContent = self.textFieldOnToolbar.text;
     if ([commentContent length] == 0) {
         return;
@@ -588,6 +598,7 @@
                                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                          
                                          NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                         NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
                                          if ([state isEqualToString:@"0000"] == NO) {
                                              UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
                                                                                           message:[[json objectForKey:@"header"] objectForKey:@"msg"]
@@ -603,6 +614,19 @@
                                              [self.textField resignFirstResponder];
                                              
                                              [self getReplyData];
+                                             
+                                             if ([msg intValue] == 0) {
+                                                 [Tool showCustomHUD:@"评论成功" andView:self.view andImage:nil andAfterDelay:1.1f];
+                                                 return;
+                                             }
+                                             
+                                             PublishSucceedView *samplePopupViewController = [[PublishSucceedView alloc] initWithNibName:@"PublishSucceedView" bundle:nil];
+                                             samplePopupViewController.parentView = self;
+                                             samplePopupViewController.integral = msg;
+                                             samplePopupViewController.titleStr = @"评论成功";
+                                             [self presentPopupViewController:samplePopupViewController animated:YES completion:^(void) {
+                                                 NSLog(@"popup view presented");
+                                             }];
                                          }
                                          
                                      }
@@ -638,6 +662,12 @@
     self.navigationItem.backBarButtonItem = backItem;
     [[IQKeyboardManager sharedManager] setEnable:NO];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_TopicPageReLoad object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

@@ -448,7 +448,7 @@
             cell.nameLb.text = shop.shopName;
             cell.addressLb.text = shop.shopAddress;
             cell.phoneLb.text = shop.phone;
-            [cell.imgIv sd_setImageWithURL:[NSURL URLWithString:shop.imgUrlFull] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            [cell.imgIv sd_setImageWithURL:[NSURL URLWithString:shop.titlePageFull] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
             
             return cell;
         }

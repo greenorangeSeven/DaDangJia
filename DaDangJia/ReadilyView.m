@@ -9,6 +9,10 @@
 #import "ReadilyView.h"
 #import "UploadImageCell.h"
 #import "UIImageView+WebCache.h"
+#import "PublishSucceedView.h"
+#import "UIViewController+CWPopup.h"
+#import "MyRepairView.h"
+#import "TopicListView.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -18,6 +22,7 @@
     NSMutableArray *topicImageArray;
     int selectCaremaIndex;
     NSString *typeId;
+    NSString *tempTypeId;
 }
 
 @end
@@ -41,8 +46,8 @@
     
     self.submitBtn.layer.cornerRadius=self.submitBtn.frame.size.height/2;
     
-    typeId = @"1";
-    [self.type6Btn setBackgroundColor:[Tool getColorForMain]];
+    typeId = @"";
+//    [self.type6Btn setBackgroundColor:[Tool getColorForMain]];
     
     self.contentTf.delegate = self;
     
@@ -55,6 +60,8 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[UploadImageCell class] forCellWithReuseIdentifier:UploadImageCellIdentifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoTopicListView) name:Notification_GotoTopicListView object:nil];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -62,10 +69,10 @@
     if (textView == self.contentTf) {
         int number = [textView.text length];
         self.contentLengthLb.text = [NSString stringWithFormat:@"%d", number];
-        if (number > 140) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"内容字数不能大于140" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        if (number > 200) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"内容字数不能大于200" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
-            textView.text = [textView.text substringToIndex:140];
+            textView.text = [textView.text substringToIndex:200];
         }
     }
 }
@@ -437,14 +444,113 @@
         return;
     }
     
+    if([typeId length] == 0)
+    {
+        [Tool showCustomHUD:@"请选择标签" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        return;
+    }
+    
     self.submitBtn.enabled = NO;
     
+    if ([typeId isEqualToString:@"5"]) {
+        [self submitRepair:contentStr];
+    }
+    else
+    {
+        [self submitTopic:contentStr];
+    }
+}
+
+- (void)submitRepair:(NSString *)contentStr
+{
     //生成新增报修Sign
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:contentStr forKey:@"repairContent"];
+    [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    [param setValue:userInfo.defaultUserHouse.numberId forKey:@"numberId"];
+    NSString *addRegirSign = [Tool serializeSign:[NSString stringWithFormat:@"%@%@", api_base_url, api_AddRepairWork] params:param];
+    
+    NSString *addRegirUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_AddRepairWork];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:addRegirUrl]];
+    [request setUseCookiePersistence:[[UserModel Instance] isLogin]];
+    [request setTimeOutSeconds:30];
+    [request setPostValue:Appkey forKey:@"accessId"];
+    [request setPostValue:addRegirSign forKey:@"sign"];
+    [request setPostValue:contentStr forKey:@"repairContent"];
+    [request setPostValue:userInfo.regUserId forKey:@"regUserId"];
+    [request setPostValue:userInfo.defaultUserHouse.numberId forKey:@"numberId"];
+    for (int i = 0 ; i < [topicImageArray count] - 1; i++) {
+        UIImage *repairImage = [topicImageArray objectAtIndex:i];
+        [request addData:UIImageJPEGRepresentation(repairImage, 0.8f) withFileName:@"img.jpg" andContentType:@"image/jpeg" forKey:[NSString stringWithFormat:@"pic%d", i]];
+    }
+    request.tag = 1;
+    
+    request.delegate = self;
+    [request setDidFailSelector:@selector(requestFailed:)];
+    [request setDidFinishSelector:@selector(requestSubmitRepair:)];
+    [request startAsynchronous];
+    request.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [Tool showHUD:@"提交报修" andView:self.view andHUD:request.hud];
+}
+
+- (void)requestSubmitRepair:(ASIHTTPRequest *)request
+{
+    if (request.hud) {
+        [request.hud hide:YES];
+    }
+    
+    [request setUseCookiePersistence:YES];
+    NSData *data = [request.responseString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+    if ([state isEqualToString:@"0000"] == NO) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
+                                                     message:[[json objectForKey:@"header"] objectForKey:@"msg"]
+                                                    delegate:nil
+                                           cancelButtonTitle:@"确定"
+                                           otherButtonTitles:nil];
+        [av show];
+        return;
+    }
+    else
+    {
+        NSArray *typeBtns = [self.typeView subviews];
+        for (UIView *btn in typeBtns) {
+            if ([btn isKindOfClass:[UIButton class]])
+            {
+                [btn setBackgroundColor:nil];
+            }
+        }
+        typeId = @"";
+        self.contentLengthLb.text = @"0";
+        [topicImageArray removeAllObjects];
+        topicImageArray = nil;
+        topicImageArray = [[NSMutableArray alloc] initWithCapacity:4];
+        UIImage *myImage = [UIImage imageNamed:@"addrepairimg"];
+        [topicImageArray addObject:myImage];
+        [self.collectionView reloadData];
+        
+        self.contentTf.text = @"";
+        [Tool showCustomHUD:@"报修成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        MyRepairView *myRepairView = [[MyRepairView alloc] init];
+        [self.navigationController pushViewController:myRepairView animated:YES];
+    }
+    self.submitBtn.enabled = YES;
+}
+
+- (void)submitTopic:(NSString *)contentStr
+{
+    //生成新增话题Sign
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:typeId forKey:@"typeId"];
     [param setValue:contentStr forKey:@"content"];
     [param setValue:userInfo.regUserId forKey:@"userId"];
     [param setValue:userInfo.defaultUserHouse.cellId forKey:@"cellId"];
+    
+    //    NSString *url = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_addTopicInfo] params:param];
+    
     NSString *addTopicSign = [Tool serializeSign:[NSString stringWithFormat:@"%@%@", api_base_url, api_addTopicInfo] params:param];
     
     NSString *addTopicUrl = [NSString stringWithFormat:@"%@%@", api_base_url, api_addTopicInfo];
@@ -483,6 +589,7 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+    NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
     if ([state isEqualToString:@"0000"] == NO) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
                                                      message:[[json objectForKey:@"header"] objectForKey:@"msg"]
@@ -495,14 +602,64 @@
     }
     else
     {
+        tempTypeId = typeId;
+        NSArray *typeBtns = [self.typeView subviews];
+        for (UIView *btn in typeBtns) {
+            if ([btn isKindOfClass:[UIButton class]])
+            {
+                [btn setBackgroundColor:nil];
+            }
+        }
+        typeId = @"";
         self.contentTf.text = @"";
         self.contentLengthLb.text = @"0";
         [topicImageArray removeAllObjects];
         UIImage *myImage = [UIImage imageNamed:@"addrepairimg"];
         [topicImageArray addObject:myImage];
         [self.collectionView reloadData];
-        [Tool showCustomHUD:@"发布完成" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         self.submitBtn.enabled = YES;
+        
+        if ([msg intValue] == 0) {
+            [Tool showCustomHUD:@"发布完成" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+            [self performSelector:@selector(gotoTopicListView) withObject:self afterDelay:1.2f];
+            return;
+        }
+        
+        PublishSucceedView *samplePopupViewController = [[PublishSucceedView alloc] initWithNibName:@"PublishSucceedView" bundle:nil];
+        samplePopupViewController.parentView = self;
+        samplePopupViewController.integral = msg;
+        samplePopupViewController.titleStr = @"发帖成功";
+        samplePopupViewController.gotoTopicList = YES;
+        [self presentPopupViewController:samplePopupViewController animated:YES completion:^(void) {
+            NSLog(@"popup view presented");
+        }];
+    }
+}
+
+- (void)gotoTopicListView
+{
+    if ([tempTypeId isEqualToString:@"0"]) {
+        TopicListView *helpView = [[TopicListView alloc] init];
+        helpView.typeName = @"帮帮忙";
+        helpView.typeId = @"0";
+        helpView.adId = @"1141856653531200";
+        [self.navigationController pushViewController:helpView animated:YES];
+    }
+    else if([tempTypeId isEqualToString:@"3"])
+    {
+        TopicListView *exChangeView = [[TopicListView alloc] init];
+        exChangeView.typeName = @"叽叽喳喳";
+        exChangeView.typeId = @"3";
+        exChangeView.adId = @"1141895702711700";
+        [self.navigationController pushViewController:exChangeView animated:YES];
+    }
+    else if([tempTypeId isEqualToString:@"4"])
+    {
+        TopicListView *exChangeView = [[TopicListView alloc] init];
+        exChangeView.typeName = @"投诉建议";
+        exChangeView.typeId = @"4";
+        exChangeView.adId = @"1142357056821000";
+        [self.navigationController pushViewController:exChangeView animated:YES];
     }
 }
 

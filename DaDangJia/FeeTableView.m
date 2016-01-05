@@ -36,6 +36,8 @@
     self.payTypeNameArray = @[@"支付宝支付"];
     self.payTypeIdArray = @[@"0"];
     
+    userInfo = [[UserModel Instance] getUserInfo];
+    
     payTypeId = @"0";
     
     self.payTypePicker = [[UIPickerView alloc] initWithFrame:CGRectZero];

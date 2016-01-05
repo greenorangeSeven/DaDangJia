@@ -20,6 +20,8 @@
     BOOL _reloading;
 }
 
+@property int integral;
+
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *faceIv;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLb;

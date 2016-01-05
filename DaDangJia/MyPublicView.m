@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"我的发布";
+    self.title = self.typeName;
     
     userInfo = [[UserModel Instance] getUserInfo];
     
@@ -51,6 +51,14 @@
     
     topics = [[NSMutableArray alloc] initWithCapacity:20];
     [self reload:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:Notification_TopicPageRefresh object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableReload) name:Notification_TopicPageReLoad object:nil];
+}
+
+- (void)tableReload
+{
+    [self.collectionView reloadData];
 }
 
 - (void)viewDidUnload
@@ -86,7 +94,7 @@
         [param setValue:userInfo.defaultUserHouse.cellId forKey:@"cellId"];
         [param setValue:userInfo.regUserId forKey:@"userId"];
         [param setValue:userInfo.regUserId forKey:@"regUserId"];
-//        [param setValue:self.typeId forKey:@"typeId"];
+        [param setValue:self.typeId forKey:@"typeId"];
         [param setValue:@"starttime-desc" forKey:@"sort"];
         [param setValue:[NSString stringWithFormat:@"%d", pageIndex] forKey:@"pageNumbers"];
         [param setValue:@"20" forKey:@"countPerPages"];
@@ -171,8 +179,11 @@
     {
         [cell.imgIv sd_setImageWithURL:[NSURL URLWithString:topic.imgUrlList[0]] placeholderImage:[UIImage imageNamed:@"loadpic.png"]];
     }
-//    cell.typeNameLb.hidden = YES;
+    cell.typeNameLb.hidden = YES;
     cell.titleLb.text = topic.content;
+    
+    [cell.headerCountBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", topic.heartCount] forState:UIControlStateNormal];
+    [cell.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [topic.replyList count]] forState:UIControlStateNormal];
     
     return cell;
 }
@@ -199,7 +210,7 @@
     NSInteger indexRow = [indexPath row];
     TopicFull *topic = (TopicFull *)[topics objectAtIndex:indexRow];
     if (topic) {
-        if (topic.typeId == 0) {
+        if (topic.typeId == 1) {
             ConveneDetailView *detailView = [[ConveneDetailView alloc] init];
             detailView.topic = topic;
             detailView.typeName = topic.typeName;

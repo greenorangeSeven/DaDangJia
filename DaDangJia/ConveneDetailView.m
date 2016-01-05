@@ -12,6 +12,10 @@
 #import "GroupBuyCommentCell.h"
 #import "TopicReply.h"
 #import "IQKeyboardManager/KeyboardManager.framework/Headers/IQKeyboardManager.h"
+#import "TopicUserJoin.h"
+#import "PublishSucceedView.h"
+#import "UIViewController+CWPopup.h"
+#import "ConveneUserView.h"
 
 @interface ConveneDetailView ()
 {
@@ -19,6 +23,8 @@
     NSMutableArray *replyData;
     NSString *isCollect;
     int totalRecord;
+    NSMutableArray *topicUsers;
+    NSString *isGet;
 }
 
 @property(nonatomic, strong) IBOutlet UIToolbar *toolbar;
@@ -36,6 +42,7 @@
     userInfo = [[UserModel Instance] getUserInfo];
     
     isCollect = @"0";
+    isGet =  @"0";
     
     self.photoIv.layer.masksToBounds=YES;
     self.photoIv.layer.cornerRadius = self.photoIv.frame.size.width/2;
@@ -69,7 +76,6 @@
 
 - (void)isCollect
 {
-    //生成获取广告URL
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userInfo.regUserId forKey:@"regUserId"];
     [param setValue:self.topic.topicId forKey:@"topicId"];
@@ -114,30 +120,45 @@
 
 - (void)initHeaderView
 {
-    NSData *data = [self.topic.jsonRemark dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSLog(@"%@", self.topic.jsonRemark);
+    if (self.topic.jsonRemark != nil && self.topic.jsonRemark.length > 0) {
+        NSData *data = [self.topic.jsonRemark dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        
+        NSString *teme = [json objectForKey:@"teme"];
+        NSString *time = [json objectForKey:@"time"];
+        NSString *phone = [json objectForKey:@"phone"];
+//        NSString *money = [json objectForKey:@"money"];
+        NSString *connect = [json objectForKey:@"connect"];
+        self.topicContentTv.text = connect;
+        
+        self.titleLb.text = teme;
+        self.startTimeLb.text = [NSString stringWithFormat:@"时间:%@", time];
+//        self.feeLb.text = [NSString stringWithFormat:@"费用:%@", money];
+        self.phoneLb.text = [NSString stringWithFormat:@"联系电话:%@", phone];
+    }
     
-    NSString *teme = [json objectForKey:@"teme"];
-    NSString *time = [json objectForKey:@"time"];
-    NSString *phone = [json objectForKey:@"phone"];
-    NSString *money = [json objectForKey:@"money"];
-    NSString *connect = [json objectForKey:@"connect"];
-    
-    self.titleLb.text = teme;
-    self.startTimeLb.text = [NSString stringWithFormat:@"时间:%@", time];
-    self.feeLb.text = [NSString stringWithFormat:@"费用:%@", money];
-    self.phoneLb.text = [NSString stringWithFormat:@"联系电话:%@", phone];
     
     [self.photoIv sd_setImageWithURL:[NSURL URLWithString:self.topic.photoFull] placeholderImage:[UIImage imageNamed:@"default_head"]];
     
     self.nickNameLb.text = self.topic.nickName;
-    self.topicContentTv.text = connect;
+    
     self.timeLb.text = [NSString stringWithFormat:@"%@  发起", self.topic.starttime];
     
     [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", self.topic.heartCount] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [self.topic.replyList count]] forState:UIControlStateNormal];
 }
+
+- (void)joinUserTapClick
+{
+    ConveneUserView *userView = [[ConveneUserView alloc] init];
+    userView.users = topicUsers;
+    userView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:userView animated:YES];
+}
+
+
 
 - (void)getJoinData
 {
@@ -157,10 +178,31 @@
                                            NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
                                            NSError *error;
                                            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                           
                                            totalRecord = [[[json objectForKey:@"data"] objectForKey:@"totalRecord"] intValue];
                                            self.joinLb.text = [NSString stringWithFormat:@"已有%d人参与", totalRecord];
-
+                                           
+                                           if (userInfo.regUserId != nil || [userInfo.regUserId length] > 0)
+                                           {
+                                               NSArray *userJson = [[json objectForKey:@"data"] objectForKey:@"resultsList"];
+                                               topicUsers = [NSMutableArray arrayWithArray:[Tool readJsonToObjArray:userJson andObjClass:[TopicUserJoin class]]];
+                                               for(TopicUserJoin *u in topicUsers)
+                                               {
+                                                   if ([u.regUserId isEqualToString:userInfo.regUserId]) {
+                                                       isGet =  @"1";
+                                                       [self.joinBtn setTitle:@"已报名" forState:UIControlStateNormal];
+                                                       break;
+                                                   }
+                                               }
+                                           }
+                                           else
+                                           {
+                                               [self.joinBtn setTitle:@"我要报名" forState:UIControlStateNormal];
+                                           }
+                                           if ([self.topic.regUserId isEqualToString:userInfo.regUserId] && topicUsers.count > 0) {
+                                               //参与人数点击
+                                               UITapGestureRecognizer *joinUserTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(joinUserTapClick)];
+                                               [self.joinLb addGestureRecognizer:joinUserTap];
+                                           }
                                        }
                                        @catch (NSException *exception) {
                                            [NdUncaughtExceptionHandler TakeException:exception];
@@ -199,6 +241,8 @@
                                            if (length > 0)
                                            {
                                                [self.tableView reloadData];
+                                               self.topic.replyList = replyData;
+                                               [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [replyData count]] forState:UIControlStateNormal];
                                            }
                                        }
                                        @catch (NSException *exception) {
@@ -568,7 +612,14 @@
 }
 
 - (IBAction)joinAction:(id)sender {
-    //打赏
+    if ([UserModel Instance].isLogin == NO) {
+        [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
+        return;
+    }
+    if ([isGet isEqualToString:@"1"]) {
+        [Tool showCustomHUD:@"您已参加该活动" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+        return;
+    }
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:self.topic.topicId forKey:@"topicId"];
     [param setValue:userInfo.regUserId forKey:@"regUserId"];
@@ -592,6 +643,7 @@
                                            else if ([msg isEqualToString:@"参与活动成功!"])
                                            {
                                                totalRecord += 1;
+                                               [self.joinBtn setTitle:@"已报名" forState:UIControlStateNormal];
                                            }
                                            [Tool showCustomHUD:msg andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                            self.joinLb.text = [NSString stringWithFormat:@"已有%d人参与", totalRecord];
@@ -649,6 +701,7 @@
 {
     [self.textFieldOnToolbar resignFirstResponder];
     [self.textField resignFirstResponder];
+    [self publicComment];
     return YES;
 }
 
@@ -656,6 +709,11 @@
 {
     [self.textField resignFirstResponder];
     [self.textFieldOnToolbar resignFirstResponder];
+    [self publicComment];
+}
+
+- (void)publicComment
+{
     NSString *commentContent = self.textFieldOnToolbar.text;
     if ([commentContent length] == 0) {
         return;
@@ -678,6 +736,7 @@
                                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                          
                                          NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                         NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
                                          if ([state isEqualToString:@"0000"] == NO) {
                                              UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
                                                                                           message:[[json objectForKey:@"header"] objectForKey:@"msg"]
@@ -693,6 +752,19 @@
                                              [self.textField resignFirstResponder];
                                              
                                              [self getReplyData];
+                                             
+                                             if ([msg intValue] == 0) {
+                                                 [Tool showCustomHUD:@"评论成功" andView:self.view andImage:nil andAfterDelay:1.1f];
+                                                 return;
+                                             }
+                                             
+                                             PublishSucceedView *samplePopupViewController = [[PublishSucceedView alloc] initWithNibName:@"PublishSucceedView" bundle:nil];
+                                             samplePopupViewController.parentView = self;
+                                             samplePopupViewController.integral = msg;
+                                             samplePopupViewController.titleStr = @"评论成功";
+                                             [self presentPopupViewController:samplePopupViewController animated:YES completion:^(void) {
+                                                 NSLog(@"popup view presented");
+                                             }];
                                          }
                                          
                                      }
@@ -728,6 +800,12 @@
     self.navigationItem.backBarButtonItem = backItem;
     [[IQKeyboardManager sharedManager] setEnable:NO];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_TopicPageReLoad object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

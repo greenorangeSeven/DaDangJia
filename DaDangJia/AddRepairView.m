@@ -58,10 +58,10 @@
     if (textView == self.contentTf) {
         int number = [textView.text length];
         self.contentLengthLb.text = [NSString stringWithFormat:@"%d", number];
-        if (number > 140) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"内容字数不能大于140" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        if (number > 200) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"内容字数不能大于200" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
-            textView.text = [textView.text substringToIndex:140];
+            textView.text = [textView.text substringToIndex:200];
         }
     }
 }
@@ -419,6 +419,8 @@
         
         self.contentTf.text = @"";
         [Tool showCustomHUD:@"报修成功" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+        MyRepairView *myRepairView = [[MyRepairView alloc] init];
+        [self.navigationController pushViewController:myRepairView animated:YES];
     }
     self.repairBtn.enabled = YES;
 }

@@ -19,6 +19,9 @@
     [super viewDidLoad];
     self.succeedView.layer.cornerRadius=10.0;
     
+    self.integralLb.text = self.integral;
+    self.titleLb.text = self.titleStr;
+    
     self.closebBtn.layer.cornerRadius=self.closebBtn.frame.size.height/2;
 }
 
@@ -30,6 +33,13 @@
 - (IBAction)closeAction:(id)sender {
     [_parentView dismissPopupViewControllerAnimated:YES completion:^{
         NSLog(@"popup view dismissed");
+        if (self.gotoTopicList) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_GotoTopicListView object:nil];
+        }
+        else
+        {
+            [_parentView.navigationController popViewControllerAnimated:YES];
+        }
     }];
 }
 

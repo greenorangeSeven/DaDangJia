@@ -21,8 +21,8 @@
     
 }
 
-//@property (weak, nonatomic) NSString *typeId;
-//@property (weak, nonatomic) NSString *typeName;
+@property (weak, nonatomic) NSString *typeId;
+@property (weak, nonatomic) NSString *typeName;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 //下拉刷新

@@ -105,6 +105,7 @@
 {
     [self.textFieldOnToolbar resignFirstResponder];
     [self.textField resignFirstResponder];
+    [self publicComment];
     return YES;
 }
 
@@ -112,6 +113,11 @@
 {
     [self.textField resignFirstResponder];
     [self.textFieldOnToolbar resignFirstResponder];
+    [self publicComment];
+}
+
+- (void)publicComment
+{
     NSString *commentContent = self.textFieldOnToolbar.text;
     if ([commentContent length] == 0) {
         return;
@@ -193,7 +199,7 @@
                                            [self initHeaderView];
                                            if ([comments count] > 0) {
                                                for (GroupBuyComment *comment in comments) {
-                                                   comment.starttime = [Tool TimestampToDateStr:[[NSNumber numberWithLong:comment.starttimeStamp] stringValue] andFormatterStr:@"yyyy-MM-dd"];
+                                                   comment.starttime = [Tool TimestampToDateStr:[[NSNumber numberWithLong:comment.starttimeStamp] stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm"];
                                                }
                                                [self.tableView reloadData];
                                            }

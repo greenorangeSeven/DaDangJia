@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *noticeTitleTf;
 @property (weak, nonatomic) IBOutlet UITextView *feeTitleTf;
 @property (weak, nonatomic) IBOutlet UIView *noticeView;
+@property (weak, nonatomic) IBOutlet UIButton *billBtn;
+@property (weak, nonatomic) IBOutlet UIButton *expressBtn;
+@property (weak, nonatomic) IBOutlet UIButton *repairBtn;
 
 - (IBAction)noticeAction:(id)sender;
 - (IBAction)addRepairAction:(id)sender;

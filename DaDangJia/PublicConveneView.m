@@ -50,7 +50,7 @@
     [self.collectionView registerClass:[UploadImageCell class] forCellWithReuseIdentifier:UploadImageCellIdentifier];
     
     self.timePicker = [[UIDatePicker alloc] init];
-    self.timePicker.datePickerMode = UIDatePickerModeDate;
+    self.timePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [self.timePicker addTarget:self
                              action:@selector(timeChanged:)
                    forControlEvents:UIControlEventValueChanged];
@@ -86,7 +86,7 @@
 {
     textField.inputAccessoryView = [self keyboardToolBar:textField.tag];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:[NSDate date]];
     if(textField == self.timeTf)
     {
@@ -104,7 +104,7 @@
 {
     NSDate *select = [self.timePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSString *dateAndTime =  [dateFormatter stringFromDate:select];
     self.timeTf.text = dateAndTime;
 }
@@ -114,10 +114,10 @@
     if (textView == self.contentTf) {
         int number = [textView.text length];
         self.contentLengthLb.text = [NSString stringWithFormat:@"%d", number];
-        if (number > 140) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"内容字数不能大于140" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        if (number > 200) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"内容字数不能大于200" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
-            textView.text = [textView.text substringToIndex:140];
+            textView.text = [textView.text substringToIndex:200];
         }
     }
 }
@@ -408,7 +408,7 @@
 - (IBAction)submitAction:(id)sender {
     NSString *titleStr = self.titleTf.text;
     NSString *timeStr = self.timeTf.text;
-    NSString *feeStr = self.feeTf.text;
+//    NSString *feeStr = self.feeTf.text;
     NSString *telNumStr = self.telNumTf.text;
     NSString *contentStr = self.contentTf.text;
     if (titleStr == nil || [titleStr length] == 0) {
@@ -419,10 +419,10 @@
         [Tool showCustomHUD:@"请输入时间" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
     }
-    if (feeStr == nil || [feeStr length] == 0) {
-        [Tool showCustomHUD:@"请填写费用" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
-        return;
-    }
+//    if (feeStr == nil || [feeStr length] == 0) {
+//        [Tool showCustomHUD:@"请填写费用" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
+//        return;
+//    }
     if (telNumStr == nil || [telNumStr length] == 0) {
         [Tool showCustomHUD:@"请填写联系电话" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         return;
@@ -442,7 +442,7 @@
     Convene *c = [[Convene alloc] init];
     c.teme = titleStr;
     c.time = timeStr;
-    c.money = feeStr;
+//    c.money = feeStr;
     c.phone = telNumStr;
     c.connect = contentStr;
     NSData *jsonData = [Tool getJSON:c options:NSJSONWritingPrettyPrinted error:nil];
@@ -496,6 +496,7 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+    NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
     if ([state isEqualToString:@"0000"] == NO) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"错误提示"
                                                      message:[[json objectForKey:@"header"] objectForKey:@"msg"]
@@ -511,7 +512,7 @@
         self.contentTf.text = @"";
         self.titleTf.text = @"";
         self.timeTf.text = @"";
-        self.feeTf.text = @"";
+//        self.feeTf.text = @"";
         self.telNumTf.text = @"";
         self.contentLengthLb.text = @"0";
         [topicImageArray removeAllObjects];
@@ -521,12 +522,27 @@
         //        [Tool showCustomHUD:@"发布完成" andView:self.view  andImage:@"37x-Failure.png" andAfterDelay:1];
         self.submitBtn.enabled = YES;
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_TopicPageRefresh object:nil];
+        
+        if ([msg intValue] == 0) {
+            [Tool showCustomHUD:@"发帖成功" andView:self.view andImage:nil andAfterDelay:1.1f];
+            [self performSelector:@selector(back) withObject:self afterDelay:1.2f];
+            return;
+        }
+        
         PublishSucceedView *samplePopupViewController = [[PublishSucceedView alloc] initWithNibName:@"PublishSucceedView" bundle:nil];
         samplePopupViewController.parentView = self;
+        samplePopupViewController.integral = msg;
+        samplePopupViewController.titleStr = @"发帖成功";
         [self presentPopupViewController:samplePopupViewController animated:YES completion:^(void) {
             NSLog(@"popup view presented");
         }];
     }
+}
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

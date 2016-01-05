@@ -13,6 +13,7 @@
 #import "AdView.h"
 #import "ADInfo.h"
 #import "CommDetailView.h"
+#import "UIViewController+CWPopup.h"
 
 @interface ConvenienceView ()
 {
@@ -201,7 +202,7 @@
     ShopType *type = [types objectAtIndex:row];
 
     cell.titleLb.text = type.shopTypeName;
-    [cell.imageIv sd_setImageWithURL:[NSURL URLWithString:type.imgUrlFull] placeholderImage:[UIImage imageNamed:@"default_head.png"]];
+    [cell.imageIv sd_setImageWithURL:[NSURL URLWithString:type.imgUrlFull] placeholderImage:[UIImage imageNamed:@"login_logo"]];
     
     return cell;
 }

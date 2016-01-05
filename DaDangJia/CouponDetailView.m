@@ -101,6 +101,7 @@
 {
     [self.textFieldOnToolbar resignFirstResponder];
     [self.textField resignFirstResponder];
+    [self publicComment];
     return YES;
 }
 
@@ -108,6 +109,11 @@
 {
     [self.textField resignFirstResponder];
     [self.textFieldOnToolbar resignFirstResponder];
+    [self publicComment];
+}
+
+- (void)publicComment
+{
     NSString *commentContent = self.textFieldOnToolbar.text;
     if ([commentContent length] == 0) {
         return;
@@ -188,7 +194,7 @@
                                            [self initHeaderView];
                                            if ([comments count] > 0) {
                                                for (GroupBuyComment *comment in comments) {
-                                                   comment.starttime = [Tool TimestampToDateStr:[[NSNumber numberWithLong:comment.starttimeStamp] stringValue] andFormatterStr:@"yyyy-MM-dd"];
+                                                   comment.starttime = [Tool TimestampToDateStr:[[NSNumber numberWithLong:comment.starttimeStamp] stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm"];
                                                }
                                                [self.tableView reloadData];
                                            }
@@ -224,11 +230,18 @@
         self.convertCodeLb.hidden = NO;
         self.convertCodeLb.text = [NSString stringWithFormat:@"优惠券兑换码:%@", detail.couponCode];
         [self.convertBtn setTitle:@"已领券" forState:UIControlStateNormal];
+        self.convertBtn.enabled = YES;
     }
     else
     {
         self.convertCodeLb.hidden = YES;
-        [self.convertBtn setTitle:@"立即领券" forState:UIControlStateNormal];
+        self.convertBtn.enabled = YES;
+    }
+    if (detail.usetimeStamp > 0) {
+        self.convertCodeLb.hidden = NO;
+        self.convertCodeLb.text = [NSString stringWithFormat:@"优惠券兑换码:%@", detail.couponCode];
+        [self.convertBtn setTitle:@"已使用" forState:UIControlStateNormal];
+        self.convertBtn.enabled = NO;
     }
     
     heartCount = [detail.heartList count];
@@ -392,7 +405,17 @@
         [Tool noticeLogin:self.view andDelegate:self andTitle:@""];
         return;
     }
-    //团购，取消团购
+    if (detail.isGet == 1) {
+        UIAlertView *userAlert = [[UIAlertView alloc] initWithTitle:@"使用优惠券"
+                                                      message:@"你确定要使用该优惠券？"
+                                                     delegate:self
+                                            cancelButtonTitle:@"取消"
+                                            otherButtonTitles:@"使用", nil];
+        userAlert.tag = 1;
+        [userAlert show];
+        return;
+    }
+    //领取优惠券
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:detail.couponId forKey:@"couponId"];
     [param setValue:userInfo.regUserId forKey:@"regUserId"];
@@ -416,20 +439,64 @@
                                        }
                                        else
                                        {
-                                           NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
-                                           [Tool showCustomHUD:msg andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
-                                           if([msg isEqualToString:@"参与团购成功!"])
-                                           {
-                                               detail.isGet = 1;
-//                                               [self.convertBtn setTitle:@"已领券" forState:UIControlStateNormal];
-                                           }
-                                           else
-                                           {
-                                               detail.isGet = 0;
-//                                               [self.convertBtn setTitle:@"立即领券" forState:UIControlStateNormal];
-                                           }
+                                           detail.isGet = 1;
                                            [self initHeaderView];
-                                           
+                                       }
+                                   }
+                                   @catch (NSException *exception) {
+                                       [NdUncaughtExceptionHandler TakeException:exception];
+                                   }
+                                   @finally {
+                                       
+                                   }
+                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   if ([UserModel Instance].isNetworkRunning == NO) {
+                                       return;
+                                   }
+                                   if ([UserModel Instance].isNetworkRunning) {
+                                       [Tool ToastNotification:@"错误 网络无连接" andView:self.view andLoading:NO andIsBottom:NO];
+                                   }
+                               }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1) {
+        if (buttonIndex == 1) {
+            [self useCouponAction];
+        }
+    }
+}
+
+- (void)useCouponAction
+{
+//使用优惠券
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:detail.couponId forKey:@"couponId"];
+    [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    NSString *useCouponUrl =[Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_useCoupon] params:param];
+    [[AFOSCClient sharedClient]getPath:useCouponUrl parameters:Nil
+                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   @try {
+                                       NSLog(@"%@", operation.responseString);
+                                       NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                       NSError *error;
+                                       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                       
+                                       NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
+                                       if ([state isEqualToString:@"0000"] == NO) {
+                                           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                                                        message:[[json objectForKey:@"header"] objectForKey:@"msg"]
+                                                                                       delegate:nil
+                                                                              cancelButtonTitle:@"确定"
+                                                                              otherButtonTitles:nil];
+                                           [av show];
+                                       }
+                                       else
+                                       {
+                                           //usetimeStamp > 0为已使用
+                                           detail.usetimeStamp = 200;
+                                           [self initHeaderView];
                                        }
                                    }
                                    @catch (NSException *exception) {

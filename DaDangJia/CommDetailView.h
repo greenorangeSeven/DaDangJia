@@ -14,5 +14,6 @@
 @property (copy, nonatomic) NSString *titleStr;
 @property (copy, nonatomic) NSString *urlStr;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (copy, nonatomic) NSString *showTel;
 
 @end

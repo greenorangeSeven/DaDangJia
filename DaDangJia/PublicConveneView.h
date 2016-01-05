@@ -23,7 +23,7 @@
 - (IBAction)submitAction:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTf;
-@property (weak, nonatomic) IBOutlet UITextField *feeTf;
+//@property (weak, nonatomic) IBOutlet UITextField *feeTf;
 @property (weak, nonatomic) IBOutlet UITextField *telNumTf;
 @property (weak, nonatomic) IBOutlet UITextField *timeTf;
 

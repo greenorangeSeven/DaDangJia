@@ -16,6 +16,8 @@
 #import "HotGroupBuyDetailView.h"
 #import "EveryDayGroupBuyDetailView.h"
 #import "HistoryGroupBuyView.h"
+#import "LoadPageView.h"
+#import "UIViewController+CWPopup.h"
 
 @interface TuanPageView ()
 {
@@ -62,6 +64,7 @@
     tuans = [[NSMutableArray alloc] initWithCapacity:20];
     [self reload:YES];
     [self getHotGroupBuyData];
+    [self showPopView];
 }
 
 - (void)historyGroupBuyAction:(id)sender
@@ -469,5 +472,20 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+- (void)showPopView
+{
+    LoadPageView *sampleLoadMainView = [[LoadPageView alloc] initWithNibName:@"LoadPageView" bundle:nil];
+    sampleLoadMainView.parentView = self;
+    [self presentPopupViewController:sampleLoadMainView animated:YES completion:^(void) {
+        NSLog(@"popup view presented");
+    }];
+    [self performSelector:@selector(closePop) withObject:self afterDelay:1.2f];
+}
+
+- (void)closePop
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CloseLoadPage object:nil];
+}
 
 @end

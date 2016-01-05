@@ -799,7 +799,7 @@
         NSArray *expressArrayJson = [[expressJsonDic objectForKey:@"data"] objectForKey:@"resultsList"];
         NSMutableArray *expressArray = [RMMapper mutableArrayOfClass:[Express class] fromArrayOfDictionary:expressArrayJson];
         for (Express *exp in expressArray) {
-            exp.timeDiff = [Tool intervalSinceNow:[Tool TimestampToDateStr:[exp.starttimeStamp stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+            exp.timeDiff = [Tool TimestampToDateStr:[exp.starttimeStamp stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm:ss"];
         }
         return expressArray;
     }
@@ -823,7 +823,7 @@
         NSArray *topicArrayJson = [[topicJsonDic objectForKey:@"data"] objectForKey:@"resultsList"];
         NSMutableArray *topicArray = [RMMapper mutableArrayOfClass:[Topic class] fromArrayOfDictionary:topicArrayJson];
         for (Topic *exp in topicArray) {
-            exp.starttime = [Tool intervalSinceNow:[Tool TimestampToDateStr:[exp.starttimeStamp stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+            exp.starttime = [Tool TimestampToDateStr:[exp.starttimeStamp stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm:ss"];
             exp.contentHeight = [self heightForString:exp.content fontSize:14.0 andWidth:236.0];
             //            exp.contentHeight = [self getTextHeight:236 andUIFont:[UIFont fontWithName:@"Arial-BoldItalicMT" size:14] andText:exp.content];
             if (exp.contentHeight < 21)
@@ -890,10 +890,10 @@
 //                
 //                reply.replyContentAttr = [[NSMutableAttributedString alloc] initWithString:reply.replyContent];
 //                [reply.replyContentAttr addAttribute:NSForegroundColorAttributeName value:[Tool getColorForMain] range:NSMakeRange(0, [reply.nickName length] + 1)];
-                reply.replyTime = [Tool intervalSinceNow:[Tool TimestampToDateStr:reply.replyTimeStamp   andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+                reply.replyTime = [Tool TimestampToDateStr:reply.replyTimeStamp   andFormatterStr:@"yyyy-MM-dd HH:mm:ss"];
             }
             
-            topic.starttime = [Tool intervalSinceNow:[Tool TimestampToDateStr:topic.starttimeStamp  andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+            topic.starttime = [Tool TimestampToDateStr:topic.starttimeStamp  andFormatterStr:@"yyyy-MM-dd HH:mm:ss"];
             topic.contentHeight = [self heightForString:topic.content fontSize:14.0 andWidth:236.0];
             
             if (topic.contentHeight < 21)
@@ -951,7 +951,7 @@
         NSMutableArray *replyList = [RMMapper mutableArrayOfClass:[TopicReply class] fromArrayOfDictionary:replyArrayJson];
         for(TopicReply *reply in replyList)
         {
-            reply.replyTime = [Tool intervalSinceNow:[Tool TimestampToDateStr:reply.replyTimeStamp   andFormatterStr:@"yyyy-MM-dd HH:mm:ss"]];
+            reply.replyTime = [Tool TimestampToDateStr:reply.replyTimeStamp   andFormatterStr:@"yyyy-MM-dd HH:mm:ss"];
         }
         return replyList;
     }

@@ -12,6 +12,7 @@
 {
     MBProgressHUD *hud;
     UIWebView *phoneWebView;
+    UserInfo *userInfo;
 }
 
 @end
@@ -22,6 +23,13 @@
     [super viewDidLoad];
     
     self.title = self.titleStr;
+    
+    userInfo = [[UserModel Instance] getUserInfo];
+    
+    if (self.showTel != nil && [self.showTel isEqualToString:@"1"]) {
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle: @"咨询" style:UIBarButtonItemStyleBordered target:self action:@selector(telAction:)];
+        self.navigationItem.rightBarButtonItem = rightBtn;
+    }
     
     if([self.present isEqualToString:@"present"] == YES)
     {
@@ -48,6 +56,15 @@
     self.webView.delegate = self;
 }
 
+- (void)telAction:(id)sender
+{
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", userInfo.defaultUserHouse.phone]];
+    if (!phoneWebView) {
+        phoneWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    }
+    [phoneWebView loadRequest:[NSURLRequest requestWithURL:phoneUrl]];
+}
+
 - (void)closeAction
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
@@ -67,7 +84,7 @@
 {
     if ([request.URL.absoluteString hasSuffix:@"telphone"])
     {
-        UserInfo *userInfo = [[UserModel Instance] getUserInfo];
+//        UserInfo *userInfo = [[UserModel Instance] getUserInfo];
         
         NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", userInfo.defaultUserHouse.phone]];
         if (!phoneWebView) {

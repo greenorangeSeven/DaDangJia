@@ -52,7 +52,7 @@
     
     self.nickNameLb.text = userInfo.nickName;
     self.userInfoLb.text = userInfo.mobileNo;
-    self.integralLb.text = [NSString stringWithFormat:@"%d", [userInfo.integral intValue]];
+    self.integralLb.text = [NSString stringWithFormat:@"%d", self.integral];
     
     [self reload:YES];
 }
@@ -187,16 +187,16 @@
             Integral *i = [integrals objectAtIndex:row];
             cell.timeLb.text = i.starttime;
             
-            NSString *integralStr = @"";
-            
-            if (i.integral >= 0) {
-                integralStr = [NSString stringWithFormat:@"获得 %d 积分", abs(i.integral)];
-            }
-            else
-            {
-                integralStr = [NSString stringWithFormat:@"消费 %d 积分", abs(i.integral)];
-            }
-            cell.integralLb.text = integralStr;
+//            NSString *integralStr = @"";
+//
+//            if (i.integral >= 0) {
+//                integralStr = [NSString stringWithFormat:@"获得 %d 积分", abs(i.integral)];
+//            }
+//            else
+//            {
+//                integralStr = [NSString stringWithFormat:@"消费 %d 积分", abs(i.integral)];
+//            }
+            cell.integralLb.text = i.remark;
             return cell;
         }
         else

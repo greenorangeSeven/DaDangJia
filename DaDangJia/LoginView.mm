@@ -157,6 +157,8 @@
             [userModel saveValue:@"" ForKey:@"numberId"];
         }
         [[UserModel Instance] saveUserInfo:userInfo];
+        [XGPush setTag:userInfo.defaultUserHouse.cellId];
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_TopicPageRefresh object:nil];
         [Tool showCustomHUD:@"欢迎回来" andView:self.view andImage:nil andAfterDelay:1.1f];
         [self performSelector:@selector(back) withObject:self afterDelay:1.2f];
     }

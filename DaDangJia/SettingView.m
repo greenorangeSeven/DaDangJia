@@ -9,6 +9,9 @@
 #import "SettingView.h"
 #import "CommDetailView.h"
 #import "OpinionView.h"
+#import "VersionsView.h"
+#import "XGPush.h"
+#import "RecommendView.h"
 
 @interface SettingView ()
 {
@@ -35,11 +38,12 @@
 {
     //设置登录并保存用户信息
     UserModel *userModel = [UserModel Instance];
+    [XGPush delTag:userModel.userInfo.defaultUserHouse.cellId];
     [userModel logoutUser];
     [userModel saveIsLogin:NO];
     [userModel saveAccount:@"" andPwd:@""];
     
-    UserHouse *defaultHouse = [userModel getUserInfo].defaultUserHouse;
+//    UserHouse *defaultHouse = [userModel getUserInfo].defaultUserHouse;
     
     [Tool showCustomHUD:@"已退出登录" andView:self.view andImage:nil andAfterDelay:1.1f];
     [self performSelector:@selector(back) withObject:self afterDelay:1.2f];
@@ -90,6 +94,9 @@
 }
 
 - (IBAction)tjxzAction:(id)sender {
+    RecommendView *recommendView = [[RecommendView alloc] init];
+    recommendView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recommendView animated:YES];
 }
 
 - (IBAction)kfrxAction:(id)sender {
@@ -110,5 +117,19 @@
 }
 
 - (IBAction)bbsmAction:(id)sender {
+    VersionsView *versionsView = [[VersionsView alloc] init];
+    versionsView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:versionsView animated:YES];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"返回";
+    self.navigationItem.backBarButtonItem = backItem;
+}
+
 @end

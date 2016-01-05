@@ -41,7 +41,7 @@
                     <rect key="frame" x="0.0" y="54" width="320" height="514"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_head" id="z9y-cG-Y5d">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_wygj" id="z9y-cG-Y5d">
                             <rect key="frame" x="86" y="31" width="75" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -156,7 +156,7 @@
                             <rect key="frame" x="12" y="398" width="204" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZAu-5g-3fR">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZAu-5g-3fR">
                                     <rect key="frame" x="16" y="0.0" width="180" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -176,7 +176,7 @@
                                 <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="Tgn-oU-Djg"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在iPhone的“设置”-“通知”中修改" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nhd-8H-Pio">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在iPhone的“设置”-“通知”中修改" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nhd-8H-Pio">
                             <rect key="frame" x="55" y="431" width="161" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -191,7 +191,6 @@
         </view>
     </objects>
     <resources>
-        <image name="default_head" width="66" height="65"/>
         <image name="l_hb" width="18" height="18"/>
         <image name="l_setting" width="18" height="18"/>
         <image name="l_tztx" width="18" height="18"/>
@@ -199,6 +198,7 @@
         <image name="l_wdsc" width="18" height="18"/>
         <image name="l_wdtg" width="18" height="18"/>
         <image name="l_yhq" width="18" height="18"/>
+        <image name="main_wygj" width="72" height="72"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

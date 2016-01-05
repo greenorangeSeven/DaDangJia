@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="129" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZZc-dq-005">
@@ -33,11 +33,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.80784313725490198" green="0.87058823529411766" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bKh-4M-rxy">
-                                <rect key="frame" x="7" y="158" width="54" height="22"/>
+                                <rect key="frame" x="2" y="158" width="70" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="打赏" image="praise">
@@ -45,8 +45,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rKh-Gh-uB3">
-                                <rect key="frame" x="84" y="158" width="56" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rKh-Gh-uB3">
+                                <rect key="frame" x="73" y="158" width="73" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="评一评" image="evaluate">
@@ -70,11 +70,13 @@
             </view>
             <color key="backgroundColor" red="0.93725490199999995" green="0.94509803920000002" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="commentBtn" destination="rKh-Gh-uB3" id="N15-A8-S6Z"/>
+                <outlet property="headerCountBtn" destination="bKh-4M-rxy" id="PNS-9U-tSL"/>
                 <outlet property="imgIv" destination="6Vm-6h-3gh" id="K7s-Jg-UsM"/>
                 <outlet property="titleLb" destination="qMr-7U-CsE" id="edj-q5-avi"/>
                 <outlet property="typeNameLb" destination="Uuw-vg-Fot" id="Iqd-Ga-m0g"/>
             </connections>
-            <point key="canvasLocation" x="282.5" y="198.5"/>
+            <point key="canvasLocation" x="454.5" y="136.5"/>
         </collectionViewCell>
     </objects>
     <resources>

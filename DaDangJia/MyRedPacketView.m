@@ -72,6 +72,8 @@
                                        @try {
                                            redPackets = [NSMutableArray arrayWithArray:[Tool readJsonToObjArray:resultsList andObjClass:[MyRedPacket class]]];
                                            for (MyRedPacket *r in redPackets) {
+                                               r.getTimeStr = [Tool TimestampToDateStr:[r.getTimeStamp stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm"];
+                                               r.useTimeStr = [Tool TimestampToDateStr:[r.useTimeStamp stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm"];
                                                if (r.stateId == 0) {
                                                    totalMoney += r.money;
                                                }
@@ -106,7 +108,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 47.0;
+    return 114.0;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,6 +144,24 @@
         cell.stateLb.text = @"已使用";
         [cell.stateLb setBackgroundColor:[UIColor colorWithRed:0.93 green:0.35 blue:0.42 alpha:1]];
     }
+    
+    if ([i.getTimeStamp longValue] == 0) {
+        cell.getTimeLb.hidden = YES;
+    }
+    else
+    {
+        cell.getTimeLb.text = [NSString stringWithFormat:@"领取时间:%@", i.getTimeStr];
+        cell.getTimeLb.hidden = NO;
+    }
+    if ([i.useTimeStamp longValue] == 0) {
+        cell.useTimeLb.hidden = YES;
+    }
+    else
+    {
+        cell.useTimeLb.text = [NSString stringWithFormat:@"使用时间:%@", i.useTimeStr];
+        cell.useTimeLb.hidden = NO;
+    }
+    
     return cell;
 }
 

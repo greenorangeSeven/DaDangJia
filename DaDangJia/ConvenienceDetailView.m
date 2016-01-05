@@ -46,8 +46,8 @@
     
     self.tableView.tableHeaderView = self.headerView;
     
-    [self initHeaderView];
-        
+//    [self initHeaderView];
+    
     self.callBtn.layer.cornerRadius=self.callBtn.frame.size.height/2;
     [self findShopDetail];
     
@@ -95,6 +95,7 @@
 {
     [self.textFieldOnToolbar resignFirstResponder];
     [self.textField resignFirstResponder];
+    [self publicComment];
     return YES;
 }
 
@@ -102,6 +103,11 @@
 {
     [self.textField resignFirstResponder];
     [self.textFieldOnToolbar resignFirstResponder];
+    [self publicComment];
+}
+
+- (void)publicComment
+{
     NSString *commentContent = self.textFieldOnToolbar.text;
     if ([commentContent length] == 0) {
         return;
@@ -165,7 +171,7 @@
     self.phoneLb.text = self.shopInfo.phone;
     self.addressLb.text = self.shopInfo.shopAddress;
     self.remarkTv.text = self.shopInfo.remark;
-    [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartCount] forState:UIControlStateNormal];
+    [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartNum] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"评一评(%d)", [detail.commentList count]] forState:UIControlStateNormal];
 }
 
@@ -176,6 +182,9 @@
         //查询指定房间所绑定的用户信息
         NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
         [param setValue:self.shopInfo.shopId forKey:@"shopId"];
+        if (userInfo.regUserId != nil || [userInfo.regUserId length] > 0) {
+            [param setValue:userInfo.regUserId forKey:@"regUserId"];
+        }
         
         NSString *findShopDetailUrl = [Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_findShopInfoById] params:param];
         [[AFOSCClient sharedClient]getPath:findShopDetailUrl parameters:Nil
@@ -188,10 +197,10 @@
                                            NSDictionary *datas = [json objectForKey:@"data"];
                                            detail = [Tool readJsonDicToObj:datas andObjClass:[ShopDetail class]];
                                            comments = detail.commentList;
-//                                           [self initHeaderView];
+                                                                                      [self initHeaderView];
                                            if ([comments count] > 0) {
                                                for (GroupBuyComment *comment in comments) {
-                                                   comment.starttime = [Tool TimestampToDateStr:[[NSNumber numberWithLong:comment.starttimeStamp] stringValue] andFormatterStr:@"yyyy-MM-dd"];
+                                                   comment.starttime = [Tool TimestampToDateStr:[[NSNumber numberWithLong:comment.starttimeStamp] stringValue] andFormatterStr:@"yyyy-MM-dd HH:mm"];
                                                }
                                                [self initHeaderView];
                                                [self.tableView reloadData];
@@ -269,14 +278,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)praiseAction:(id)sender
 {
@@ -287,8 +296,8 @@
     //团购打赏
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:self.shopInfo.shopId forKey:@"shopId"];
-//    [param setValue:userInfo.regUserId forKey:@"regUserId"];
-    NSString *heartUrl =[Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_addShopHeartCount] params:param];
+    [param setValue:userInfo.regUserId forKey:@"regUserId"];
+    NSString *heartUrl =[Tool serializeURL:[NSString stringWithFormat:@"%@%@", api_base_url, api_shopAddCancelInHeart] params:param];
     [[AFOSCClient sharedClient]getPath:heartUrl parameters:Nil
                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                    @try {
@@ -300,9 +309,19 @@
                                        NSString *state = [[json objectForKey:@"header"] objectForKey:@"state"];
                                        NSString *msg = [[json objectForKey:@"header"] objectForKey:@"msg"];
                                        
-                                       if ([state isEqualToString:@"0000"]) {
-                                           detail.heartCount += 1;
-                                           [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartCount] forState:UIControlStateNormal];
+                                       if ([state isEqualToString:@"0004"]) {
+                                           
+                                           detail.heartNum -= 1;
+                                           self.shopInfo.heartNum = detail.heartNum;
+                                           [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartNum] forState:UIControlStateNormal];
+                                           [Tool showCustomHUD:@"取消打赏" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
+                                           return; 
+                                       }
+                                       if ([state isEqualToString:@"0005"])
+                                       {
+                                           detail.heartNum += 1;
+                                           self.shopInfo.heartNum = detail.heartNum;
+                                           [self.praiseBtn setTitle:[NSString stringWithFormat:@"打赏(%d)", detail.heartNum] forState:UIControlStateNormal];
                                            [Tool showCustomHUD:@"打赏成功" andView:self.view andImage:@"37x-Failure.png" andAfterDelay:2];
                                            return;
                                        }

@@ -15,6 +15,8 @@
 #import "LootRedPacketView.h"
 #import "UIViewController+CWPopup.h"
 #import "CouponDetailView.h"
+#import "LoadPageView.h"
+#import "UIViewController+CWPopup.h"
 
 @interface WelfreListView ()
 {
@@ -54,6 +56,7 @@
     
     [self getRedPacketData];
     [self reload:YES];
+    [self showPopView];
 }
 
 - (void)getRedPacketData
@@ -446,6 +449,21 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [Tool processLoginNotice:actionSheet andButtonIndex:buttonIndex andNav:self.navigationController andParent:nil];
+}
+
+- (void)showPopView
+{
+    LoadPageView *sampleLoadMainView = [[LoadPageView alloc] initWithNibName:@"LoadPageView" bundle:nil];
+    sampleLoadMainView.parentView = self;
+    [self presentPopupViewController:sampleLoadMainView animated:YES completion:^(void) {
+        NSLog(@"popup view presented");
+    }];
+    [self performSelector:@selector(closePop) withObject:self afterDelay:1.2f];
+}
+
+- (void)closePop
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:Notification_CloseLoadPage object:nil];
 }
 
 @end
